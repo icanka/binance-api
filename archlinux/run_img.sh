@@ -31,7 +31,7 @@ export SSHPASS=passw0rd
 # The filesystem volume label must be cidata or CIDATA.
 
 # cloud-init config required to enable ssh.
-cat >user-data <<EOF
+cat > cloud-init/user-data <<EOF
 #cloud-config
 password: '${SSHPASS}'
 chpasswd: { expire: False }
@@ -45,14 +45,13 @@ runcmd:
   - [ touch, /runcmd_successful ]
 EOF
 
-cat >meta-data <<EOF
+cat > cloud-init/meta-data <<EOF
 instance-id: iid-local01
 local-hostname: cloudimg
 EOF
-cat user-data meta-data
 
 # Create an iso with the files we have created
-genisoimage -output seed.iso -volid cidata -joliet -rock user-data meta-data
+genisoimage -output seed.iso -volid cidata -joliet -rock cloud-init/user-data cloud-init/meta-data
 
 #  QEMU offers guests the ability to use paravirtualized block and network devices using the virtio drivers,
 #  which provide better performance and lower overhead.
@@ -66,7 +65,7 @@ genisoimage -output seed.iso -volid cidata -joliet -rock user-data meta-data
 
 # Run the image with iso mounted
 nohup qemu-system-x86_64 -accel kvm -m 512 -net nic -net user,hostfwd=tcp::2222-:22 -monitor telnet:127.0.0.1:55555,server,nowait \
-  -drive file=$(ls arch-boxes/output/Arch-Linux-x86_64-cloudimg-*.qcow2),if=virtio -drive file=seed.iso,if=virtio -nographic &
+  -drive file="$(ls arch-boxes/output/Arch-Linux-x86_64-cloudimg-*.qcow2)",if=virtio -drive file=cloud-init/seed.iso,if=virtio -nographic &
 # now you can ssh into the qemu virt. machine as: 'ssh arch@localhost -p 2222'
 # and you can connect to listening qemu monitor to control the virtual machine with telnet as: 'telnet 127.0.0.1 55555'
 

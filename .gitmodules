@@ -1,0 +1,3 @@
+[submodule "archlinux/arch-boxes"]
+	path = archlinux/arch-boxes
+	url = https://gitlab.archlinux.org/archlinux/arch-boxes.git

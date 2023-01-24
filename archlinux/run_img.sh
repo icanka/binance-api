@@ -64,7 +64,8 @@ genisoimage -output seed.iso -volid cidata -joliet -rock cloud-init/user-data cl
 # Note: '-accel kvm' option makes a huge difference in speed.
 
 # Run the image with iso mounted
-nohup qemu-system-x86_64 -accel kvm -m 512 -net nic -net user,hostfwd=tcp::2222-:22 -monitor telnet:127.0.0.1:55555,server,nowait \
+nohup qemu-system-x86_64 -accel kvm -m 512 -net nic -net user,hostfwd=tcp::2222-:22,hostfwd=tcp::2223-:81,hostfwd=tcp::5000-:5000 \
+  -monitor telnet:127.0.0.1:55555,server,nowait \
   -drive file="$(ls arch-boxes/output/Arch-Linux-x86_64-cloudimg-*.qcow2)",if=virtio -drive file=cloud-init/seed.iso,if=virtio -nographic &
 # now you can ssh into the qemu virt. machine as: 'ssh arch@localhost -p 2222'
 # and you can connect to listening qemu monitor to control the virtual machine with telnet as: 'telnet 127.0.0.1 55555'
@@ -76,11 +77,12 @@ nohup qemu-system-x86_64 -accel kvm -m 512 -net nic -net user,hostfwd=tcp::2222-
 #  'cont' will resume a virtual machine previously paused.
 
 # Inspect the boot process
-timeout 1m sh -c 'tail -f nohup.out' &
+#timeout 1m sh -c 'tail -f nohup.out'
+tail -f nohup.out
 
 # Log in to the machine.
-until sshpass -e ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no arch@localhost -p 2222
-do sleep 3;done
+# until sshpass -e ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no arch@localhost -p 2222
+# do sleep 3;done
 
 
 # IMPORTANT NOTE: Do not forget to 'cloud-init clean' before uploading image to the cloud.

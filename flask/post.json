@@ -1,0 +1,11 @@
+{
+    "ticker": "{{ticker}}",
+    "price": "{{strategy.order.price}}",
+    "order_id": "{{strategy.order.id}}",
+    "action": "{{strategy.order.action}}",
+    "contracts": "{{strategy.order.contracts}}",
+    "position_size": "{{strategy.position_size}}",
+    "market_position": "{{strategy.market_position}}",
+    "market_position_size": "{{strategy.market_position_size}}",
+    "alert_message": "{{strategy.order.alert_message}}"
+}

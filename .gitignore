@@ -3,3 +3,5 @@ venv/
 **/*.iso
 .vscode
 **/test.sh
+time
+os

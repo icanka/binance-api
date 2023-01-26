@@ -3,5 +3,6 @@ venv/
 **/*.iso
 .vscode
 **/test.sh
+**/nohup.out
 time
 os

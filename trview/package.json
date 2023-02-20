@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@material/data-table": "^14.0.0"
+  }
+}

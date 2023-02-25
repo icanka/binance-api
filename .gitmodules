@@ -2,3 +2,6 @@
 	path = archlinux/arch-boxes
 	url = https://gitlab.archlinux.org/archlinux/arch-boxes.git
 
+[submodule "trview/AdminLTE"]
+	path = trview/AdminLTE
+	url = https://github.com/ColorlibHQ/AdminLTE.git

@@ -1,0 +1,887 @@
+  500  git clone https://github.com/jenkinsci/claim-plugin.git
+  501  grpe -rn RootAction
+  502  grep -rn RootAction
+  503  grep -rn AbstractAssignedClaimsReport
+  504  cd ~/.m2
+  505  mv settings.xml settings.xml.old
+  506  vim settings.xml
+  507  nano settings.xml
+  508  mvn hpi:verify
+  509  ./gradlew jpi
+  510  ./gradlew server
+  511  grep -rn norefrest
+  512  grep -rn norefr
+  513  mvn hpi:run
+  514  grep -rn norefresh
+  515  sensors | grep RPM
+  516  sensors | grep CPU
+  517  grep -rn symbol-design
+  518  grep -rn tooltips
+  519  find . -iname "*tooltips*"
+  520  grep -rn getDynamic
+  521  grep -rn prism.js
+  522  grep -rn prism
+  523  rm -rf jeccd jenkins
+  524  rm -rf *
+  525  cd jenkins
+  526  cd jenkins-plugin
+  527  git comimt -m "initial commit"
+  528  git commmit -m "initial commit"
+  529  git gc --aggressive
+  530  rm -rf .git
+  531  du -hd 1 . -t 10M
+  532  git branch -M main
+  533  git remote add origin git@github.com:icanka/jenkins-plugin.git
+  534  git push -u origin main
+  535  cd .m
+  536  cd .m2
+  537  cd .gradle
+  538  mkdir dict-compare
+  539  cd dict-compare
+  540  python3 --version
+  541  python3 data.json
+  542  python3 data.py
+  543  python3 json.py
+  544  python3 json_parse.py
+  545  rankmirrors -g
+  547  mkdir -p ~/Documents/git-repos/stock-market
+  548  mv apiAnalysis.py ~/Documents/git-repos/stock-market
+  549  python3.10 -m pip install virtualenv
+  550  virtualenv stock-market
+  551  /bin/python /home/raflman/Documents/git-repos/stock-market/apiAnalysis.py
+  552  python3.10 -m pip --version
+  553  pip install requests black
+  554  black apiAnalysis.py
+  555  python3.10 apiAnalysis.py
+  556  black --help
+  557  /home/raflman/Documents/python-virtenv/stock-market/bin/python -m pip install -U autopep8
+  558  git commi
+  559  pip install pylint
+  560  flynt .
+  561  black test.py
+  562  git commit -m "formatting"
+  563  python3.10 api_stock.py
+  564  pylint 
+  565  git commit
+  566  black api_stock.py
+  567  pylint api_stock.py
+  568  /home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/test.py/home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/test.py
+  569  python3.10 test.py
+  570  python3.10 test.py/home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/utility.py
+  571  git log --oneline
+  572  git checkout 730188d
+  573  git checkout main
+  574  pip install tradingview-ta
+  575  /home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/utility.py
+  576  while true;do sleep 1;echo test;done
+  577  while true;do sleep 1;python3.10 test.py;done
+  578  /home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/test.py
+  579  while true;do sleep 10;python3.10 test.py >> ethusdt.txt;done
+  580  git remote add origin git@github.com:errata86a/tradingview.git\ngit branch -M main\ngit push -u origin main
+  581  git remote add origin https://github.com/errata86a/tradingview.git\ngit branch -M main\ngit push -u origin main
+  582  git remote remove origin
+  583  git remote add origin git@github.com:icanka/tradingview.git\ngit branch -M main\ngit push -u origin main
+  584  while true;do sleep 3;python3.10 test.py >> ethusdt.txt;done
+  585  while true;do sleep 3;python3.10 test.py >> ethusdt15.txt;done
+  586  while true;do sleep 10;python3.10 test.py >> ethusdt15.txt;done
+  587  git push origin master
+  588  dd if=manjaro-kde-21.3.7-220816-linux515.iso of=/dev/sda
+  589  sudo dd if=manjaro-kde-21.3.7-220816-linux515.iso of=/dev/sda
+  590  nmcli dev disconnect enp4s0
+  591  nmcli dev connect enp4s0
+  592  nmcli dev modify enp4s0 ipv4.address 192.168.1.168/24
+  593  nmcli dev modify enp4s0 ipv4.address 192.168.2.168/24
+  594  ping google.com
+  595  cd ../Documents
+  596  ls
+  597  ping 192.168.2.156
+  598  rsync -avcHAX raflman/ raflman@192.168.2.155:/home/raflman/
+  599  rsync -avcHAX raflman/ raflman@192.168.2.156:/home/raflman/
+  600  rsync -avcHAX /home/raflman/DOcuments/home-backup/raflman raflman@192.168.2.156:/home/raflman
+  601  cd /~
+  602  rsync -avHAX --ignore-existing  raflman/ raflman@10.0.0.1:/home/raflman/
+  603  cd ~/Documents/git-repos/stock-market
+  604  git pull --rebase
+  605  trizen -Syyu
+  606  flynt --help
+  607  flynt utility.py
+  608  history > test
+  610  history a
+  611  python utility.py
+  612  git clone git@github.com:brian-the-dev/python-tradingview-ta.git
+  613  pip install selenium
+  614  mkdir gecko
+  615  cd gecko
+  616  cd stock-market
+  617  mkdir gecko-driver
+  618  cd gecko-driver
+  619  touch get-driver.sh
+  620  chmod u+x get-driver.sh
+  621  ./get-driver.sh
+  622  tar -xvzf geckodriver-v0.32.0-linux64.tar.gz
+  623  file geckodriver
+  624  sudo mv geckodriver /usr/local/bin
+  625  geckodriver 
+  626  pip install webdriver-manager
+  627  python selenium_test.py
+  628  source /home/raflman/Documents/python-virtenv/stock-market/bin/activate
+  629  /home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/selenium_test.py/home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/selenium_test.py
+  630  /home/raflman/Documents/python-virtenv/stock-market/bin/python /home/raflman/Documents/git-repos/stock-market/selenium_test.py
+  631  black selenium_test.py
+  632  trizen -S vmware-workstation
+  633  cd /usr/lib
+  634  mkdir indicators
+  635  rm -rf update-center2.tar
+  636  cd indicators
+  637  docker
+  638  trizen -S lean-cli-git
+  639  mv indicators quantconnect-algotrading
+  640  virtualenv quantconnect-algotrading
+  641  pacman -S tkinter
+  642  sudo pacman -S tkinter
+  643  cd ~/Documents/git-repos/
+  644  du .
+  645  cd~
+  646  du -s .
+  647  pip remove lean
+  648  cd data
+  649  cat lean.json
+  650  pip uninstall leap
+  651  pip uninstall lean
+  652  status
+  653  pip import quantconnect-stubs
+  654  pip install quantconnect-stubs
+  655  pip install quantconnect-lean
+  656  pip install quantconnect-api
+  657  pip install quantconnect-cli
+  658  source /home/raflman/Documents/python-virtenv/quantconnect-algotrading/bin/activate
+  659  python38
+  660  python38 -m pip --version
+  661  python38 -m pip install --upgrade pip
+  662  python38 -m pip list installed
+  663  virtualenv --help
+  664  virtualenv --python python38 test123
+  665  which python38
+  666  virtualenv --python /var/lib/snapd/snap/bin/python38 test123
+  667  sudo virtualenv --python /var/lib/snapd/snap/bin/python38 test123
+  668  python38 -m pip install virtualenv
+  669  snap remove python
+  670  python3.8 -m pip --version
+  671  python3.8 -m pip3.8
+  672  python3.8 -m pip3
+  673  python3.8 -m pip
+  674  python3.8 --help
+  675  curl https://pip.pypa.io/en/stable/installation/#get-pip-py
+  676  curl https://bootstrap.pypa.io/get-pip.py
+  677  vim get-pip.py
+  678  python3.8 get-pip.py
+  679  python3.8 -m pip list installed
+  680  python3.8 -m pip install virtualenv
+  681  python3.8 -m venv --help
+  682  apython3.8 -m venv ~/Documents/git-repos
+  683  cd ~/Documents/git-repos/quantconnect-workspace
+  684  cd quantconnect-algotrading
+  685  python3.8 -m venv quantconnect
+  686  source quantconnect/bin/activate
+  687  pip install quantconnect
+  688  pip install wheel
+  689  pip install quantconnect-stubs lean quantconnect-lean quantconnect-api quanttconnect-cli
+  690  pip install quantconnect-stubs lean quantconnect-lean quantconnect-api quantconnect-cli
+  691  python test.
+  692  pythom
+  693  pip install clr_loader
+  694  pip remove clr
+  695  pip remove clr_loader
+  696  pip uninstallc lr_loader
+  697  pip uninstall clr_loader
+  698  pip install clr
+  699  pip install pythonnet
+  700  pip uninstall clr
+  701  pytohn
+  702  sudo pacman -S mono
+  703  python test.py
+  704  python3.8 test.py
+  705  cd /home/raflman/Documents/python-virtenv/quantconnect/lib/python3.8/site-packages
+  706  cd QuantConnect
+  707  find . -iname "*common*"
+  708  find . -iname "*common*" | grep quant
+  709  find . -iname "*common*" | grep Quant
+  710  git remote add origin git@github.com:icanka/quantconnect.git\ngit branch -M main\ngit push -u origin main
+  711  pip freeze /tmp/requirements.txt
+  712  rm quantconnect.common.2.5.14943\(1\).nupkg
+  713  file quantconnect.common.2.5.14943
+  714  file quantconnect.common.2.5.14943.nupkg
+  715  unzip quantconnect.common.2.5.14943.nupkg
+  716  mkdir Quantconnect.Common
+  717  ls | grep quant
+  718  mv quantconnect.lean.2.5.14943.nupkg Quantconnect.Common
+  719  cd Quantconnect.Common
+  720  unzip quantconnect.lean.2.5.14943.nupkg
+  721  vim '[Content_Types].xml'
+  722  cd services
+  723  cd metadata
+  724  cd core-properties/
+  725  cd ../../../
+  726  cd net6.0
+  727  dotnet
+  728  cd Document
+  729  git clone git clone https://github.com/QuantConnect/Lean.git\ncd Lean
+  730  git clone https://github.com/QuantConnect/Lean.git
+  731  docker pull docker pull quantconnect/research:latest
+  732  docker pull quantconnect/research:latest
+  733  cd /snap
+  734  cd dotnet-sdk
+  735  cd 188
+  736  pip install --upgrade quantconnect-stubs
+  737  export PATH="$HOME/miniconda3/bin:$PATH"
+  738  wget https://cdn.quantconnect.com/miniconda/Miniconda3-4.5.12-Linux-x86_64.sh
+  739  bash Miniconda3-4.5.12-Linux-x86_64.sh -b
+  740  rm -rf Miniconda3-4.5.12-Linux-x86_64.sh
+  741  conda update -y python conda pip
+  742  conda create -n qc_lean python=3.8.13 pandas=1.4.3 wrapt=1.14.1
+  743  cd /home/raflman/miniconda3
+  744  vim /etc/environment
+  745  sudo vim /etc/environment
+  746  asPYTHONNET_PYDLL="/home/{your_user_name}/miniconda3/envs/qc_lean/lib/libpython3.8.so"
+  747  cd /home/raflman/miniconda3/envs/qc_lean/lib
+  748  cd .lean
+  749  vim config
+  750  man lean
+  751  cd ~/Documents/git-repos/quantconnect-algotrading
+  752  lean create-project --help
+  753  lean create-project -l python
+  754  lean create-project -l python test-lean-project
+  755  lean --help
+  756  lean backtest  test-lean-project
+  757  cd test-lean-project
+  758  lean backtest  ../test-lean-project
+  759  rm -rf quantconnect-algotrading
+  760  cd ../../
+  761  lean create-project -l python quantconnect-lean-project
+  762  source /home/raflman/Documents/python-virtenv/quantconnect/bin/activate
+  763  lean backtest --help
+  764  lean backtest --download-date main.py
+  765  lean backtest --download-data main.py
+  766  lean login
+  767  lean backtest main.py
+  768  lean backtest main.py | grep vider
+  769  lean backtest main.py 
+  770  cd ~/
+  771  rm -rf miniconda3
+  772  rm -rf /home/raflman/Documents/python-virtenv/quantconnect
+  773  rm -rf /home/raflman/Documents/python-virtenv/quant*
+  774  ls -l | gpe qu
+  775  ls -l | grep qu
+  776  rm -rf quantconnect-*
+  777  sudo rm -rf quantconnect-*
+  778  ls -lR | grep quant
+  779  rm -rf ./Lean
+  780  sudo rm -rf ./Lean
+  781  rm -rf ./lean
+  782  pip install lean
+  783  pip-autoremove lean
+  784  pip install pip-autoremove
+  785  pip auto-remove clr
+  786  pip-auto-remove clr
+  787  pip-autoremove clr
+  788  cd Documents/python-virtenv
+  789  ls | tra
+  790  ls | grep tra
+  791  rm -rf .conda
+  792  ls -a
+  793  snap remove dotnet-sdk
+  795  trizen -R mono
+  796  ping 192.168.1.90
+  797  ping 192.168.1.91
+  798  find . -type d -iname "*binance*"
+  799  cd ./home-backup/raflman/Documents/binance-api
+  800  git init
+  801  git branch -m main
+  802  vim .gitignore
+  803  cp binance-api ~/Documents/git-repos
+  804  cp -r binance-api ~/Documents/git-repos
+  805  git commit -m "initial commit"
+  806  cd venv
+  807  cd python3.9
+  808  cd site-packages
+  810  trizen -Q 
+  811  trizen -Q | grep python
+  812  trizen -Q | grep python3.9
+  813  trizen -Q | grep python3.8
+  814  trizen -S python39
+  815  python3.9 --help
+  816  python3.9
+  817  cd git-repos/
+  818  hostname
+  819  cd /home/raflman/Documents/git-repos/binance-api/
+  820  source venv/bin/activate
+  821  mv venv ../../python-virtenv/binance-api
+  822  cd ../../python-virtenv
+  823  pip install --upgrade pip
+  824  pip install --upgrade wheel
+  825  pip install flynt
+  826  black coin_kline.py
+  827  black
+  828  flac --help
+  829  pip install black
+  830  man black
+  831  pylama coin_kline.py
+  832  /home/raflman/Documents/python-virtenv/binance-api/bin/python -m pip install -U black
+  833  flynt coin_kline.py
+  834  python --help
+  835  python  coin_kline.py
+  836  curl "https://testnet.binance.vision/api/v3/exchangeInfo"
+  837  cd ~/Documents/python-virtenv
+  838  pip freeze > /tmp/requirements.txt
+  839  python --version
+  840  virtualenv binance-api
+  842  rm -rf binance-api
+  843  which python
+  844  sudo virtualenv --python /usr/bin/python3.10 binance-api
+  845  virtualenv --python /usr/bin/python3.10 binance-api
+  846  pip3 --version
+  847  pip --version
+  848  pip install --requirement /tmp/requirements.txt
+  849  pip install --upgrade binance
+  850  pip install --upgrade python-binance
+  851  python coin_kline.py BTCBUSD
+  852  CLEAR
+  853  python main.py
+  854  lsblk
+  855  cd home-backup
+  856  tar -cf home-backup.tar home-backup
+  857  rm -rf lost+found
+  858  mkdir usb
+  859  rsync -avHAX --progress ../  ~/Documents/usb/
+  860  rm -rf home-backup
+  861  ssh izzetcan@jupiter
+  862  rsync -avHAX --progress home-backup.tar izzetcan@/home/media/izzetcan/Dock/yedek/
+  863  rsync -avHAX --progress home-backup.tar izzetcan@jupiter:/home/media/izzetcan/Dock/yedek/
+  864  ping jupiter
+  865  rsync -avHAX --progress home-backup.tar izzetcan@jupiter:/run/media/izzetcan/Dock/yedek/
+  866  rsync -avcHAX --progress ../  ~/Documents/usb/
+  867  rm -rf home-backup.tar
+  868  tar -tvf gitlab-api.tar
+  869  rm -rf gitlab-api.tar
+  870  tar -tvf python-mode.tar
+  871  rm -rf python-mode.tar
+  872  rm -rf docker.tar
+  873  tar -tvf atlassian-extras-3.4.6.jar
+  874  rm -rf atlassian-extras-3.4.6.jar
+  875  vim backup.bash
+  876  file nvidia
+  877  vim nvidia
+  878  vim gitlab-api.sh
+  879  rm -rf pkgs_*
+  880  rm -rf jira-8-20-*
+  881  rm Screenshot_20220808_095652.png
+  882  vim custom_release
+  883  rm custom_release
+  884  cd 1SEP22
+  885  rm -rf 1SEP22
+  886  cd .vmware
+  887  mkdir vmware
+  888  find . -iname "*.tar"
+  889  find . -iname "*.tar" | grep 85
+  890  cd raflman
+  891  ip -o addr
+  892  sudo pacman -S tlp
+  893  vim /etc/tlp.conf
+  894  sudo vim /etc/tlp.conf
+  895  tlp-stat -p
+  896  tar -xf Rocky_85_64-bit.tar
+  897  systemctl enable tlp
+  898  systemctl status tlp
+  899  swapon --show
+  900  aadd if=/dev/zero of=/swapfile bs=1M count=512 status=progress
+  902  dd if=/dev/zero of=/swapfile bs=1M count=16384 status=progress
+  903  sudo dd if=/dev/zero of=/swapfile bs=1M count=16384 status=progress
+  904  sudo chmod 0600 /swapfile
+  905  mkswap -U clear /swapfile
+  906  sudo mkswap -U clear /swapfile
+  907  swapon /swapfile
+  908  sudo swapon /swapfile
+  909  sysctl swappiness
+  910  sudo vim /etc/fstab
+  911  sudo nano /etc/fstab
+  912  modprobe vmmon
+  913  cd /lib/modules
+  914  ls -lR
+  915  ls -lR | grep vm
+  916  cat /etc/fstab
+  917  sysctl vm.swappiness
+  918  sudo tlp-stat -p
+  919  cat /proc/modules
+  920  cd /proc/modules
+  921  cat id_rsa.pub
+  922  ssh-copy-id root@164.92.128.82
+  923  cd ~/Documents/git-repos
+  924  mkdir flask-listen
+  925  lsmod | grep mon
+  926  cd extramodules
+  927  c d..
+  928  find . -iname "vmci"
+  929  find . -iname "vmmon"
+  930  uname -r
+  931  cd kernel/drivers
+  932  cd kernel/drivers/misc
+  933  cd vmw_vmci
+  934  cd misc
+  935  systemctl list-units --type service
+  936  systemctl list-units --type service all
+  937  vmware-modconfig --console --install -all
+  938  vmware-modconfig --console --install-all
+  939  find . -iname "*vmmon*"
+  940  modprobe vmci
+  941  cd /etc/modules-load.d
+  942  cd ./build/drivers/misc/vmw_vmci
+  943  vim Kconfig
+  944  cd ./kernel/drivers/misc/vmw_vmci
+  945  file vmw_vmci.ko.xz
+  946  tar -tvf vmw_vmci.ko.xz
+  947  modinfo vmci
+  949  sudo modprobe vmw_vmci
+  950  modprobe vmw_vmci
+  951  systool -v -m vmw-vmci
+  952  systool -v -m vmw_vmci
+  953  modprobe -c | less
+  954  modprobe -c | more
+  955  modprobe -c | grep vmw_vmci
+  956  modprobe --help
+  957  modprobe --show-depends vmw_vmci
+  958  modprobe --show-depends vmmon
+  959  modprobe --show-depends ip_tables
+  960  modprobe --show-depends ip_table
+  961  modprobe --show-depends ip_table_nat
+  962  modprobe --show-depends iptable_nat
+  963  sudo modprobe vmci
+  964  cd /usr/lib/modules
+  965  cd 5.15.85-1-MANJARO
+  966  cd /lib/modules/5.15.85-1-MANJARO
+  967  lsinitcpiio
+  968  lsinitcpio
+  969  lsinitcpio -h
+  970  cd /usr/lib/modprobe.d
+  971  vim 50-nfs.conf
+  972  vim bluetooth-usb.conf
+  973  vim systemd.conf
+  974  cd ../modules
+  975  find . -iname "*vmci*"
+  976  cd extramodules-5.15-MANJARO
+  977  find . -iname "*vmi*"
+  978  cd /lib/modules-load.d
+  979  cat *
+  980  cat bluez.conf
+  981  mkinitcpio --help
+  982  mkinitcpio
+  983  mkinitcpio -v
+  984  mkinitcpio -v | grep vm
+  985  cd /etc/modprobe.d
+  986  vim vmware-fuse.conf
+  987  mkinitcpio -M
+  988  man mkinitcpio
+  989  modinfo vmw_vmci
+  990  modprobe -c
+  991  modprobe -c | grep vmci
+  992  modinfo vmmon
+  993  modprobe -c | grep mon
+  994  modprobe -c | grep vmmon
+  995  modprobe -c | grep vm
+  996  man mkinitcpio -g
+  997  mkinitcpio -g
+  998  cd /etc/mkinitcpio.d
+  999  vim linux515.preset
+ 1000  mkinitcpio --preset linux515
+ 1001  id
+ 1002  tail -f dmesg
+ 1003  sudo raflman dmesg
+ 1004  sudo tailf -f dmesg
+ 1005  sudo tail -f dmesg
+ 1006  dmesg --help
+ 1007  dmesg -f
+ 1008  vmware-modconfig --help
+ 1009  vmware-modconfig
+ 1010  cd /tmp/modconfig-0QeuX6/vmmon-only/bootstrap/
+ 1011  vim vmware-21212.log
+ 1012  vim vmware-apploader-21212.log
+ 1013  grep -rn module
+ 1014  pgrep vmware
+ 1015  cd /tmp/vmware-raflman
+ 1016  sudo modprobe -r vmnet
+ 1017  vmware
+ 1018  dmesg
+ 1019  tail -f *
+ 1020  sudo dmesg | grep vm
+ 1021  vim /etc/vmware/config
+ 1022  cd /etc/vmware-installer
+ 1023  file bootstrap
+ 1024  vim bootstrap
+ 1025  cd modules
+ 1026  cd source
+ 1027  tar -tvf vmmon.tar
+ 1028  cp vmmon.tar /tmp
+ 1029  c d/tmp
+ 1030  tar -xf vmmon.tar
+ 1031  cd vmmon-only
+ 1032  vim READ
+ 1033  vim README
+ 1034  vim monLoader.c
+ 1035  vim monLoader.h
+ 1036  grep -rn entries
+ 1037  sudo vmware-modconfig --console --install-all
+ 1038  grep -rn "*services*"
+ 1039  grep -rn modprobe
+ 1040  grep -rn Stopping
+ 1041  vim Makefile.kernel
+ 1042  vim Makefile.normal
+ 1043  vim Makefile
+ 1044  cd autoconf
+ 1045  vim vmhost.h
+ 1046  cd include
+ 1047  cd bootstrap
+ 1048  vim bootstrap.c
+ 1049  find . -iname "*vm_basic_types*"
+ 1050  vim ./include/vm_basic_types.h
+ 1051  grep -rn vmmon
+ 1052  vim linux/driver.c
+ 1053  vmware --help
+ 1054  cd linux
+ 1055  vim driver.c
+ 1056  grep -rn mis_register
+ 1057  grep -rn misc_register
+ 1058  man vmware-modconfig
+ 1059  man vmware
+ 1060  vmware -vvvv
+ 1061  systemctl list-units --type service --all | grep vm
+ 1062  systemctl list-units --type service --all
+ 1063  lsmod | grep vmnet
+ 1064  sudo modprobe -r vmmon
+ 1065  sudo modprobe vmmon
+ 1066  sudo dmesg
+ 1067  cd /usr/lib/modules/
+ 1068  find . -type d -iname "vmware"
+ 1069  sudo find . -type d -iname "vmware"
+ 1070  cd /usr/lib/vmware
+ 1071  sudo find . -type d -iname "modules-load.d"
+ 1072  cd /etc/
+ 1073  cd modules-load.d
+ 1074  vim modules.conf
+ 1075  cd /usr/lib/modules-load.d
+ 1076  vim cdrecord.conf
+ 1077  sudo pacman -S gcc kmod
+ 1078  sudo pacman -S linux-headers
+ 1079  aplay -l
+ 1080  speaker-test
+ 1081  lsmod | grep snd
+ 1082  lsmod | grep blu
+ 1083  lsmod
+ 1084  vim /etc/modules-load.d/vmware.conf
+ 1085  sudo pacman -S qemu
+ 1086  pacman -S kvm
+ 1087  sudo pacman -S kvm
+ 1088  zgrep CONFIG_KVM /proc/config.gz
+ 1089  lsmod | grep kvm
+ 1090  virsh --help
+ 1091  sudo pacman -S libvirt
+ 1092  virsh
+ 1093  virsh domblkinfo
+ 1094  virsh domblkinfo Arch-Linux-x86_64-cloudimg.qcow2
+ 1095  vim rootfs-pkgs.txt
+ 1096  rm -rf Quantconnect.Common
+ 1097  ping 172.16.86.1
+ 1098  cd /tmp
+ 1099  cd vmware-raflman
+ 1100  vim vmware-netcfg-9501.log
+ 1101  vim vmware-ui-5501.log
+ 1102  cd vmware-root
+ 1103  sudo cd vmware-root
+ 1104  cd Rocky_85_64-bit
+ 1105  vim vmware.log
+ 1106  modinfo vmnet
+ 1107  sudo vim /etc/modules-load.d/vmware.conf
+ 1108  modprobe vmnet
+ 1109  sudo modprobe vmnet
+ 1111  cd usb
+ 1112  cd 161bbf97-66b1-443f-8d15-a70bd0b45d4c
+ 1113  tar -tvf 21-22.tar
+ 1114  scp 21-22.tar raflman@172.16.163.128:~
+ 1115  tar -xf 21-22.tar
+ 1116  rsync -avHAX --progress 2.1.0.0 2.2.0.0 raflman@172.16.163.128:/opt/advent/sdk
+ 1117  cd em_engageability_calculation_lib
+ 1118  ll
+ 1119  rsync -avHAX --progress em* raflman@172.16.163.128:/home/raflman/Documents/
+ 1120  rsync --filter='-x security.selinux' -avHAX --progress 2.1.0.0 2.2.0.0 root@172.16.163.128:/opt/advent/sdk
+ 1121  rsync -avHAX --progress 2.1.0.0 2.2.0.0 root@172.16.163.128:/opt/advent/sdk
+ 1122  rsync --filter='-x security.*' -avHAX --progress 2.1.0.0 2.2.0.0 root@172.16.163.128:/opt/advent/sdk
+ 1123  rsync --filter='-x security.*' -avHA --progress 2.1.0.0 2.2.0.0 root@172.16.163.128:/opt/advent/sdk
+ 1124  rsync --filter='-x security.*' -vHA --progress 2.1.0.0 2.2.0.0 root@172.16.163.128:/opt/advent/sdk
+ 1125  rm -rf 21-22.tar
+ 1126  rm -rf 2.*
+ 1127  sudo rm -rf  2.*
+ 1128  tar -xf 21rpm.tar
+ 1129  tar -tvf 21rpm.tar
+ 1130  rm -rf em_*
+ 1131  rsync -avHAX --progress 2.1.0.0 root@172.16.163.128:/opt/advent/repos/
+ 1132  rsync -avHAX --progress 2.1.0.1 root@172.16.163.128:/opt/advent/repos/
+ 1133  rsync -vHA --progress 2.1.0.1 root@172.16.163.128:/opt/advent/repos/
+ 1134  tar -tvf git-projects.tar
+ 1135  rsync -vHA --progress git-projects.tar root@172.16.163.128:~/Documents
+ 1136  rm -rf usb
+ 1137  fdisk -l
+ 1138  sudo fdisk -l
+ 1139  l
+ 1140  cd ~
+ 1141  cd vmware
+ 1142  rm -rf Rocky_85_64-bit.tar
+ 1143  du -hd 1 . -t 1G
+ 1144  cd package
+ 1145  rm -rf package _rels content contentFiles
+ 1146  cd lib
+ 1147  rm -rf lib
+ 1148  rm -rf manjaro-kde-21.3.7-*
+ 1149  rm -rf *.torrent
+ 1150  rm -rf *.xml
+ 1151  rm -rf *.png
+ 1152  rm -rf *.nuspec
+ 1153  rm -rf ogrenci-belge.Pd*
+ 1154  rm -rf LICENSE ogrenci-belge.odg common-junit3-3.0.0-M3.jar quantconnect.common.2.5.14943.nupkg workflow-cps.hpi
+ 1155  du -hd 2 . -t 1G
+ 1156  cd Desktop
+ 1157  cd downloads
+ 1158  df -h
+ 1159  cd .config
+ 1160  cd Code
+ 1161  cd /
+ 1162  cat /etc/modules-load.d/vmware.conf
+ 1163  ssh root@165.22.77.119
+ 1164  ssh root@ \t\n164.92.128.82
+ 1165  ssh root@164.92.128.82
+ 1166  ssh root@\n\nrockylinux-s-1vcpu-512mb-10gb-fra1-01\n\n
+ 1167  ssh root@167.172.170.192
+ 1168  lsmod | grep vm
+ 1169  su
+ 1170  sudo su
+ 1171  pacman -Q | grep qemu
+ 1172  cd Downloads
+ 1173  mkdir arch-image
+ 1174  mv Arch-Linux-x86_64-cloudimg.qcow2 arch-image
+ 1175  qemu-img create -o backing_file=Arch-Linux-x86_64-cloudimg.qcow2,backing_fmt=qcow2 -f qcow2 img1.qcow2
+ 1176  qemu-system-x86_64 img1.qcow2
+ 1177  man qemu-system-x86_64
+ 1178  man qemu-x86_64
+ 1179  qemu-x86_64
+ 1180  qemu-system-x86_64 Arch-Linux-x86_64-cloudimg.qcow2
+ 1181  qemu-system-x86_64 -accel kvm Arch-Linux-x86_64-cloudimg.qcow2
+ 1182  mv Arch-Linux-x86_64-basic.qcow2 arch-image
+ 1183  cd arch-image
+ 1184  qemu-system-x86_64 Arch-Linux-x86_64-basic.qcow2
+ 1185  qemu-system-x86_64 -m 2G Arch-Linux-x86_64-basic.qcow2
+ 1186  qemu-system-x86_64 -m 2G Arch-Linux-x86_64-cloudimg.qcow2
+ 1187  qemu-system-x86_64 -accel kvm -m 1G Arch-Linux-x86_64-cloudimg.qcow2
+ 1188  sshpass
+ 1189  man sshpass
+ 1190  export SSHPASS=passw0rd
+ 1191  sh -c "while ! sshpass -e ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no arch@localhost -p 2222 true; do sleep 1; done"
+ 1192  qemu-system-x86_64 -accel kvm -m 2G Arch-Linux-x86_64-cloudimg.qcow2
+ 1193  cd /home/raflman
+ 1194  cd Documents/git-repos
+ 1195  ssh raflman@192.168.1.94
+ 1196  cd ~/Documents
+ 1197  rm -rf caches
+ 1198  du -hd 1 . -t 100M
+ 1199  du -sh .
+ 1200  cd update-center2
+ 1201  cd ~/Downloads
+ 1202  rm -rf CentOS-8.5.2111-x86_64-dvd1.iso
+ 1203  rsync -avHAX --progress ~/Downloads/ raflman@192.168.1.94:/home/raflman/Downloads/
+ 1204  git clone https://gitlab.archlinux.org/archlinux/arch-boxes.git
+ 1205  git tag
+ 1206  grep -rn build-inside
+ 1207  ./build-inside-vm.sh
+ 1208  pacman -S  arch-install-scripts
+ 1209  sudo pacman -S  arch-install-scripts
+ 1210  pacman -S gptfdisk arch-install-scripts qemu-headless jq
+ 1211  sudo pacman -S gptfdisk arch-install-scripts qemu-headless jq
+ 1212  sudo pacman -S gptfdisk arch-install-scripts  jq
+ 1213  pacman -S cdrtools
+ 1214  sudo pacman -S cdrtools
+ 1215  sudo pacman -S sshpass
+ 1216  pacman -S xorriso
+ 1217  sudo pacman -S xorriso
+ 1218  cd DOcuments
+ 1219  chmod +x image.sh
+ 1220  genisoimage --help
+ 1221  genisoimage --help | grep volid
+ 1222  qemu --help
+ 1223  pacman -S qemu-monitor
+ 1224  sudo pacman -S qemu-monitor
+ 1225  telnet 127.0.0.1 61234
+ 1226  qemu
+ 1227  man qemu
+ 1228  telnet 127.0.0.1
+ 1229  telnet 127.0.0.1 23
+ 1230  telnet localhost 23
+ 1231  ./image.sh
+ 1232  telnet 127.0.0.1 55555
+ 1233  rsync -avHAX --progress git-repos/ raflman@192.168.1.94:/home/raflman/Documents/git-repos/
+ 1234  who
+ 1236  poweroff
+ 1237  pacman -R kate
+ 1238  sudo pacman -R kate
+ 1239  pacman -R okular
+ 1240  sudo pacman -R okular
+ 1241  ssh arch@localhost -p 2222
+ 1243  virtualenv flask
+ 1244  source flask/bin/activate
+ 1245  cd ar
+ 1246  scp -o StrictHostKeyChecking=no arch@localhost:~/flask/main.py . -p 2222
+ 1247  scp -o StrictHostKeyChecking=no -p 2222 arch@localhost:~/flask/main.py .
+ 1248  ifconfig
+ 1249  scp -o StrictHostKeyChecking=no -p 2222 arch@localhost:/home/arch/flask/main.py .
+ 1250  scp -p 2222 -o StrictHostKeyChecking=no arch@localhost:/home/arch/flask/main.py .
+ 1251  scp -o StrictHostKeyChecking=no arch@localhost:2222:/home/arch/flask/main.py .
+ 1252  scp -o StrictHostKeyChecking=no arch@localhost:2222/home/arch/flask/main.py .
+ 1253  man scp
+ 1254  scp -P 2222 arch@localhost:/home/arch/flask/main.py .
+ 1255  cd /home/raflman/Documents/git-repos
+ 1256  mkdir flask
+ 1257  mv /home/raflman/Downloads/arch-image/main.py .
+ 1258  scp -P 2222 arch@localhost:/home/arch/flask/requirements.txt /home/raflman/Documents/git-repos/binance-api/flask
+ 1259  scp -P 2222 arch@localhost:/home/arch/flask/requirements.txt /home/raflman/Documents/git-repos/binance-api/flask/
+ 1260  cd ../..
+ 1262  source binance-api/bin/activate
+ 1263  pip install flask
+ 1264  cd ../../git-repos/binance-api
+ 1267  LS -L
+ 1272  pip freeze > requirements.txt
+ 1273  git commit -m "changes"
+ 1274  cd .ssh
+ 1275  ssh arch@167.172.184.250
+ 1276  scp ~/.ssh/id_rsa* root@167.172.184.250:~/.ssh/
+ 1277  ping 167.172.184.250
+ 1278  history | more
+ 1279  history | grep export
+ 1284  ssh root@167.172.184.250
+ 1285  echo $FLASK_APP
+ 1286  echo $FLASK_DEBUG
+ 1290  git commit -m "ignore nohup"
+ 1291  git rm archlinux/nohup.out
+ 1292  git fetch --all
+ 1293  git reset --hard
+ 1294  git checkout -b raflman
+ 1295  ./build-host.sh
+ 1296  ls -alh
+ 1297  rm -rf *20230109*
+ 1298  rm -rf *basic*
+ 1299  rm -rf *libvirt*
+ 1300  rm -rf *virtualbox*
+ 1303  tail -f nohup.out
+ 1304  ls -alhtr
+ 1305  tail -f nohup.out 
+ 1306  vim ~/.ssh/known_hosts
+ 1308  python install --help
+ 1309  pip install --help
+ 1310  pip install --help | grep ensure
+ 1311  pacman -Q | grep pulse
+ 1312  pulseaudio --kill
+ 1313  pulseaudio --start
+ 1314  pacman -S pavucontrol
+ 1315  sudo pacman -S pavucontrol
+ 1321  cpupower --help
+ 1322  cpupower info
+ 1323  sudo cpupower info
+ 1325  man pacman
+ 1326  mv requirements.txt ../
+ 1327  add archlinux/arch-boxes
+ 1328  git add archlinux/arch-boxes
+ 1329  git commit -m "change the location of req file"
+ 1330  cd archlinux/arch-boxes
+ 1331  git commit -m "change the default disk size to 10G"
+ 1335  git commit -m "new local branch to arch-boxes submodule"
+ 1337  git push origin raflman
+ 1341  qq
+ 1345  pavucontrol
+ 1349  ./run_img.sh
+ 1350  ssh -o StrictHostKeyChecking=no arch@localhost -p 2222
+ 1352  ls- l
+ 1353  cd git-repos
+ 1357  cd archlinux
+ 1359  cd arch-boxes
+ 1361  cd output
+ 1363  ls -lh
+ 1371  touch set_up_environment.sh
+ 1372  chmod u+x set_up_environment.sh
+ 1378  cd Documents
+ 1380  cd python-virtenv
+ 1384  cd bin
+ 1390  deactivate
+ 1391  source set_up_environment.sh
+ 1396  ping 68.183.220.139
+ 1402  git commit -m "add set_up_environment.sh"
+ 1410  0;45;17M0;45;17m64;44;16M64;44;16M64;44;16M64;44;16M64;44;16M65;43;17M65;41;19M65;39;20M65;38;21M0;25;24M0;25;24m0;50;34M0;50;34m0;50;34M0;50;34m
+ 1420  0;51;36M0;51;36m
+ 1422  \tssh arch@68.183.220.139
+ 1427  pw
+ 1433  export FLASK_DEBUG=1
+ 1434  export FLAS_APP=main.py
+ 1438  export FLASK_APP=main.py
+ 1439  flask run
+ 1444  pip list installed
+ 1445  pip install sqlite3
+ 1446  python
+ 1452  HTOP
+ 1462  find . -iname "*sql*"
+ 1464  cd instance
+ 1470  pacman -S sqlite3
+ 1471  sudo pacman -S sqlite3
+ 1472  sqlite3 --help
+ 1473  cd flask
+ 1476  black __init__.py
+ 1477  black db.py
+ 1486  flask --app trview init-db
+ 1495  flask --app trview --debug run
+ 1498  pacman -Q | grep code
+ 1499  snap list
+ 1500  snap --help
+ 1501  snap refresh --help
+ 1502  snap refresh
+ 1503  sensors
+ 1504  sensors | grep -E "COU|GPU"
+ 1505  sensors | grep -E "CPU|GPU|temp3"
+ 1507  cd ~/.config
+ 1509  vim plasma-nm
+ 1510  htop
+ 1514  sudo pacman -S npm
+ 1516  npm
+ 1521  npm install @material/data-table
+ 1523  rm -rf node_modules
+ 1528  sudo rankmirrors -g
+ 1529  sudo pacman -Syu
+ 1536  git add .gitignore
+ 1537  git commit -m "ignore __pycache__"
+ 1539  git branc
+ 1547  git add .
+ 1548  git commit -m "ignore instance folder"
+ 1553  cd trvi
+ 1557  pwd
+ 1564  ls -al
+ 1570  cd -
+ 1571  cd binance-api
+ 1573  cd trview
+ 1574  git branch
+ 1575  git status
+ 1577  git push origin main
+ 1578  cd ..
+ 1580  history
+ 1581  history -a
+ 1582  history --help
+ 1585  history -h
+ 1586  man history
+ 1587  history > history.txt
+ 1588  reboot
+ 1589  pacman -Syyu
+ 1590  sudopacman -Syyu
+ 1591  sudo pacman -Syyu
+ 1592  source /home/raflman/Documents/python-virtenv/binance-api/bin/activate
+ 1593  clear
+ 1594  ls -l

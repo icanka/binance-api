@@ -120,6 +120,32 @@ def login():
     return render_template("webhook/login.html")
 
 
+@bp.route("/loginv2", methods=("GET", "POST"))
+def loginv2():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        db = get_db()
+        error = None
+        user = db.execute(
+            "SELECT * FROM user WHERE username = ?", (username,)
+        ).fetchone()
+
+        if user is None:
+            error = "Incorrect username or password."
+        elif not check_password_hash(user["password"], password):
+            error = "Incorrect username or password."
+
+        if error is None:
+            session.clear()
+            session["user_id"] = user["id"]
+            return redirect(url_for("index"))
+
+        flash(error)
+
+    return render_template("webhook/login-v2.html")
+
+
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get("user_id")

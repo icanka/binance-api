@@ -7,10 +7,11 @@ import json
 import os
 import sqlite3
 
-
+# flask --app flaskr run --debug
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application"""
     app = Flask(__name__, instance_relative_config=True)
+    # Set some dault configuration that the app will use
     app.config.from_mapping(
         # a default secret that should be overridden by instance config
         SECRET_KEY="dev",
@@ -20,6 +21,7 @@ def create_app(test_config=None):
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
+        # overrides the dafult configuration with values taken from config.py
         app.config.from_pyfile("config.py", silent=True)
     else:
         # load test config if passed in
@@ -39,6 +41,7 @@ def create_app(test_config=None):
     from . import webhook
 
     app.register_blueprint(webhook.bp)
+    print(webhook.bp.root_path)
     return app
 
 

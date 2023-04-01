@@ -34,7 +34,7 @@
           <p class="login-box-msg">Sign in to access</p>
           <form id="login-form" method="post">
             <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Email" required/>
+              <input type="email" class="form-control" placeholder="Email" name="email" required/>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password" required/>
+              <input type="password" class="form-control" placeholder="Password" name="password" required/>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -113,16 +113,15 @@
           encode: true,
           success: function(response) {
             // If the server responds with success, submit the form.
-            if(response.status == 'success') {
-              $('#login-form').unbind('submit').submit();
-            }
-            // Otherwise show the error toast
-            else {
-              Toast.fire({
-                icon: 'error',
-                title: 'Incorrect credentials.'
-              })
-            }
+            Toast.fire({
+              icon: 'success',
+              title: response
+            })
+            
+            setTimeout(function() {
+              $('#login-form').unbind('submit').submit(); // Submit the login form
+            }, 3000); // Wait for 3 seconds before submitting
+           
           },
           error: function(xhr, status, error){
             // Show error message if there was a problem with the request.

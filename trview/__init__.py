@@ -2,12 +2,14 @@ from flask import Flask, request
 from pprint import pprint
 from flask import make_response
 from flask import redirect
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import time
 import json
 import os
 import sqlite3
 
-# flask --app flaskr run --debug
+# flask --app trview --debug run --host 0.0.0.0 --port 5000
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application"""
     app = Flask(__name__, instance_relative_config=True)
@@ -15,6 +17,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         # a default secret that should be overridden by instance config
         SECRET_KEY="dev",
+        APPLICATION_NAME="Trview",
         # store the database in the instance folder
         DATABASE=os.path.join(app.instance_path, "trading.sqlite"),
     )
@@ -42,6 +45,14 @@ def create_app(test_config=None):
 
     app.register_blueprint(webhook.bp)
     print(webhook.bp.root_path)
+    
+    limiter = Limiter(get_remote_address, app=app, storage_uri="memory://",)
+    limiter.limit('50/second')(webhook.bp)
+    limiter.limit('1000/minute')(webhook.bp)
+    
+    #limiter.init_app(app)
+    #print(app.__name__)
+    #limiter.limit('3/second')(app)
     return app
 
 

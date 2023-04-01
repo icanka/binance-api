@@ -19,6 +19,54 @@ from trview.db import get_db
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
 
 
+# @bp.route("/signals")
+# def signals():
+#     return render_template("webhook/content.html")
+
+
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for("webhook.loginv2"))
+
+        return view(**kwargs)
+
+    return wrapped_view
+
+
+@bp.route("/")
+@login_required
+def index():
+    return render_template("webhook/index.html")
+
+
+@bp.route("/pages/<page>", methods=["POST", "GET"])
+@login_required
+def pages(page):
+    print("pages endpoint")
+    if request.method == "POST":
+        print("This is a POST request.")
+        href_value = request.form["href"]
+    elif request.method == "GET":
+        # User refreshed the page.
+        print("this is a GET request.")
+        href_value = page
+    print(href_value)
+    # Check if the request is an AJAX request
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        # If it is return only the partial content.
+        print("ajax request.")
+        return render_template(f"{href_value}.html")
+    else:
+        print("Not an ajax request.")
+        return render_template(
+            "webhook/base.html",
+            content=render_template(f"webhook/pages/{href_value}.html"),
+            #title=href_value.capitalize()
+        )
+
+
 @bp.route("/drsi_with_filters", methods=["POST"])
 def drsi_with_filters():
     """
@@ -155,7 +203,13 @@ def login():
 def loginv2():
     print("LOGINV2")
     if request.method == "POST":
-        username = request.form["username"]
+        user_id = session.get("user_id")
+
+        if user_id is not None:
+            print("Redirecting to index")
+            return redirect(url_for("webhook.index"))
+
+        username = request.form["email"]
         password = request.form["password"]
         db = get_db()
         error = None
@@ -163,16 +217,14 @@ def loginv2():
             "SELECT * FROM user WHERE username = ?", (username,)
         ).fetchone()
 
-        if user is None:
-            error = "Incorrect username or password."
-        elif not check_password_hash(user["password"], password):
+        if user is None or not check_password_hash(user["password"], password):
             error = "Incorrect username or password."
 
         # successful login
         if error is None:
             session.clear()
             session["user_id"] = user["id"]
-            return redirect(url_for("index"))
+            return redirect(url_for("webhook.index"))
 
         flash(error)
 
@@ -197,13 +249,15 @@ def validate_user():
     user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
     print("chekcing user credentials")
     print(rd)
-    #past= check_password_hash(user["password"], password)
-    #print(f"user: {past}")
+    # past= check_password_hash(user["password"], password)
+    # print(f"user: {past}")
     if user is not None and check_password_hash(user["password"], password):
         print("TRUE")
         session.clear()
         session["user_id"] = user["id"]
         response.status_code = 200
+        response.data = "Succesfull login"
+        print(response.status)
         return response
         # return render_template(url_for("index"))
     else:
@@ -229,14 +283,3 @@ def load_logged_in_user():
 def logout():
     session.clear()
     return redirect(url_for("index"))
-
-
-def login_required(view):
-    @functools.wraps(view)
-    def wrapped_view(**kwargs):
-        if g.user is None:
-            return redirect(url_for("webhook.login"))
-
-        return view(**kwargs)
-
-    return wrapped_view

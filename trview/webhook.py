@@ -16,6 +16,7 @@ from flask import (
 from werkzeug.security import check_password_hash, generate_password_hash
 from trview.models import db
 from trview.models import Users
+from sqlalchemy.exc import OperationalError, IntegrityError, DataError
 from trview.db import get_db
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
@@ -69,6 +70,22 @@ def pages(page):
         return render_template(
             "webhook/base.html",
             content=render_template(f"webhook/pages/{href_value}.html"),
+            # title=href_value.capitalize()
+        )
+        
+@bp.route("/pages/signals", methods=["POST", "GET"])
+@login_required
+def signals():
+    # Check if the request is an AJAX request
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        # If it is return only the partial content.
+        print("ajax request.")
+        return render_template("webhook/pages/signals.html")
+    else:
+        print("Not an ajax request.")
+        return render_template(
+            "webhook/base.html",
+            content=render_template(f"webhook/pages/signals.html"),
             # title=href_value.capitalize()
         )
 
@@ -159,11 +176,20 @@ def register():
                 new_user = Users(username=username, name=username, password=salted_hash)
                 db.session.add(new_user)
                 db.session.commit()
-            except db.IntegrityError:
-                error = f"User {username} is already registered."
+
+            except (IntegrityError, DataError, OperationalError, Exception) as e:
+                if isinstance(e, IntegrityError):
+                    error = f"User {username} is already registered."
+                elif isinstance(e, DataError):
+                    error = "Data error."
+                elif isinstance(e, OperationalError):
+                    error = "Operational error."
+                else:
+                    error = "Error during operation."
+                db.session.rollback()
             else:
                 # redirect user to the login page after successfull login
-                return redirect(url_for("webhook.login"))
+                return redirect(url_for("webhook.loginv2"))
         # flash the error data so it can be used in template to inform user
         flash(error)
 
@@ -238,7 +264,7 @@ def validate_user():
     Returns:
         Response: The response object indicating the state of the validation.
     """
-    
+
     print("VALIDATE ENDPOINT")
     print(db)
     # rd = json.loads(request.data)
@@ -247,22 +273,22 @@ def validate_user():
     username = rd["email"]
     password = rd["password"]
     print(f"pass:'{password}'")
-    #db = get_db()
+    # db = get_db()
     error = None
     user = db.session.query(Users).filter_by(username=username).first()
     print(user.username)
     print(f"pass:'{user.password}'")
-    #return response
-    #user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
+    # return response
+    # user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
     print("chekcing user credentials")
-    #print(rd)
+    # print(rd)
     # past= check_password_hash(user["password"], password)
     # print(f"user: {past}")
     print(check_password_hash(user.password, password))
     if user is not None and check_password_hash(user.password, password):
         print("TRUE")
         session.clear()
-        session["user_id"] = user["id"]
+        session["user_id"] = user.id
         response.status_code = 200
         response.data = "Login Succesfull"
         print(response.status)
@@ -282,9 +308,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = (
-            get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
-        )
+        g.user = db.session.query(Users).filter_by(id=user_id).first()
 
 
 @bp.route("/logout")

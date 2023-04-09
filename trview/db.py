@@ -3,11 +3,11 @@ import click
 from flask import current_app
 from flask import g
 from trview.models import db
-from sqlalchemy.exc import OperationalError
-from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.engine import URL
 
+
+#Deprecated with sqlalchemy
 def get_db():
     """Connect to the application's configured database. The connection
     is unique for each request and will be reused if this is called
@@ -22,6 +22,7 @@ def get_db():
     return g.db
 
 
+#Deprecated with sqlalchemy
 def close_db(e=None):
     """If this request connected to the database, close the connection."""
     db = g.pop("db", None)

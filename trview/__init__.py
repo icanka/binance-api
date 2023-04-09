@@ -44,7 +44,6 @@ def create_app(test_config=None):
     from . import webhook
 
     app.register_blueprint(webhook.bp)
-    print(webhook.bp.root_path)
     
     limiter = Limiter(get_remote_address, app=app, storage_uri="memory://",)
     limiter.limit('50/second')(webhook.bp)

@@ -1,15 +1,15 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
 <nav>
   <h1>Flaskr</h1>
   <ul>
     {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('webhook.logout') }}">Log Out</a>
+      <li><span>{{ g.user['username'] }}</span></li>
+      <li><a href="{{ url_for('webhook.logout') }}">Log Out</a></li>
     {% else %}
-      <li><a href="{{ url_for('webhook.register') }}">Register</a>
-      <li><a href="{{ url_for('webhook.login') }}">Log In</a>
+      <li><a href="{{ url_for('webhook.register') }}">Register</a></li>
+      <li><a href="{{ url_for('webhook.login') }}">Log In</a></li>
     {% endif %}
   </ul>
 </nav>

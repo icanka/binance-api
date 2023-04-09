@@ -14,6 +14,8 @@ from flask import (
     make_response,
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+from trview.models import db
+from trview.models import Users
 from trview.db import get_db
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
@@ -22,6 +24,10 @@ bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminL
 # @bp.route("/signals")
 # def signals():
 #     return render_template("webhook/content.html")
+@bp.route("/database")
+def database():
+    result = db.session.query(Users).all()
+    return result
 
 
 def login_required(view):
@@ -63,7 +69,7 @@ def pages(page):
         return render_template(
             "webhook/base.html",
             content=render_template(f"webhook/pages/{href_value}.html"),
-            #title=href_value.capitalize()
+            # title=href_value.capitalize()
         )
 
 
@@ -140,23 +146,19 @@ def register():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        db = get_db()
         error = None
 
         # basic sanity check altohugh we expect it to be dealt with in front-end.
-        if not username:
-            error = "Username is required."
-        elif not password:
-            error = "Password is required."
+        if not username or not password:
+            error = "Username and/or Password are required."
 
         if error is None:
             try:
-                # only insert the password hash to the database
-                db.execute(
-                    "INSERT INTO user (username, password) VALUES (?, ?)",
-                    (username, generate_password_hash(password)),
-                )
-                db.commit()
+                # only insert the salted hash to the database
+                salted_hash = generate_password_hash(password)
+                new_user = Users(username=username, name=username, password=salted_hash)
+                db.session.add(new_user)
+                db.session.commit()
             except db.IntegrityError:
                 error = f"User {username} is already registered."
             else:
@@ -183,10 +185,7 @@ def login():
         ).fetchone()
 
         # don't tell the user what was wrong exactly.
-        if user is None:
-            error = "Incorrect username or password."
-        # even we don't know the users password, coool.
-        elif not check_password_hash(user["password"], password):
+        if user is None or not check_password_hash(user["password"], password):
             error = "Incorrect username or password."
 
         if error is None:
@@ -239,24 +238,33 @@ def validate_user():
     Returns:
         Response: The response object indicating the state of the validation.
     """
+    
+    print("VALIDATE ENDPOINT")
+    print(db)
     # rd = json.loads(request.data)
     rd = request.get_json()
     response = make_response()
     username = rd["email"]
     password = rd["password"]
-    db = get_db()
+    print(f"pass:'{password}'")
+    #db = get_db()
     error = None
-    user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
+    user = db.session.query(Users).filter_by(username=username).first()
+    print(user.username)
+    print(f"pass:'{user.password}'")
+    #return response
+    #user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
     print("chekcing user credentials")
-    print(rd)
+    #print(rd)
     # past= check_password_hash(user["password"], password)
     # print(f"user: {past}")
-    if user is not None and check_password_hash(user["password"], password):
+    print(check_password_hash(user.password, password))
+    if user is not None and check_password_hash(user.password, password):
         print("TRUE")
         session.clear()
         session["user_id"] = user["id"]
         response.status_code = 200
-        response.data = "Succesfull login"
+        response.data = "Login Succesfull"
         print(response.status)
         return response
         # return render_template(url_for("index"))

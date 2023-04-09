@@ -2,7 +2,11 @@ import sqlite3
 import click
 from flask import current_app
 from flask import g
-
+from trview.models import db
+from sqlalchemy.exc import OperationalError
+from sqlalchemy import create_engine
+from sqlalchemy_utils import database_exists, create_database
+from sqlalchemy.engine import URL
 
 def get_db():
     """Connect to the application's configured database. The connection
@@ -21,29 +25,43 @@ def get_db():
 def close_db(e=None):
     """If this request connected to the database, close the connection."""
     db = g.pop("db", None)
-
     if db is not None:
         db.close()
 
 
-def init_db():
-    """Clear existing data and create new tables."""
-    db = get_db()
+def init_db(create=False, fresh=False):
+    """Clear existing data and create new tables. Create the database if it does not exist."""
+    if fresh and database_exists(db.engine.url):
+        click.echo("Dropping all tables.")
+        db.drop_all()
+    if create and not database_exists(db.engine.url):
+        click.echo(f"Creating database: {db.engine.url}")
+        create_database(db.engine.url)
 
-    with current_app.open_resource("schema.sql") as f:
-        db.executescript(f.read().decode("utf-8"))
+    click.echo("Initializing database.")
+    db.create_all()
+
 
 
 @click.command("init-db")
-def init_db_command():
+@click.option("--create", help="Create the database if not exists.", is_flag=True)
+@click.option("--fresh", help="Drop all tables and create a fresh database.", is_flag=True)
+def init_db_command(create, fresh):
     """Clear existing data and create new tables."""
-    init_db()
-    click.echo("Initialized the database.")
+    init_db(create, fresh)
+    # click.echo("Initialized the database.")
 
 
 def init_app(app):
     """Register the database functions with the Flask app. This is called by the
     application factory.
+    Setup Flask application that uses SQLAlchemy to interact with a SQLite database.
     """
-    app.teardown_appcontext(close_db)
+    # app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+
+    with app.app_context():
+        database_path = current_app.config["DATABASE"]
+        app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:////{database_path}"
+        app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+        db.init_app(app)

@@ -1,6 +1,6 @@
 import functools
-import time
 import json
+import hashlib
 from pprint import pprint
 from flask import (
     Blueprint,
@@ -32,6 +32,8 @@ def database():
 
 
 def login_required(view):
+    """Redirect user to login page if not already logged in"""
+
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
@@ -72,7 +74,8 @@ def pages(page):
             content=render_template(f"webhook/pages/{href_value}.html"),
             # title=href_value.capitalize()
         )
-        
+
+
 @bp.route("/pages/signals", methods=["POST", "GET"])
 @login_required
 def signals():
@@ -216,7 +219,12 @@ def login():
 
         if error is None:
             session.clear()
-            session["user_id"] = user["id"]
+            salt = app.config["SECRET_KEY"]
+            # Concatenate the user id with the salt
+            data_with_salt = user["id"] + salt
+            # Hash the data with md5
+            md5_hashed_session = hashlib.md5(data_with_salt).hexdigest()
+            session["session_id"] = md5_hashed_session
             return redirect(url_for("index"))
 
         flash(error)
@@ -275,16 +283,22 @@ def validate_user():
     print(f"pass:'{password}'")
     # db = get_db()
     error = None
+    print(username)
     user = db.session.query(Users).filter_by(username=username).first()
-    print(user.username)
-    print(f"pass:'{user.password}'")
+    if user is not None:
+        print(user.username)
+        print(f"pass:'{user.password}'")
+        print(check_password_hash(user.password, password))
+    else: 
+        print("User is None")
+    print("chekcing user credentials")
+
     # return response
     # user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
-    print("chekcing user credentials")
     # print(rd)
     # past= check_password_hash(user["password"], password)
     # print(f"user: {past}")
-    print(check_password_hash(user.password, password))
+    
     if user is not None and check_password_hash(user.password, password):
         print("TRUE")
         session.clear()

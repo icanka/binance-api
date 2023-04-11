@@ -148,4 +148,4 @@ window.addEventListener('popstate', function (event) {
 let title = $(CURRENTLY_ACTIVE_PAGE_MENU_ITEM).text().trim()
 console.log(title)
 console.log(`NEW TITLE ${title}`)
-document.title = `${title} - ${APPLICATION_NAME}`
+if (title !== '') document.title = `${title} - ${APPLICATION_NAME}`

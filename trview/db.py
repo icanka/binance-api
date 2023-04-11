@@ -1,10 +1,12 @@
 import sqlite3
 import click
+import faker
 from flask import current_app
 from flask import g
 from trview.models import db
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.engine import URL
+from .models import populate_model
 
 
 #Deprecated with sqlalchemy
@@ -52,6 +54,12 @@ def init_db_command(create, fresh):
     init_db(create, fresh)
     # click.echo("Initialized the database.")
 
+@click.command("populate")
+def pupulate_db():
+    """Populate the backend database with fake entries."""
+    populate_model(db, num_records=10)
+    # click.echo("Initialized the database.")
+
 
 def init_app(app):
     """Register the database functions with the Flask app. This is called by the
@@ -60,6 +68,7 @@ def init_app(app):
     """
     # app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+    app.cli.add_command(pupulate_db)
 
     with app.app_context():
         database_path = current_app.config["DATABASE"]

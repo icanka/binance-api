@@ -1,4 +1,6 @@
+import click
 from flask_sqlalchemy import SQLAlchemy
+from faker import Faker
 
 db = SQLAlchemy()
 
@@ -24,3 +26,31 @@ class Webhooks(db.Model):
     market_position_size = db.Column(db.TEXT, nullable=False)
     contracts = db.Column(db.TEXT, nullable=False)
     order_id = db.Column(db.TEXT, nullable=False)
+
+    @staticmethod
+    def generate_webhook_data(num_records=10):
+        faker = Faker()
+        data = []
+        for _ in range(num_records):
+            webhook = Webhooks(
+                strategy_name="drsi_with_filters",
+                ticker=faker.random_element(elements=("BTCBUSD", "ETHBUSD")),
+                strategy_action=faker.random_element(elements=("BUY", "SELL")),
+                market_position=faker.random_element(elements=("LONG", "SHORT")),
+                price=faker.pyfloat(min_value=1000, max_value=10000, right_digits=2),
+                position_size=faker.random_number(digits=4),
+                market_position_size=faker.pyfloat(min_value=1000, max_value=10000, right_digits=2),
+                contracts=faker.pyfloat(min_value=1000, max_value=10000, right_digits=2),
+                order_id=faker.uuid4(),
+            )
+            data.append(webhook)
+
+        return data
+
+def populate_model(db, num_records=10):
+    data = Webhooks.generate_webhook_data(num_records)
+    print("session")
+    print(db.session)
+    for fake_data in data:
+        db.session.add(fake_data)
+    db.session.commit()

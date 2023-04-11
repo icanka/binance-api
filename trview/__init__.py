@@ -1,19 +1,17 @@
+import os
 from flask import Flask, request
 from pprint import pprint
 from flask import make_response
 from flask import redirect
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import time
-import json
-import os
-import sqlite3
+
 
 # flask --app trview --debug run --host 0.0.0.0 --port 5000
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application"""
     app = Flask(__name__, instance_relative_config=True)
-    # Set some dault configuration that the app will use
+    # Set some default initial configuration that the app will use
     app.config.from_mapping(
         # a default secret that should be overridden by instance config
         SECRET_KEY="dev",
@@ -25,7 +23,11 @@ def create_app(test_config=None):
     if test_config is None:
         # load the instance config, if it exists, when not testing
         # overrides the dafult configuration with values taken from config.py
-        app.config.from_pyfile("config.py", silent=True)
+        environment_configuration = os.environ['CONFIGURATION_SETUP']
+        app.config.from_object(environment_configuration)
+        #print("loading config from config.py")
+        #app.config.from_pyfile("config.py", silent=True)
+        #print(app.config)
     else:
         # load test config if passed in
         app.config.update(test_config)
@@ -44,14 +46,18 @@ def create_app(test_config=None):
     from . import webhook
 
     app.register_blueprint(webhook.bp)
-    
-    limiter = Limiter(get_remote_address, app=app, storage_uri="memory://",)
-    limiter.limit('50/second')(webhook.bp)
-    limiter.limit('1000/minute')(webhook.bp)
-    
-    #limiter.init_app(app)
-    #print(app.__name__)
-    #limiter.limit('3/second')(app)
+
+    limiter = Limiter(
+        get_remote_address,
+        app=app,
+        storage_uri="memory://",
+    )
+    limiter.limit("50/second")(webhook.bp)
+    limiter.limit("500/minute")(webhook.bp)
+
+    # limiter.init_app(app)
+    # print(app.__name__)
+    # limiter.limit('3/second')(app)
     return app
 
 

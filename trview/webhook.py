@@ -1,7 +1,10 @@
+"""Webhook views"""
+
 import functools
 import json
 import hashlib
 from pprint import pprint
+from werkzeug.security import check_password_hash
 from flask import (
     Blueprint,
     flash,
@@ -13,10 +16,8 @@ from flask import (
     url_for,
     make_response,
 )
-from werkzeug.security import check_password_hash, generate_password_hash
-from trview.models import db
-from trview.models import Users
 from sqlalchemy.exc import OperationalError, IntegrityError, DataError
+from trview.models import db, Users, Webhooks
 from trview.db import get_db
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
@@ -47,12 +48,19 @@ def login_required(view):
 @bp.route("/")
 @login_required
 def index():
+    """Show the index page"""
     return render_template("webhook/index.html")
 
 
 @bp.route("/pages/<page>", methods=["POST", "GET"])
 @login_required
 def pages(page):
+    """Render the pages and return the partial content if it is an AJAX request or the full page if it is not.
+    Args:
+        page (str): The page to be rendered.
+    Returns:
+        str: The rendered page.
+    """
     print("pages endpoint")
     if request.method == "POST":
         print("This is a POST request.")
@@ -72,24 +80,29 @@ def pages(page):
         return render_template(
             "webhook/base.html",
             content=render_template(f"webhook/pages/{href_value}.html"),
-            # title=href_value.capitalize()
         )
 
 
 @bp.route("/pages/signals", methods=["POST", "GET"])
 @login_required
 def signals():
+    """Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
+    Returns:
+        str: The rendered page.
+    """
     # Check if the request is an AJAX request
+    signal_data = db.session.query(Webhooks).all()
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         # If it is return only the partial content.
         print("ajax request.")
-        return render_template("webhook/pages/signals.html")
+        return render_template("webhook/pages/signals.html", table_data=signal_data)
     else:
         print("Not an ajax request.")
         return render_template(
             "webhook/base.html",
-            content=render_template(f"webhook/pages/signals.html"),
-            # title=href_value.capitalize()
+            content=render_template(
+                "webhook/pages/signals.html", table_data=signal_data
+            ),
         )
 
 
@@ -98,7 +111,7 @@ def drsi_with_filters():
     """
     Save the posted json to database
 
-    This endpoint is intented for tradingview. Expected example json with key:value format;
+    This endpoint is intended for tradingview. Expected example json with key:value format;
 
     {
     "strategy_name" : "drsi_with_filters",
@@ -112,9 +125,7 @@ def drsi_with_filters():
     "price": "23027.08",
     "ticker": "BTCBUSD"
     }
-
     """
-    # timestamp = time.time()
     db = get_db()
     pprint(request.content_type)
     pprint(request.json)
@@ -162,17 +173,23 @@ def drsi_with_filters():
 
 @bp.route("/register", methods=("GET", "POST"))
 def register():
+    """Render the register page and register the user if the form is submitted."""
     # someone is trying to register
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        error = None
+        error_messages = {
+            "missing_fields": "Username and/or Password are required.",
+            "integrity_error": f"User {username} is already registered.",
+            "data_error": "Data error.",
+            "operational_error": "Operational error.",
+            "unknown_error": "Error during operation.",
+        }
 
         # basic sanity check altohugh we expect it to be dealt with in front-end.
         if not username or not password:
-            error = "Username and/or Password are required."
-
-        if error is None:
+            flash(error_messages["missing_fields"])
+        else:
             try:
                 # only insert the salted hash to the database
                 salted_hash = generate_password_hash(password)
@@ -180,12 +197,12 @@ def register():
                 db.session.add(new_user)
                 db.session.commit()
 
-            except (IntegrityError, DataError, OperationalError, Exception) as e:
-                if isinstance(e, IntegrityError):
+            except (IntegrityError, DataError, OperationalError) as exception:
+                if isinstance(exception, IntegrityError):
                     error = f"User {username} is already registered."
-                elif isinstance(e, DataError):
+                elif isinstance(exception, DataError):
                     error = "Data error."
-                elif isinstance(e, OperationalError):
+                elif isinstance(exception, OperationalError):
                     error = "Operational error."
                 else:
                     error = "Error during operation."
@@ -289,7 +306,7 @@ def validate_user():
         print(user.username)
         print(f"pass:'{user.password}'")
         print(check_password_hash(user.password, password))
-    else: 
+    else:
         print("User is None")
     print("chekcing user credentials")
 
@@ -298,7 +315,7 @@ def validate_user():
     # print(rd)
     # past= check_password_hash(user["password"], password)
     # print(f"user: {past}")
-    
+
     if user is not None and check_password_hash(user.password, password):
         print("TRUE")
         session.clear()

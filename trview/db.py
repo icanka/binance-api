@@ -1,12 +1,13 @@
+"""Database module, including the SQLAlchemy database object and DB-related utilities."""
+
 import sqlite3
 import click
-import faker
 from flask import current_app
 from flask import g
-from trview.models import db
 from sqlalchemy_utils import database_exists, create_database
-from sqlalchemy.engine import URL
-from .models import populate_model
+from trview.models import db
+from trview.models import Webhooks
+
 
 
 #Deprecated with sqlalchemy

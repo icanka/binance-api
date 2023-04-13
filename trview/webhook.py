@@ -172,7 +172,7 @@ def drsi_with_filters():
 
 
 @bp.route("/register", methods=("GET", "POST"))
-def register():
+def register(): # TODO review this function
     """Render the register page and register the user if the form is submitted."""
     # someone is trying to register
     if request.method == "POST":

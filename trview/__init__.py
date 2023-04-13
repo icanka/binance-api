@@ -1,6 +1,7 @@
+"""trview package initializer."""
+
 import os
 from flask import Flask, request
-from pprint import pprint
 from flask import make_response
 from flask import redirect
 from flask_limiter import Limiter
@@ -9,7 +10,9 @@ from flask_limiter.util import get_remote_address
 
 # flask --app trview --debug run --host 0.0.0.0 --port 5000
 def create_app(test_config=None):
-    """Create and configure an instance of the Flask application"""
+    """Create and configure an instance of the Flask application.
+    This is factory function that creates the Flask app and configures it."""
+
     app = Flask(__name__, instance_relative_config=True)
     # Set some default initial configuration that the app will use
     app.config.from_mapping(
@@ -22,12 +25,10 @@ def create_app(test_config=None):
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
-        # overrides the dafult configuration with values taken from config.py
-        environment_configuration = os.environ['CONFIGURATION_SETUP']
+        # overrides the default configuration with values taken from config.py
+        environment_configuration = os.environ["CONFIGURATION_SETUP"]
         app.config.from_object(environment_configuration)
-        #print("loading config from config.py")
-        #app.config.from_pyfile("config.py", silent=True)
-        #print(app.config)
+        # app.config.from_pyfile("config.py", silent=True)
     else:
         # load test config if passed in
         app.config.update(test_config)

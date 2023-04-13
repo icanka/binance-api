@@ -5,12 +5,10 @@ import click
 from flask import current_app
 from flask import g
 from sqlalchemy_utils import database_exists, create_database
-from trview.models import db
-from trview.models import Webhooks
+from trview.models import db, populate_database
 
 
-
-#Deprecated with sqlalchemy
+# Deprecated with sqlalchemy use db instead.
 def get_db():
     """Connect to the application's configured database. The connection
     is unique for each request and will be reused if this is called
@@ -25,7 +23,7 @@ def get_db():
     return g.db
 
 
-#Deprecated with sqlalchemy
+# Deprecated with sqlalchemy use db instead
 def close_db(e=None):
     """If this request connected to the database, close the connection."""
     db = g.pop("db", None)
@@ -42,9 +40,8 @@ def init_db(create=False, fresh=False):
         click.echo(f"Creating database: {db.engine.url}")
         create_database(db.engine.url)
 
-    click.echo("Initializing database.")
+    click.echo("Initialized database.")
     db.create_all()
-
 
 
 @click.command("init-db")
@@ -55,24 +52,17 @@ def init_db_command(create, fresh):
     init_db(create, fresh)
     # click.echo("Initialized the database.")
 
-@click.command("populate")
-def pupulate_db():
-    """Populate the backend database with fake entries."""
-    populate_model(db, num_records=10)
-    # click.echo("Initialized the database.")
-
 
 def init_app(app):
     """Register the database functions with the Flask app. This is called by the
     application factory.
     Setup Flask application that uses SQLAlchemy to interact with a SQLite database.
     """
-    # app.teardown_appcontext(close_db)
+    # app.teardown_appcontext(close_db)  this is not needed with sqlalchemy
     app.cli.add_command(init_db_command)
-    app.cli.add_command(pupulate_db)
+    app.cli.add_command(populate_database)
 
     with app.app_context():
-        database_path = current_app.config["DATABASE"]
-        app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:////{database_path}"
+        app.config["SQLALCHEMY_DATABASE_URI"] = current_app.config["DATABASE"]
         app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
         db.init_app(app)

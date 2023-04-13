@@ -1,7 +1,14 @@
-"""Models for the trview application.""" ""
+"""
+Models for the trview application.
+Contains the database models and helper functions. 
+Model specific operations should be implemented in the models.py file.
+"""
 
+
+import click
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
+from sqlalchemy.exc import OperationalError
 from faker import Faker
 
 db = SQLAlchemy()
@@ -79,24 +86,23 @@ class Webhooks(db.Model):
         return data
 
     @staticmethod
-    def populate_model(db, num_records=10):
+    def populate_model(num_records=10):
         """Populate the database with fake data.
 
         Args:
-            db (SQLAlchemy): Database object
             num_records (int, optional): Number of records to insert. Defaults to 10.
         """
         data = Webhooks.generate_webhook_data(num_records)
-        print("session")
-        print(db.session)
         for fake_data in data:
             db.session.add(fake_data)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except OperationalError as exception:
+            click.echo(f"Error: {exception.args[0]}")
+            db.session.rollback()
 
-@staticmethod
-def populate_database():
-    """Populate the database with fake data."""
-    data = Webhooks.generate_webhook_data()
-    for fake_data in data:
-        db.session.add(fake_data)
-    db.session.commit()
+@click.command("populate-database")
+def populate_database(num_records=10):
+    """Populate the database with fake data. This is a wrapper
+    function encapsulating the population of the database."""
+    Webhooks.populate_model(num_records)

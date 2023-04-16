@@ -6,8 +6,8 @@ Model specific operations should be implemented in the models.py file.
 
 
 import sys
-import click
 import inspect
+import click
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import OperationalError, DataError, IntegrityError
@@ -46,7 +46,7 @@ class Users(db.Model):
     password = db.Column(db.String(512), nullable=False)
 
     @staticmethod
-    def insert_user_to_database(username, password):
+    def insert_user(username, password):
         """Insert a user to the database.
 
         Args:
@@ -157,23 +157,19 @@ class Webhooks(db.Model):
 def populate_database(num_records, tables):
     """Populate the database with fake data. This is a wrapper
     function encapsulating the population of the database."""
-    classes = []
-    # Get all classes in this module, which are the database models.
-    for name, obj in inspect.getmembers(sys.modules[__name__]):
-        # print(name, obj)
-        if (
-            inspect.isclass(obj) and obj.__module__ == __name__
-        ):  # is class and obj module is the same as this module
-            classes.append(obj)
+    if tables is None:
+        model_classes = [
+            obj
+            for name, obj in inspect.getmembers(sys.modules[__name__], inspect.isclass)
+            if obj.__module__ == __name__
+        ]
 
-    model_classes = [
-        obj
-        for name, obj in inspect.getmembers(sys.modules[__name__], inspect.isclass)
-        if obj.__module__ == __name__
-    ]
-
-    for model_class in model_classes:
-        click.echo(
-            f"Populating {model_class.__name__} table with {num_records} records."
-        )
-        populate_models(model_class, num_records)
+        for model_class in model_classes:
+            click.echo(
+                f"Populating {model_class.__name__} table with {num_records} records."
+            )
+            populate_models(model_class, num_records)
+    else:
+        tables = [getattr(sys.modules[__name__], table) for table in tables.split(",")]
+        for table in tables:
+            populate_models(table, num_records)

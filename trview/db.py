@@ -1,6 +1,9 @@
 """Database module, including the SQLAlchemy database object and DB-related utilities."""
 
 import sqlite3
+import importlib
+import inspect
+import sys
 import click
 from flask import current_app
 from flask import g
@@ -56,7 +59,6 @@ def init_db(create=False, fresh=False):
 def init_db_command(create, fresh):
     """Clear existing data and create new tables."""
     init_db(create, fresh)
-    # click.echo("Initialized the database.")
 
 
 def init_app(app):
@@ -67,8 +69,32 @@ def init_app(app):
     # app.teardown_appcontext(close_db)  this is not needed with sqlalchemy
     app.cli.add_command(init_db_command)
     app.cli.add_command(populate_database)
+    app.cli.add_command(test)
 
     with app.app_context():
         app.config["SQLALCHEMY_DATABASE_URI"] = current_app.config["DATABASE"]
         app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
         db.init_app(app)
+
+
+@click.command("test")
+def test():
+    print("test")
+    call_model_function("insert_user", "trview.models", "test", "test", "test", "test")
+
+
+def call_model_function(function_name, *args, model="trview.models", **kwargs):
+    """
+    Call a function on a model. Do not use method from the model class directly from blueprints.
+    This method is used to call a function on a model class for encapsulation.
+    """
+    model_classes = [
+        obj
+        for name, obj in inspect.getmembers(sys.modules[model], inspect.isclass)
+        if obj.__module__ == model
+    ]
+
+    for model_class in model_classes:
+        for name, obj in inspect.getmembers(model_class, inspect.isfunction):
+            if name == function_name:
+                return getattr(model_class, function_name)(*args, **kwargs)

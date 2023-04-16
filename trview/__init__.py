@@ -6,8 +6,10 @@ from flask import make_response
 from flask import redirect
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from . import db
+from . import webhook
 
-
+# source set_up_environment.sh
 # flask --app trview --debug run --host 0.0.0.0 --port 5000
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application.
@@ -40,11 +42,8 @@ def create_app(test_config=None):
         pass
 
     # register the database commands
-    from . import db
 
     db.init_app(app)
-
-    from . import webhook
 
     app.register_blueprint(webhook.bp)
 
@@ -53,6 +52,8 @@ def create_app(test_config=None):
         app=app,
         storage_uri="memory://",
     )
+    
+    # limit the number of requests per second and minute
     limiter.limit("50/second")(webhook.bp)
     limiter.limit("500/minute")(webhook.bp)
 

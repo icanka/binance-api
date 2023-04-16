@@ -5,13 +5,36 @@ Model specific operations should be implemented in the models.py file.
 """
 
 
+import sys
 import click
+import inspect
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
-from sqlalchemy.exc import OperationalError
+from sqlalchemy.exc import OperationalError, DataError, IntegrityError
 from faker import Faker
 
 db = SQLAlchemy()
+
+
+def populate_models(model_class, num_records=10):
+    """Populate the database with fake data.
+
+    Args:
+        num_records (int, optional): Number of records to insert. Defaults to 10.
+    """
+    click.echo(f"Populating {model_class.__name__} table with {num_records} records.")
+    data = model_class.generate_webhook_data(num_records)
+    for fake_data in data:
+        db.session.add(fake_data)
+    click.echo("Committing transaction.")
+    try:
+        db.session.commit()
+
+    except (IntegrityError, DataError, OperationalError) as exception:
+        click.echo("Error inserting data into the database.")
+        click.echo(f"Error: {exception.args[0]}")
+        click.echo("Rolling back transaction.")
+        db.session.rollback()  # Rollback the transaction or it will be stuck in a bad state.
 
 
 class Users(db.Model):
@@ -34,6 +57,43 @@ class Users(db.Model):
         new_user = Users(username=username, name=username, password=salted_hash)
         db.session.add(new_user)
         db.session.commit()
+
+    @staticmethod
+    def generate_webhook_data(num_records=10):
+        """Generate fake users data.
+
+        Args:
+            num_records (int, optional): _description_. Defaults to 10.
+
+        Returns:
+            list: Fake webhook models to insert into the database.
+        """
+        faker = Faker()
+        data = []
+        # Create a fixed user named 'dev' for development purposes.
+        dev_user = Users(
+            username="dev@dev.com",
+            name=faker.name(),
+            password=generate_password_hash("1234-asd"),
+        )
+        data.append(dev_user)
+        for _ in range(num_records):
+            user = Users(
+                username=faker.email(),
+                name=faker.name(),
+                password=generate_password_hash(
+                    faker.password(
+                        length=4,
+                        special_chars=False,
+                        digits=False,
+                        upper_case=False,
+                        lower_case=True,
+                    )
+                ),
+            )
+            data.append(user)
+
+        return data
 
 
 class Webhooks(db.Model):
@@ -85,24 +145,36 @@ class Webhooks(db.Model):
 
         return data
 
-    @staticmethod
-    def populate_model(num_records=10):
-        """Populate the database with fake data.
-
-        Args:
-            num_records (int, optional): Number of records to insert. Defaults to 10.
-        """
-        data = Webhooks.generate_webhook_data(num_records)
-        for fake_data in data:
-            db.session.add(fake_data)
-        try:
-            db.session.commit()
-        except OperationalError as exception:
-            click.echo(f"Error: {exception.args[0]}")
-            db.session.rollback()
 
 @click.command("populate-database")
-def populate_database(num_records=10):
+@click.option(
+    "--num-records", default=10, help="Number of records to populate the database."
+)
+@click.option(
+    "--tables",
+    default=None,
+    help="Comma separated list of tables to populate. If not provided, all tables will be populated.",
+)
+def populate_database(num_records, tables):
     """Populate the database with fake data. This is a wrapper
     function encapsulating the population of the database."""
-    Webhooks.populate_model(num_records)
+    classes = []
+    # Get all classes in this module, which are the database models.
+    for name, obj in inspect.getmembers(sys.modules[__name__]):
+        # print(name, obj)
+        if (
+            inspect.isclass(obj) and obj.__module__ == __name__
+        ):  # is class and obj module is the same as this module
+            classes.append(obj)
+
+    model_classes = [
+        obj
+        for name, obj in inspect.getmembers(sys.modules[__name__], inspect.isclass)
+        if obj.__module__ == __name__
+    ]
+
+    for model_class in model_classes:
+        click.echo(
+            f"Populating {model_class.__name__} table with {num_records} records."
+        )
+        populate_models(model_class, num_records)

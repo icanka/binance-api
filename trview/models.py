@@ -5,9 +5,6 @@ Model specific operations should be implemented in the models.py file.
 """
 
 
-import sys
-import inspect
-import click
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import OperationalError, DataError, IntegrityError
@@ -143,33 +140,3 @@ class Webhooks(db.Model):
             data.append(webhook)
 
         return data
-
-
-@click.command("populate-database")
-@click.option(
-    "--num-records", default=10, help="Number of records to populate the database."
-)
-@click.option(
-    "--tables",
-    default=None,
-    help="Comma separated list of tables to populate. If not provided, all tables will be populated.",
-)
-def populate_database(num_records, tables):
-    """Populate the database with fake data. This is a wrapper
-    function encapsulating the population of the database."""
-    if tables is None:
-        model_classes = [
-            obj
-            for name, obj in inspect.getmembers(sys.modules[__name__], inspect.isclass)
-            if obj.__module__ == __name__
-        ]
-
-        for model_class in model_classes:
-            click.echo(
-                f"Populating {model_class.__name__} table with {num_records} records."
-            )
-            populate_models(model_class, num_records)
-    else:
-        tables = [getattr(sys.modules[__name__], table) for table in tables.split(",")]
-        for table in tables:
-            populate_models(table, num_records)

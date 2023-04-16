@@ -9,7 +9,7 @@ from flask import current_app
 from flask import g
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.exc import SQLAlchemyError
-from trview.models import db, populate_database
+from trview.models import db, populate_models
 
 
 # Deprecated with sqlalchemy use db instance instead.
@@ -61,26 +61,10 @@ def init_db_command(create, fresh):
     init_db(create, fresh)
 
 
-def init_app(app):
-    """Register the database functions with the Flask app. This is called by the
-    application factory.
-    Setup Flask application that uses SQLAlchemy to interact with a SQLite database.
-    """
-    # app.teardown_appcontext(close_db)  this is not needed with sqlalchemy
-    app.cli.add_command(init_db_command)
-    app.cli.add_command(populate_database)
-    app.cli.add_command(test)
-
-    with app.app_context():
-        app.config["SQLALCHEMY_DATABASE_URI"] = current_app.config["DATABASE"]
-        app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-        db.init_app(app)
-
-
 @click.command("test")
 def test():
     print("test")
-    call_model_function("insert_user", "trview.models", "test", "test", "test", "test")
+    call_model_function("insert_user", "dev@test.com", "1234-aasdf-1234")
 
 
 def call_model_function(function_name, *args, model="trview.models", **kwargs):
@@ -98,3 +82,49 @@ def call_model_function(function_name, *args, model="trview.models", **kwargs):
         for name, obj in inspect.getmembers(model_class, inspect.isfunction):
             if name == function_name:
                 return getattr(model_class, function_name)(*args, **kwargs)
+
+
+@click.command("populate-database")
+@click.option(
+    "--num-records", default=10, help="Number of records to populate the database."
+)
+@click.option(
+    "--tables",
+    default=None,
+    help="Comma separated list of tables to populate. If not provided, all tables will be populated.",
+)
+def populate_database(num_records, tables):
+    """Populate the database with fake data. This is a wrapper
+    function encapsulating the population of the database."""
+    if tables is None:
+        model_classes = [
+            obj
+            for name, obj in inspect.getmembers(sys.modules[__name__], inspect.isclass)
+            if obj.__module__ == __name__
+        ]
+
+        for model_class in model_classes:
+            click.echo(
+                f"Populating {model_class.__name__} table with {num_records} records."
+            )
+            populate_models(model_class, num_records)
+    else:
+        tables = [getattr(sys.modules[__name__], table) for table in tables.split(",")]
+        for table in tables:
+            populate_models(table, num_records)
+
+
+def init_app(app):
+    """Register the database functions with the Flask app. This is called by the
+    application factory.
+    Setup Flask application that uses SQLAlchemy to interact with a SQLite database.
+    """
+    # app.teardown_appcontext(close_db)  this is not needed with sqlalchemy
+    app.cli.add_command(init_db_command)
+    app.cli.add_command(populate_database)
+    app.cli.add_command(test)
+
+    with app.app_context():
+        app.config["SQLALCHEMY_DATABASE_URI"] = current_app.config["DATABASE"]
+        app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+        db.init_app(app)

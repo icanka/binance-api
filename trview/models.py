@@ -50,13 +50,20 @@ class Users(db.Model):
         """Insert a user to the database.
 
         Args:
-            username (str): username
+            username (str): username in email format
+            name (str): name of the user
             password (str): password
         """
         salted_hash = generate_password_hash(password)
         new_user = Users(username=username, name=username, password=salted_hash)
         db.session.add(new_user)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except (IntegrityError, DataError, OperationalError) as exception:
+            click.echo("Error inserting data into the database.")
+            click.echo(f"Error: {exception.args[0]}")
+            click.echo("Rolling back transaction.")
+            db.session.rollback()  # Rollback the transaction or it will be stuck in a bad state.
 
     @staticmethod
     def generate_webhook_data(num_records=10):
@@ -81,15 +88,7 @@ class Users(db.Model):
             user = Users(
                 username=faker.email(),
                 name=faker.name(),
-                password=generate_password_hash(
-                    faker.password(
-                        length=4,
-                        special_chars=False,
-                        digits=False,
-                        upper_case=False,
-                        lower_case=True,
-                    )
-                ),
+                password=generate_password_hash("1234-asd"),
             )
             data.append(user)
 

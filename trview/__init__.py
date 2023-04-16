@@ -1,4 +1,10 @@
-"""trview package initializer."""
+"""
+trview package initializer.
+CLI commands:
+    flask --app trview populate-database --help
+    flask --app trview init-db --help
+
+"""
 
 import os
 from flask import Flask, request

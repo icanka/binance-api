@@ -4,7 +4,7 @@ Contains the database models and helper functions.
 Model specific operations should be implemented in the models.py file.
 """
 
-
+import click
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import OperationalError, DataError, IntegrityError

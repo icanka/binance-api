@@ -51,23 +51,7 @@ def init_db(create=False, fresh=False):
         click.echo(f"An error occurred while initializing the database: {exc}")
 
 
-@click.command("init-db")
-@click.option("--create", help="Create the database if not exists.", is_flag=True)
-@click.option(
-    "--fresh", help="Drop all tables and create a fresh database.", is_flag=True
-)
-def init_db_command(create, fresh):
-    """Clear existing data and create new tables."""
-    init_db(create, fresh)
-
-
-@click.command("test")
-def test():
-    print("test")
-    call_model_function("insert_user", "dev@test.com", "1234-aasdf-1234")
-
-
-def call_model_function(function_name, *args, model="trview.models", **kwargs):
+def _db(function_name, *args, model="trview.models", **kwargs):
     """
     Call a function on a model. Do not use method from the model class directly from blueprints.
     This method is used to call a function on a model class for encapsulation.
@@ -82,6 +66,23 @@ def call_model_function(function_name, *args, model="trview.models", **kwargs):
         for name, obj in inspect.getmembers(model_class, inspect.isfunction):
             if name == function_name:
                 return getattr(model_class, function_name)(*args, **kwargs)
+
+
+@click.command("init-db")
+@click.option("--create", help="Create the database if not exists.", is_flag=True)
+@click.option(
+    "--fresh", help="Drop all tables and create a fresh database.", is_flag=True
+)
+def init_db_command(create, fresh):
+    """Clear existing data and create new tables."""
+    init_db(create, fresh)
+
+
+@click.command("test")
+def test():
+    """ for testing purposes."""
+    print("test")
+    call_model_function("insert_user", "dev@test.com", "1234-aasdf-1234")
 
 
 @click.command("populate-database")
@@ -99,7 +100,7 @@ def populate_database(num_records, tables):
     if tables is None:
         model_classes = [
             obj
-            for name, obj in inspect.getmembers(sys.modules[__name__], inspect.isclass)
+            for name, obj in inspect.getmembers(sys.modules["trview.models"], inspect.isclass)
             if obj.__module__ == __name__
         ]
 
@@ -109,7 +110,9 @@ def populate_database(num_records, tables):
             )
             populate_models(model_class, num_records)
     else:
-        tables = [getattr(sys.modules[__name__], table) for table in tables.split(",")]
+        print(tables)
+        tables = [getattr(sys.modules["trview.models"], table) for table in tables.split(",")]
+        print(tables)
         for table in tables:
             populate_models(table, num_records)
 

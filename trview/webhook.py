@@ -172,7 +172,7 @@ def drsi_with_filters():
 
 
 @bp.route("/register", methods=("GET", "POST"))
-def register(): # TODO review this function
+def register():  # TODO review this function
     """Render the register page and register the user if the form is submitted."""
     # someone is trying to register
     if request.method == "POST":
@@ -186,7 +186,7 @@ def register(): # TODO review this function
             "unknown_error": "Error during operation.",
         }
 
-        # basic sanity check altohugh we expect it to be dealt with in front-end.
+        # basic sanity check although we expect it to be dealt with in front-end.
         if not username or not password:
             flash(error_messages["missing_fields"])
         else:

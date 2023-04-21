@@ -82,7 +82,6 @@ def init_db_command(create, fresh):
 def test():
     """ for testing purposes."""
     print("test")
-    call_model_function("insert_user", "dev@test.com", "1234-aasdf-1234")
 
 
 @click.command("populate-database")

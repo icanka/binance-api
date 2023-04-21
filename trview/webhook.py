@@ -16,9 +16,10 @@ from flask import (
     url_for,
     make_response,
 )
-from sqlalchemy.exc import OperationalError, IntegrityError, DataError
 from trview.models import db, Users, Webhooks
 from trview.db import get_db
+from trview.db import _db
+
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
 
@@ -28,6 +29,12 @@ bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminL
 #     return render_template("webhook/content.html")
 @bp.route("/database")
 def database():
+    """Render the database page.
+
+    Returns:
+        str: The rendered page.
+    """
+
     result = db.session.query(Users).all()
     return result
 
@@ -95,15 +102,19 @@ def signals():
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         # If it is return only the partial content.
         print("ajax request.")
-        return render_template("webhook/pages/signals.html", table_data=signal_data)
+        return render_template("webhook/pages/signals.html")
     else:
         print("Not an ajax request.")
         return render_template(
             "webhook/base.html",
-            content=render_template(
-                "webhook/pages/signals.html", table_data=signal_data
-            ),
+            content=render_template("webhook/pages/signals.html"),
         )
+        
+@bp.route("/api/signals/data", methods=["POST", "GET"])
+@login_required
+def data():
+    return {'data': [ user.to_dict() for user in Users.query ]}
+
 
 
 @bp.route("/drsi_with_filters", methods=["POST"])
@@ -178,46 +189,24 @@ def register():  # TODO review this function
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        error_messages = {
-            "missing_fields": "Username and/or Password are required.",
-            "integrity_error": f"User {username} is already registered.",
-            "data_error": "Data error.",
-            "operational_error": "Operational error.",
-            "unknown_error": "Error during operation.",
-        }
-
         # basic sanity check although we expect it to be dealt with in front-end.
         if not username or not password:
-            flash(error_messages["missing_fields"])
+            flash("Username and password are required.")
         else:
-            try:
-                # only insert the salted hash to the database
-                salted_hash = generate_password_hash(password)
-                new_user = Users(username=username, name=username, password=salted_hash)
-                db.session.add(new_user)
-                db.session.commit()
-
-            except (IntegrityError, DataError, OperationalError) as exception:
-                if isinstance(exception, IntegrityError):
-                    error = f"User {username} is already registered."
-                elif isinstance(exception, DataError):
-                    error = "Data error."
-                elif isinstance(exception, OperationalError):
-                    error = "Operational error."
-                else:
-                    error = "Error during operation."
-                db.session.rollback()
-            else:
-                # redirect user to the login page after successfull login
-                return redirect(url_for("webhook.loginv2"))
+            _db("insert_user", username, password)
+            return redirect(url_for("webhook.loginv2"))
         # flash the error data so it can be used in template to inform user
-        flash(error)
 
     return render_template("webhook/register.html")
 
 
 @bp.route("/login", methods=("GET", "POST"))
 def login():
+    """Render the login page and login the user if the form is submitted.
+
+    Returns:
+        str: The rendered page.
+    """
     # somone is trying to login
     if request.method == "POST":
         username = request.form["username"]

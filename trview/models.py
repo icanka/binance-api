@@ -41,6 +41,21 @@ class Users(db.Model):
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     name = db.Column(db.String(64), index=True, unique=True, nullable=False)
     password = db.Column(db.String(512), nullable=False)
+    
+    
+    def to_dict(self):
+        """Convert the model to a dictionary.
+
+        Returns:
+            dict: Dictionary representation of the model.
+        """
+        data = {
+            "id": self.id,
+            "username": self.username,
+            "name": self.name,
+            "password": self.password,
+        }
+        return data
 
     @staticmethod
     def insert_user(username, password):
@@ -61,6 +76,7 @@ class Users(db.Model):
             click.echo(f"Error: {exception.args[0]}")
             click.echo("Rolling back transaction.")
             db.session.rollback()  # Rollback the transaction or it will be stuck in a bad state.
+            return exception.args[0]
 
     @staticmethod
     def generate_webhook_data(num_records=10):
@@ -108,6 +124,27 @@ class Webhooks(db.Model):
     market_position_size = db.Column(db.TEXT, nullable=False)
     contracts = db.Column(db.TEXT, nullable=False)
     order_id = db.Column(db.TEXT, nullable=False)
+    
+    def to_dict(self):
+        """Convert the model to a dictionary.
+
+        Returns:
+            dict: Dictionary representation of the model.
+        """
+        data = {
+            "id": self.id,
+            "created": self.created,
+            "strategy_name": self.strategy_name,
+            "ticker": self.ticker,
+            "strategy_action": self.strategy_action,
+            "market_position": self.market_position,
+            "price": self.price,
+            "position_size": self.position_size,
+            "market_position_size": self.market_position_size,
+            "contracts": self.contracts,
+            "order_id": self.order_id,
+        }
+        return data
 
     @staticmethod
     def generate_webhook_data(num_records=10):

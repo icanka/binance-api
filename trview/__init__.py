@@ -1,8 +1,10 @@
 """
 trview package initializer.
 CLI commands:
+    source set_up_environment.sh for the environment variables to be set.
     flask --app trview populate-database --help
     flask --app trview init-db --help
+    flask --app trview --debug run --host 0.0.0.0 --port 5000
 
 """
 
@@ -15,8 +17,6 @@ from flask_limiter.util import get_remote_address
 from . import db
 from . import webhook
 
-# source set_up_environment.sh
-# flask --app trview --debug run --host 0.0.0.0 --port 5000
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application.
     This is factory function that creates the Flask app and configures it."""

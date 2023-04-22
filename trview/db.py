@@ -80,7 +80,7 @@ def init_db_command(create, fresh):
 
 @click.command("test")
 def test():
-    """ for testing purposes."""
+    """for testing purposes."""
     print("test")
 
 
@@ -99,7 +99,9 @@ def populate_database(num_records, tables):
     if tables is None:
         model_classes = [
             obj
-            for name, obj in inspect.getmembers(sys.modules["trview.models"], inspect.isclass)
+            for name, obj in inspect.getmembers(
+                sys.modules["trview.models"], inspect.isclass
+            )
             if obj.__module__ == __name__
         ]
 
@@ -110,10 +112,18 @@ def populate_database(num_records, tables):
             populate_models(model_class, num_records)
     else:
         print(tables)
-        tables = [getattr(sys.modules["trview.models"], table) for table in tables.split(",")]
+        tables = [
+            getattr(sys.modules["trview.models"], table) for table in tables.split(",")
+        ]
         print(tables)
         for table in tables:
             populate_models(table, num_records)
+
+
+def get_class(class_name, module_name="trview.models"):
+    """Get a class from a module."""
+    module = importlib.import_module(module_name)
+    return getattr(module, class_name)
 
 
 def init_app(app):

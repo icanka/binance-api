@@ -15,10 +15,10 @@ from flask import (
     session,
     url_for,
     make_response,
+    jsonify,
 )
 from trview.models import db, Users, Webhooks
-from trview.db import get_db
-from trview.db import _db
+from trview.db import get_db, _db, get_class
 
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
@@ -110,10 +110,24 @@ def signals():
             content=render_template("webhook/pages/signals.html"),
         )
         
-@bp.route("/api/signals/data", methods=["POST", "GET"])
-@login_required
-def data():
-    return {'data': [ user.to_dict() for user in Users.query ]}
+@bp.route("/api/data/<table>", methods=["POST", "GET"])
+#@login_required
+def data(table):
+    
+    """Get the data from the database and return it as a json object.
+    Args:
+        table (str): The table model to get the data from.
+
+    Returns:
+        dict: The data from the database.
+    """
+    timestamp = request.args.get('_') # this is to prevent caching, sent by datatables.
+    try:
+        table =  get_class(table.capitalize())
+    except AttributeError:
+        return jsonify({'error': 'Not Found.'}), 404
+    
+    return {'data': [ table_data.to_dict() for table_data in table.query ]}
 
 
 

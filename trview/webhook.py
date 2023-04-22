@@ -3,6 +3,7 @@
 import functools
 import json
 import hashlib
+import re
 from pprint import pprint
 from werkzeug.security import check_password_hash
 from flask import (
@@ -109,26 +110,65 @@ def signals():
             "webhook/base.html",
             content=render_template("webhook/pages/signals.html"),
         )
-        
+
+
 @bp.route("/api/data/<table>", methods=["POST", "GET"])
-#@login_required
+# @login_required
 def data(table):
-    
-    """Get the data from the database and return it as a json object.
+
+    """
+    Get the data from the database and return it as a json object.
     Args:
         table (str): The table model to get the data from.
 
     Returns:
         dict: The data from the database.
     """
-    timestamp = request.args.get('_') # this is to prevent caching, sent by datatables.
-    try:
-        table =  get_class(table.capitalize())
-    except AttributeError:
-        return jsonify({'error': 'Not Found.'}), 404
-    
-    return {'data': [ table_data.to_dict() for table_data in table.query ]}
 
+    def searchable_columns():
+        columns = 0
+        for key in request.args.keys():
+            if "columns" in key and "data" in key:
+                columns += 1
+        searchable_columns = [
+            request.args.get(f"columns[{i}][data]", type=str)
+            for i in range(columns)
+            if request.args.get(f"columns[{i}][searchable]", type=bool)
+        ]
+        return searchable_columns
+
+    table = get_class(table.capitalize())
+    search = request.args.get("search[value]", type=str)
+    start = request.args.get("start", type=int)
+    length = request.args.get("length", type=int)
+    try:
+        query = table.query
+        if search:
+            pprint("Search")
+            or_clauses = [
+                table.__table__.columns[column].like(f"%{search}%")
+                for column in searchable_columns()
+            ]
+            query = table.query.filter(db.or_(*or_clauses))
+            
+        pprint("No search")
+        total_filtered = query.count()
+        query = table.query.offset(start).limit(length)
+        pprint(query)
+        pprint(f"total filtered: {total_filtered}")
+        pprint(f"records total: {table.query.count()}")
+    except AttributeError:
+        return jsonify({"error": "Not Found."}), 404
+
+    return jsonify(
+        {
+            "data": [table_data.to_dict() for table_data in query],
+            "recordsFiltered": total_filtered,
+            "recordsTotal": table.query.count(),
+            "draw": request.args.get("draw", type=int),
+        }
+    )
+    # return {"data": [table_data.to_dict() for table_data in table.query]}
 
 
 @bp.route("/drsi_with_filters", methods=["POST"])

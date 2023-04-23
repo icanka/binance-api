@@ -136,34 +136,24 @@ def data(table):
             if request.args.get(f"columns[{i}][searchable]", type=bool)
         ]
         return searchable_columns
+
     table = get_class(table.capitalize())
-    query =  table.query
+    query = table.query
     search = request.args.get("search[value]", type=str)
     start = request.args.get("start", type=int)
     length = request.args.get("length", type=int)
     try:
         if search:
-            pprint("Search")
             or_clauses = [
                 table.__table__.columns[column].like(f"%{search}%")
                 for column in searchable_columns()
             ]
-            pprint(or_clauses)
             query = query.filter(db.or_(*or_clauses))
-            total_filtered = query.count()
-            pprint(f"total filtered: {total_filtered}")
-        else:    
-            pprint("No search")
-            total_filtered = query.count()
-            #query = table.query.offset(start).limit(length)
-            pprint(query)
-            pprint(f"total filtered: {total_filtered}")
-            pprint(f"records total: {query.count()}")
+        total_filtered = query.count()
         query = query.offset(start).limit(length)
     except AttributeError:
         return jsonify({"error": "Not Found."}), 404
 
-    pprint([table_data.to_dict() for table_data in query])
     return jsonify(
         {
             "data": [table_data.to_dict() for table_data in query],
@@ -172,9 +162,9 @@ def data(table):
             "draw": request.args.get("draw", type=int),
         }
     )
-    # return {"data": [table_data.to_dict() for table_data in table.query]}
 
 
+# TODO: refactor this function according to the new database structure.
 @bp.route("/drsi_with_filters", methods=["POST"])
 def drsi_with_filters():
     """

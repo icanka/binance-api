@@ -16,6 +16,7 @@ from flask import (
     session,
     url_for,
     make_response,
+    Response,
     jsonify,
 )
 from trview.models import db, Users, Webhooks
@@ -151,9 +152,9 @@ def data(table):
             query = query.filter(db.or_(*or_clauses))
         total_filtered = query.count()
         query = query.offset(start).limit(length)
+
     except AttributeError:
         return jsonify({"error": "Not Found."}), 404
-
     return jsonify(
         {
             "data": [table_data.to_dict() for table_data in query],
@@ -162,6 +163,44 @@ def data(table):
             "draw": request.args.get("draw", type=int),
         }
     )
+
+
+@bp.route("/api/export", methods=["GET"])
+# @login_required
+def export():
+    """
+    Export the data from the database as a csv file.
+    Args:
+        table (str): The table model to get the data from.
+
+    Returns:
+        str: The csv file.
+    """
+    file_format = request.args.get("format", type=str)
+    table = request.args.get("table_name", type=str)
+    if file_format == "csv":
+        table = get_class(table.capitalize())
+        table_data = table.query.all()
+        csv = (
+            ",".join([column.name for column in table.__table__.columns])
+            + "\n"
+            + "\n".join(
+                [
+                    ",".join(
+                        [
+                            str(getattr(row, column.name))
+                            for column in table.__table__.columns
+                        ]
+                    )
+                    for row in table_data
+                ]
+            )
+        )
+
+    # return the csv file
+    response = Response(csv, mimetype="text/csv")
+    response.headers.set("Content-Disposition", "attachment", filename=f"{table}.csv")
+    return response
 
 
 # TODO: refactor this function according to the new database structure.

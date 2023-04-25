@@ -1,12 +1,16 @@
-"""Database module, including the SQLAlchemy database object and DB-related utilities."""
+"""Database module, including the SQLAlchemy database object and DB-related utilities.
+In the flask_app directory, run the following commands to initialize the database:
+flask populate-database --tables Users,Webhooks --num-records 5000
+flask init-db --create --fresh
+"""
 
 import sqlite3
 import importlib
 import inspect
 import sys
 import click
-from flask import current_app
-from flask import g
+from flask import current_app, g
+from flask.cli import with_appcontext
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.exc import SQLAlchemyError
 from .models import db, populate_models
@@ -79,6 +83,7 @@ def init_db_command(create, fresh):
 
 
 @click.command("test")
+@with_appcontext
 def test():
     """for testing purposes."""
     print("test")
@@ -139,4 +144,6 @@ def init_app(app):
     with app.app_context():
         app.config["SQLALCHEMY_DATABASE_URI"] = current_app.config["DATABASE"]
         app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+        print("db.py: Initializing database.")
         db.init_app(app)
+        print("db.py: database initialized.")

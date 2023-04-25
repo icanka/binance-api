@@ -11,14 +11,10 @@ CLI commands:
 
 import os
 from flask import Flask
-from flask_socketio import SocketIO
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from . import db
 from . import webhook
-
-
-_socketio = SocketIO()
 
 
 def create_app(test_config=None):
@@ -53,10 +49,8 @@ def create_app(test_config=None):
 
     # register the database commands
 
-    db.init_app(app)
-
     app.register_blueprint(webhook.bp)
-
+    db.init_app(app)
     limiter = Limiter(
         get_remote_address,
         app=app,
@@ -70,5 +64,4 @@ def create_app(test_config=None):
     # limiter.init_app(app)
     # print(app.__name__)
     # limiter.limit('3/second')(app)
-    _socketio.init_app(app)
     return app

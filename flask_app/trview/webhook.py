@@ -412,6 +412,9 @@ def validate_user():
 
 @bp.before_app_request
 def load_logged_in_user():
+    """Load the user object from the database if a user is logged in.
+    """
+    print(f"webhook.py: load_logged_in_user: {db} - {db.session}")
     user_id = session.get("user_id")
 
     if user_id is None:
@@ -422,5 +425,10 @@ def load_logged_in_user():
 
 @bp.route("/logout")
 def logout():
+    """Log out the current user and redirect to the index page.
+
+    Returns:
+        str: The rendered page.
+    """
     session.clear()
     return redirect(url_for("index"))

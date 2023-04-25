@@ -31,6 +31,7 @@ class DevelopmentConfig(Config):
 
     DATABASE = f"sqlite:////{os.path.join(os.getcwd(), 'instance', 'trading.development.sqlite')}"
     SECRET_KEY = "development"
+    HOST = "0.0.0.0"
 
 
 class TestingConfig(Config):

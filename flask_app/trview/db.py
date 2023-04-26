@@ -86,7 +86,6 @@ def init_db_command(create, fresh):
 @with_appcontext
 def test():
     """for testing purposes."""
-    print("test")
 
 
 @click.command("populate-database")
@@ -116,11 +115,9 @@ def populate_database(num_records, tables):
             )
             populate_models(model_class, num_records)
     else:
-        print(tables)
         tables = [
             getattr(sys.modules["trview.models"], table) for table in tables.split(",")
         ]
-        print(tables)
         for table in tables:
             populate_models(table, num_records)
 
@@ -144,6 +141,4 @@ def init_app(app):
     with app.app_context():
         app.config["SQLALCHEMY_DATABASE_URI"] = current_app.config["DATABASE"]
         app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-        print("db.py: Initializing database.")
         db.init_app(app)
-        print("db.py: database initialized.")

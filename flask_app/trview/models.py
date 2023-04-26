@@ -8,6 +8,7 @@ import click
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import OperationalError, DataError, IntegrityError
+from sqlalchemy import Index
 from faker import Faker
 
 db = SQLAlchemy()
@@ -37,7 +38,7 @@ def populate_models(model_class, num_records=10):
 class Users(db.Model):
     """User model."""
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=True, unique=True, nullable=False)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     name = db.Column(db.String(64), index=True, unique=True, nullable=False)
     password = db.Column(db.String(512), nullable=False)
@@ -110,7 +111,7 @@ class Users(db.Model):
 class Webhooks(db.Model):
     """Webhook model."""
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=True, unique=True, nullable=False)
     created = db.Column(
         db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp()
     )
@@ -176,3 +177,5 @@ class Webhooks(db.Model):
             data.append(webhook)
 
         return data
+
+Index('idx_webhooks_id', Webhooks.id, unique=True)

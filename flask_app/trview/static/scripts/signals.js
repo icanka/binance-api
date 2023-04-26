@@ -96,22 +96,61 @@ $(function () {
   });
 });
 
-console.log("Connecting to " + window.location.host + "/webhook/api/ws");
-var socket = io.connect(window.location.host + "/webhook/api/ws");
-// Set up websocket connection.
-// When the connection is open, send a message to the server
+console.log("Connecting to " + "ws://" + window.location.host);
+console.log("socket: " + socket);
+if (typeof socket === "undefined") {
+  console.log("socket undefined");
+  var socket = io.connect(window.location.host);
 
-socket.on("connect", function () {
-  console.log("Connected!");
-});
+  // Set up websocket connection.
+  // When the connection is open, send a message to the server
+  socket.on("connect", function () {
+    // wait 5 seconds before sending the message
+    console.log("connected");
+    console.log("socket id: " + socket.id);
+    socket.emit("client_connected");
+  });
 
-socket.onopen = function () {
-  console.log("Connected!");
-};
+  socket.on("server_con_ack", function (data) {
+    console.log("received server_con_ack");
+  });
 
-// When a message is received from the server update the table
-socket.onmessage = function (event) {
-  console.log("Received message: " + event.data);
-  let data = JSON.parse(event.data);
-  $("#signals_table").DataTable().ajax.reload();
-};
+  // When a messaage is received from the server update the table
+  //let dat = JSON.parse(data.data);
+  //$("#signals_table").DataTable().ajax.reload();
+
+  socket.on("update_table", function (data) {
+    console.log("received update_table");
+    $("#signals_table").DataTable().ajax.reload();
+    console.log("table reloaded: " + data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("disconnected");
+  });
+
+  socket.on("disconnect", (reason) => {
+    console.log("disconnect");
+    if (reason === "io server disconnect") {
+      // the disconnection was initiated by the server, you need to reconnect manually
+      console.log("io server disconnect");
+      socket.connect();
+    }
+    // else the socket will automatically try to reconnect
+  });
+
+  socket.on("connect_error", (error) => {
+    console.log("connect_error");
+    console.log(error);
+  });
+  socket.io.on("reconnect_attempt", () => {
+    console.log("reconnect_attempt");
+  });
+
+  socket.io.on("reconnect", () => {
+    console.log("reconnect");
+    console.log("socket id: " + socket.id);
+  });
+} else {
+  console.log("socket already defined");
+}

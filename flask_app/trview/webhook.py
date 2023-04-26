@@ -3,7 +3,7 @@
 import functools
 import json
 import hashlib
-from pprint import pprint
+import time
 from werkzeug.security import check_password_hash
 from flask import (
     Blueprint,
@@ -20,16 +20,16 @@ from flask import (
 )
 from .models import db, Users, Webhooks
 from .db import get_db, _db, get_class
-
+from flask_socketio import emit
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
 
 
-@bp.route("/api/ws")
-def ws():
-    pprint("ws endpoint----------------------------------------------")
+@bp.route("/api/websocket")
+def websocket():
     """Return the websocket URL."""
     return "ws://localhost:5000/webhook"
+
 
 @bp.route("/database")
 def database():
@@ -42,6 +42,13 @@ def database():
     result = db.session.query(Users).all()
     return result
 
+@bp.route("/api/delete", methods=["POST"])
+def delete():
+    row_to_delete = db.session.query(Webhooks).first()
+    db.session.delete(row_to_delete)
+    db.session.commit()
+    emit("update_table", broadcast=True, namespace="/")
+    return make_response(jsonify({"message": "Deleted"}), 200)
 
 def login_required(view):
     """Redirect user to login page if not already logged in"""
@@ -63,38 +70,33 @@ def index():
     return render_template("webhook/index.html")
 
 
-@bp.route("/pages/<page>", methods=["POST", "GET"])
+@bp.route("/pages/<page>", methods=["POST"])
 @login_required
 def pages(page):
-    """Render the pages and return the partial content if it is an AJAX request or the full page if it is not.
+    """Render the pages and return the partial content if it is an AJAX request.
     Args:
         page (str): The page to be rendered.
     Returns:
         str: The rendered page.
     """
-    print("pages endpoint")
     if request.method == "POST":
-        print("This is a POST request.")
         href_value = request.form["href"]
-    elif request.method == "GET":
+
+    elif request.method == "GET":  # 'GET' is deprecated
         # User refreshed the page.
-        print("this is a GET request.")
         href_value = page
-    print(href_value)
     # Check if the request is an AJAX request
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         # If it is return only the partial content.
-        print("ajax request.")
         return render_template(f"{href_value}.html")
     else:
-        print("Not an ajax request.")
         return render_template(
             "webhook/base.html",
             content=render_template(f"webhook/pages/{href_value}.html"),
         )
 
 
-@bp.route("/pages/signals", methods=["POST", "GET"])
+@bp.route("/pages/signals", methods=["GET"])
 @login_required
 def signals():
     """Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
@@ -102,13 +104,11 @@ def signals():
         str: The rendered page.
     """
     # Check if the request is an AJAX request
-    signal_data = db.session.query(Webhooks).all()
+    # signal_data = db.session.query(Webhooks).all()
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         # If it is return only the partial content.
-        print("ajax request.")
         return render_template("webhook/pages/signals.html")
     else:
-        print("Not an ajax request.")
         return render_template(
             "webhook/base.html",
             content=render_template("webhook/pages/signals.html"),
@@ -127,6 +127,7 @@ def data(table):
     Returns:
         dict: The data from the database.
     """
+    
 
     def searchable_columns():
         columns = 0
@@ -145,6 +146,7 @@ def data(table):
     search = request.args.get("search[value]", type=str)
     start = request.args.get("start", type=int)
     length = request.args.get("length", type=int)
+    start_time = time.time()
     try:
         if search:
             or_clauses = [
@@ -152,16 +154,22 @@ def data(table):
                 for column in searchable_columns()
             ]
             query = query.filter(db.or_(*or_clauses))
+
         total_filtered = query.count()
         query = query.offset(start).limit(length)
 
     except AttributeError:
         return jsonify({"error": "Not Found."}), 404
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Elapsed time: {elapsed_time}")
     return jsonify(
         {
             "data": [table_data.to_dict() for table_data in query],
             "recordsFiltered": total_filtered,
             "recordsTotal": table.query.count(),
+            # This is the draw counter that DataTables is expecting to be returned from the server.
             "draw": request.args.get("draw", type=int),
         }
     )
@@ -227,8 +235,6 @@ def drsi_with_filters():
     }
     """
     db = get_db()
-    pprint(request.content_type)
-    pprint(request.json)
     rd = json.loads(request.data)
     # create an empty response object
     response = make_response()
@@ -289,6 +295,7 @@ def register():  # TODO review this function
     return render_template("webhook/register.html")
 
 
+# Deprecated
 @bp.route("/login", methods=("GET", "POST"))
 def login():
     """Render the login page and login the user if the form is submitted.
@@ -329,12 +336,15 @@ def login():
 
 @bp.route("/loginv2", methods=("GET", "POST"))
 def loginv2():
-    print("LOGINV2")
+    """Render the login page and login the user if the form is submitted.
+
+    Returns:
+        str: The rendered page.
+    """
     if request.method == "POST":
         user_id = session.get("user_id")
 
         if user_id is not None:
-            print("Redirecting to index")
             return redirect(url_for("webhook.index"))
 
         username = request.form["email"]
@@ -368,25 +378,18 @@ def validate_user():
         Response: The response object indicating the state of the validation.
     """
 
-    print("VALIDATE ENDPOINT")
-    print(db)
     # rd = json.loads(request.data)
     rd = request.get_json()
     response = make_response()
     username = rd["email"]
     password = rd["password"]
-    print(f"pass:'{password}'")
     # db = get_db()
     error = None
-    print(username)
     user = db.session.query(Users).filter_by(username=username).first()
     if user is not None:
-        print(user.username)
-        print(f"pass:'{user.password}'")
         print(check_password_hash(user.password, password))
     else:
         print("User is None")
-    print("chekcing user credentials")
 
     # return response
     # user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
@@ -395,28 +398,22 @@ def validate_user():
     # print(f"user: {past}")
 
     if user is not None and check_password_hash(user.password, password):
-        print("TRUE")
         session.clear()
         session["user_id"] = user.id
         response.status_code = 200
-        response.data = "Login Succesfull"
-        print(response.status)
+        response.data = "Login Successful"
         return response
         # return render_template(url_for("index"))
     else:
-        print("FALSE")
-        # return a message with unathorized access code.
+        # return a message with unauthorized access code.
         response = make_response("Incorrect credentials", 401)
         return response
 
 
 @bp.before_app_request
 def load_logged_in_user():
-    """Load the user object from the database if a user is logged in.
-    """
-    print(f"webhook.py: load_logged_in_user: {db} - {db.session}")
+    """Load the user object from the database if a user is logged in."""
     user_id = session.get("user_id")
-
     if user_id is None:
         g.user = None
     else:

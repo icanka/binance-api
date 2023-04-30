@@ -38,7 +38,7 @@ def populate_models(model_class, num_records=10):
 class Users(db.Model):
     """User model."""
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=True, unique=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=False, unique=True, nullable=False)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     name = db.Column(db.String(64), index=True, unique=True, nullable=False)
     password = db.Column(db.String(512), nullable=False)
@@ -111,19 +111,19 @@ class Users(db.Model):
 class Webhooks(db.Model):
     """Webhook model."""
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=True, unique=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=False, unique=True, nullable=False)
     created = db.Column(
-        db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp()
+        db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp(), index=True
     )
-    strategy_name = db.Column(db.TEXT, nullable=False)
-    ticker = db.Column(db.TEXT, nullable=False)
-    strategy_action = db.Column(db.TEXT, nullable=False)
+    strategy_name = db.Column(db.TEXT, nullable=False, index=True)
+    ticker = db.Column(db.TEXT, nullable=False, index=True)
+    strategy_action = db.Column(db.TEXT, nullable=False, index=True)
     market_position = db.Column(db.TEXT, nullable=False)
     price = db.Column(db.TEXT, nullable=False)
     position_size = db.Column(db.TEXT, nullable=False)
     market_position_size = db.Column(db.TEXT, nullable=False)
     contracts = db.Column(db.TEXT, nullable=False)
-    order_id = db.Column(db.TEXT, nullable=False)
+    order_id = db.Column(db.TEXT, nullable=False, index=True)
 
     def to_dict(self):
         """Convert the model to a dictionary.

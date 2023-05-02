@@ -2,12 +2,18 @@
 """
 from time import sleep
 from flask import request, session
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, Namespace, emit
 from .models import db, Webhooks
 from pprint import pprint
 
 
 _socketio = SocketIO()
+
+
+@_socketio.on("connect", namespace="/webhook_signal")
+def handle_webhook_connect(json):
+    """Handle a client connection to the socketio server."""
+    print("Client connection webhooksignal acknowledged")
 
 
 @_socketio.on("connect")

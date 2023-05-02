@@ -42,6 +42,7 @@ def database():
     result = db.session.query(Users).all()
     return result
 
+
 @bp.route("/api/delete", methods=["POST"])
 def delete():
     row_to_delete = db.session.query(Webhooks).first()
@@ -49,6 +50,7 @@ def delete():
     db.session.commit()
     emit("update_table", broadcast=True, namespace="/")
     return make_response(jsonify({"message": "Deleted"}), 200)
+
 
 def login_required(view):
     """Redirect user to login page if not already logged in"""
@@ -70,7 +72,7 @@ def index():
     return render_template("webhook/index.html")
 
 
-@bp.route("/pages/<page>", methods=["POST"])
+@bp.route("/pages/<page>", methods=["POST", "GET"])
 @login_required
 def pages(page):
     """Render the pages and return the partial content if it is an AJAX request.
@@ -79,6 +81,7 @@ def pages(page):
     Returns:
         str: The rendered page.
     """
+    print("PAGE:")
     if request.method == "POST":
         href_value = request.form["href"]
 
@@ -127,7 +130,6 @@ def data(table):
     Returns:
         dict: The data from the database.
     """
-    
 
     def searchable_columns():
         columns = 0
@@ -137,20 +139,23 @@ def data(table):
         searchable_columns = [
             request.args.get(f"columns[{i}][data]", type=str)
             for i in range(columns)
-            if request.args.get(f"columns[{i}][searchable]", type=bool)
+            if request.args.get(f"columns[{i}][searchable]", type=str) == "true"
         ]
         return searchable_columns
+
+    print(searchable_columns())
 
     table = get_class(table.capitalize())
     query = table.query
     search = request.args.get("search[value]", type=str)
+    print(f"search: {search}")
     start = request.args.get("start", type=int)
     length = request.args.get("length", type=int)
     start_time = time.time()
     try:
         if search:
             or_clauses = [
-                table.__table__.columns[column].like(f"%{search}%")
+                table.__table__.columns[column].like(f"{search}%")
                 for column in searchable_columns()
             ]
             query = query.filter(db.or_(*or_clauses))

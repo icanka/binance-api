@@ -13,14 +13,18 @@ _socketio = SocketIO()
 @_socketio.on("connect")
 def handle_connect(data):
     """Handle a client connection to the socketio server."""
-    sleep(5)
-    row_to_delete = db.session.query(Webhooks).first()
+    connection_id = request.sid
+    pprint(f"connection_id: {connection_id}")
+    print("Client connection acknowledged")
+    # row_to_delete = db.session.query(Webhooks).first()
     session["socket_init"] = True
+
 
 @_socketio.on("client_connected")
 def handle_client_connect():
     """Handle a client connection to the socketio server."""
     print("Client connection acknowledged")
+
 
 @_socketio.on("disconnect")
 def handle_disconnect():
@@ -28,7 +32,15 @@ def handle_disconnect():
     print("Client disconnected")
     session.pop("socket_init", None)
 
-@_socketio.on('message')
+
+@_socketio.on("message")
 def handle_message(data):
-    print('Received message:', data)
-    emit('message', data, broadcast=True) # broadcast=True sends to all clients except the sender
+    """Handle a message from a client.
+
+    Args:
+        data (dict): Message data.
+    """
+    print("Received message:", data)
+    emit(
+        "message", data, broadcast=True
+    )  # broadcast=True sends to all clients except the sender

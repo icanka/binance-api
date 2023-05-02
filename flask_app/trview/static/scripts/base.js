@@ -149,3 +149,61 @@ let title = $(CURRENTLY_ACTIVE_PAGE_MENU_ITEM).text().trim()
 console.log(title)
 console.log(`NEW TITLE ${title}`)
 if (title !== '') document.title = `${title} - ${APPLICATION_NAME}`
+
+console.log("Connecting to " + "ws://" + window.location.host);
+if (typeof socket === "undefined") {
+  console.log("socket undefined");
+  const socket = io.connect(window.location.host);
+
+  // Set up websocket connection.
+  // When the connection is open, send a message to the server
+  socket.on("connect", function () {
+    // wait 5 seconds before sending the message
+    console.log("connected");
+    console.log("socket id: " + socket.id);
+    //socket.emit("client_connected");
+  });
+
+  //socket.on("server_con_ack", function (data) {
+  //  console.log("received server_con_ack");
+  //});
+
+  // When a messaage is received from the server update the table
+  //let dat = JSON.parse(data.data);
+  //$("#signals_table").DataTable().ajax.reload();
+
+  //socket.on("update_table", function (data) {
+  //  console.log("received update_table");
+  //  $("#signals_table").DataTable().ajax.reload();
+  //  console.log("table reloaded: " + data);
+  //});
+
+  socket.on("disconnect", () => {
+    console.log("disconnected");
+  });
+
+  socket.on("disconnect", (reason) => {
+    console.log("Websocket connection closed: Reason: " + reason);
+    if (reason === "io server disconnect") {
+      // the disconnection was initiated by the server, you need to reconnect manually
+      console.log("io server disconnect");
+      //socket.connect();
+    }
+    // else the socket will automatically try to reconnect
+  });
+
+  socket.on("connect_error", (error) => {
+    console.log("connect_error");
+    console.log(error);
+  });
+  socket.io.on("reconnect_attempt", () => {
+    console.log("reconnect_attempt");
+  });
+
+  socket.io.on("reconnect", () => {
+    console.log("reconnect");
+    console.log("socket id: " + socket.id);
+  });
+} else {
+  console.log("socket already defined");
+}

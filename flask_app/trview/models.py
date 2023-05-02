@@ -9,6 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 from sqlalchemy.exc import OperationalError, DataError, IntegrityError
 from sqlalchemy import Index
+from sqlalchemy.orm import deferred
 from faker import Faker
 
 db = SQLAlchemy()
@@ -123,7 +124,7 @@ class Webhooks(db.Model):
     position_size = db.Column(db.TEXT, nullable=False)
     market_position_size = db.Column(db.TEXT, nullable=False)
     contracts = db.Column(db.TEXT, nullable=False)
-    order_id = db.Column(db.TEXT, nullable=False, index=True)
+    order_id = deferred(db.Column(db.TEXT, nullable=False, index=True))
 
     def to_dict(self):
         """Convert the model to a dictionary.

@@ -171,7 +171,7 @@ const namespaceSockets = ["webhook_signal"];
 
 namespaceSockets.forEach((socket) => {
   if (typeof window[socket] === "undefined") {
-    console.log("socket undefined {}", socket);
+    console.log("Namespace socket undefined: ", socket);
     window[socket] = io.connect(window.location.host + "/" + socket);
     let _socket = window[socket];
     _socket.on("connect", function () {
@@ -181,7 +181,7 @@ namespaceSockets.forEach((socket) => {
 });
 
 if (typeof rootSocket === "undefined") {
-  console.log("socket undefined");
+  console.log("rootSocket undefined");
   const rootSocket = io.connect(window.location.host);
 
   // Set up websocket connection.

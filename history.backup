@@ -1,0 +1,501 @@
+  130  man shutdown
+  131  shutdown -m -t 120
+  132  shutdown -s -t 7200
+  133  shutdown -h 02:00
+  134  cd /tmp
+  135  ls -l
+  136  shutdown -c
+  137  shutdown -h 03:00
+  138  sudo trizen -Syyu
+  139  trizen -Syyu
+  140  sudo su
+  141  cd /mnt
+  142  sudo su
+  143  sdd if=manjaro-xfce-22.1.0-minimal-230421-linux61.iso 
+  144  df -h
+  145  fdisk -l
+  146  su
+  147  dd if=manjaro-xfce-22.1.0-minimal-230421-linux61.iso of=/dev/sdd bs=1024k status=progress
+  148  sudo dd if=manjaro-xfce-22.1.0-minimal-230421-linux61.iso of=/dev/sdd bs=1024k status=progress
+  149  ls -l
+  150  c d/mnt
+  151  cd /mnt
+  152  ls -l
+  153  mkdir cruzer
+  154  sudo su
+  155  cd ~/Downloads/
+  156  sudo dd if=manjaro-xfce-22.1.0-minimal-230421-linux61.iso of=/dev/sdd  status=progress
+  157  df -h
+  158  lsblk
+  159  df -h
+  160  df -h
+  161  df -h
+  162  df -h
+  163  du -sh .
+  164  cd ~
+  165  du -sh . 2>/dev/null
+  166  sudo trizen -Syyu
+  167  trizen -Syyu
+  168  sudo su
+  169  ssh ckarakus@192.168.1.193
+  170  ssh ckarakus@192.168.1.93
+  171  ping 192.168.1.199
+  172  ping 192.168.1.199
+  173  ping 192.168.1.199
+  174  ls -l
+  175  sudo pacman -Syu
+  176  sudo pacman -Syyu
+  177  shutdown -h 03:00
+  178  df -h
+  179  fdisk -l
+  180  sudo fdisk -l
+  181  lsblk
+  182  lsblk
+  183  lsblk
+  184  lsblk
+  185  lsblk
+  186  lsblk
+  187  lsblk
+  188  lsblk
+  189  lsblk
+  190  lsblk
+  191  lsblk
+  192  lsblk
+  193  lsblk
+  194  lsblk
+  195  lsblk
+  196  lsblk
+  197  lsblk
+  198  lsblk
+  199  lsblk
+  200  lsblk
+  201  lsblk
+  202  lsblk
+  203  lsblk
+  204  lsblk
+  205  lsblk
+  206  lsblk
+  207  lsblk
+  208  lsblk
+  209  lsblk
+  210  lsblk
+  211  lsblk
+  212  lsblk
+  213  lsblk
+  214  lsblk
+  215  lsblk
+  216  lsblk
+  217  lsblk
+  218  lsblk
+  219  lsblk
+  220  lsblk
+  221  lsblk
+  222  lsblk
+  223  lsblk
+  224  lsblk
+  225  lsblk
+  226  lsblk
+  227  lsblk
+  228  ls -l
+  229  lsblk
+  230  lsblk
+  231  lsblk
+  232  fdisk -l
+  233  sudo fdisk -l
+  234  fdisk -l
+  235  fdisk -l
+  236  lsblk
+  237  lsblk
+  238  sudo dd if=manjaro-xfce-22.1.0-minimal-230421-linux61.iso of=/dev/sdd  status=progress
+  239  ls -l
+  240  sudo pacman -Syyu
+  241  clear
+  242  cd Documents/
+  243  ls -l
+  244  cd git-repos/
+  245  ls -l
+  246  git clone git@github.com:icanka/gitlab-api.git
+  247  lsblk
+  248  fdisk -l
+  249  sudo fdisk -l
+  250  clear
+  251  cd update-site/
+  252  du -sh .
+  253  du -sh .
+  254  du -sh .
+  255  du -sh .
+  256  du -sh .
+  257  ls -l
+  258  cd download/
+  259  ls -l
+  260  du -sh .
+  261  ls -l
+  262  du -sh .
+  263  du -sh .
+  264  du -sh .
+  265  du -sh .
+  266  du -sh .
+  267  ls -l
+  268  cd ..
+  269  ls -l
+  270  cd ..
+  271  ls -l
+  272  cd update-site/
+  273  ls -l
+  274  cd download/
+  275  ls -l
+  276  cd ..
+  277  ls -l
+  278  cd www2/
+  279  ls -l
+  280  ls -alhtr
+  281  ls -alhtr
+  282  ls -alhtr
+  283  source /home/izzetcan/Documents/git-repos/gitlab-api/venv/bin/activate
+  284  ls -alhtr
+  285  tail -f url_log_3422200523.log
+  286  clear
+  287  ls -l
+  288  ls -alhtr
+  289  ls -alhtr
+  290  tail -f url_log_4422200523.log 
+  291  git branch
+  292  git fetch --all
+  293  git branch
+  294  git branch --all
+  295  git checkout pypi_download
+  296  git status
+  297  git add .
+  298  git commit -m "refactoring"
+  299  git add .
+  300  git commit -m "shellcheck reformattings"
+  301  python3.9
+  302  clear
+  303  ls -l
+  304  python3.9 -m venv venv
+  305  source venv/bin/activate
+  306  ls -l
+  307  pip install --upgrade pip
+  308  pip install wheel
+  309  ls -l
+  310  clear
+  311  ls -l
+  312  pip install requests
+  313  pip --version
+  314  clear
+  315  clear
+  316  python3.9 main.py
+  317  python3.9 main.py
+  318  python3.9 main.py
+  319  clear
+  320  clear
+  321  python3.9 main.py
+  322  python3.9 main.py
+  323  python3.9 main.py
+  324  python3.9 main.py
+  325  cd packages/
+  326  ls -l
+  327  du -sh .
+  328  ls -l
+  329  cd ..
+  330  tar -cvf packages.tar packages
+  331  ls -l
+  332  git branch
+  333  git fetch --all
+  334  Pgit branch
+  335  git branch
+  336  git tag
+  337  git remote get-url origin
+  338  git branch
+  339  git checkout master
+  340  git add .
+  341  git commit -m "changes"
+  342  git checkout master
+  343  git pull --rebase
+  344  clear
+  345  git checkout master-test
+  346  git checkout -b master-test-backup
+  347  git checkout master-test
+  348  git merge master-test master
+  349  git status
+  350  git add .
+  351  git commit 
+  352  git status
+  353  git add .
+  354  git commit -m "changes"
+  355  git status
+  356  clear
+  357  ls -l
+  358  du -sh .
+  359  ls -l
+  360  cd target/
+  361  ls -l
+  362  rm -rf *
+  363  ls -al
+  364  cd ..
+  365  ls -l
+  366  mvn clean
+  367  du -sh .
+  368  mvn clean verify
+  369  ls -l
+  370  cd target/
+  371  ls -l
+  372  git branch
+  373  git add .
+  374  git commit -m "fix grammer"
+  375  git add .
+  376  git commit -m "fix grammer"
+  377  cd ..
+  378  git add .
+  379  git commit -m "fix grammer"
+  380  git checkout master
+  381  git checkout master-test
+  382  ls -l
+  383  cd target/
+  384  ls -l
+  385  git tag 
+  386  clear
+  387  cd ..
+  388  ls -l
+  389  cd site
+  390  ls -l
+  391  cd ..
+  392  ls -l
+  393  ./site/generate.sh update-site/www2 update-site/download
+  394  ./site/generate.sh update-site/www2 update-site/download
+  395  ./site/generate.sh update-site/www2 update-site/download
+  396  ls -l
+  397  cd update-site/
+  398  ls -l
+  399  du -sh .
+  400  cd ..
+  401  ls -l
+  402  cd ..
+  403  tar -cvf update-center2.tar update-center2
+  404  ls -l
+  405  mv gitlab-api/packages.tar .
+  406  ls -l
+  407  reboot
+  408  du -sh update-center2.tar 
+  409  du -sh update-center2.tar 
+  410  du -sh update-center2.tar 
+  411  du -sh update-center2.tar 
+  412  du -sh update-center2.tar 
+  413  du -sh update-center2.tar 
+  414  du -sh update-center2.tar 
+  415  du -sh update-center2.tar 
+  416  mv ~/Documents/git-repos/update-center2.tar ~/Documents/git-repos/packages.tar .
+  417  ls -l
+  418  cd Documents/
+  419  ls -l
+  420  cd git-repos/
+  421  ls -l
+  422  cd binance-api/
+  423  ls -l
+  424  source venv/bin/activate
+  425  ls -l
+  426  git list installed
+  427  git list installed
+  428  pip list installed
+  429  pip --version
+  430  ls -l
+  431  pip freeze > requirements.txt 
+  432  pip freeze > requirements.txt 
+  433  ls -l
+  434  pip freeze
+  435  ssh u0_a217@sudo pacman -SYyu
+  436  sudo pacman -Syu
+  437  sudo pacman -Syu
+  438  cd ~/Documents/git-repos/
+  439  ls -l
+  440  cd binance-api/
+  441  du -sh .
+  442  pwd
+  443  sudo pacman -Syyu
+  444  source /home/izzetcan/Documents/git-repos/binance-api/venv/bin/activate
+  445  clear
+  446  pip list installed
+  447  deactivate 
+  448  clear
+  449  ls -l
+  450  cd venv/
+  451  ls -l
+  452  source bin/activate
+  453  pip --version
+  454  pip3 list installed
+  455  pip3.11 --version
+  456  pip3.11 --list installed
+  457  python
+  458  python -m pip list installed
+  459  python -m pip3 list installed
+  460  python -m pip3.11 list installed
+  461  pip3.11 list installed
+  462  clear
+  463  deactivate 
+  464  ls -l
+  465  cd ..
+  466  ls -l
+  467  rm -rf venv/
+  468  ls -l
+  469  python3.11 -m venv venv
+  470  ls -l
+  471  source venv/bin/activate
+  472  ls -l
+  473  pip list installed
+  474  pip install wheel
+  475  pip install --upgrade pip
+  476  ls -l
+  477  ls -alhtr
+  478  git fetch --all
+  479  git status
+  480  clear
+  481  ls -l
+  482  git status
+  483  ls -l
+  484  pip install -r requirements.txt 
+  485  pip install -r -U requirements.txt 
+  486  pip install -U -r requirements.txt 
+  487  clear
+  488  pip list installed
+  489  pip list installed | grep flask
+  490  clear
+  491  ls -l
+  492  cd ..
+  493  ls -l
+  494  cd binance-api/tr
+  495  cd binance-api/flask_app/
+  496  ls -l
+  497  source set_up_environment.sh 
+  498  clear
+  499  source /home/izzetcan/Documents/git-repos/binance-api/venv/bin/activate
+  500  clear
+  501  source ../venv/bin/activate
+  502  clear
+  503  source set_up_environment.sh 
+  504  flask --app trview populate-database --help
+  505  ls -l
+  506  ls -l
+  507  flask --app trview populate-database --help
+  508  cd trview/
+  509  flask --app trview populate-database --help
+  510  ls -l
+  511  cd ..
+  512  echo $FLASK_APP 
+  513  ls -l
+  514  python run.py 
+  515  cd trview/
+  516  ls -l
+  517  history
+  518  clear
+  519  flask --help
+  520  clear
+  521  flask populate-database
+  522  cd ..
+  523  flask populate-database
+  524  flask populate-database --help
+  525  clear
+  526  ls -l
+  527  clear
+  528  history > history.backup
+  529  ls- l
+  530  pip list --outdated
+  531  pip list --outdated --format=freeze | grep -v '^-e'
+  532  pip list --outdated | grep -v '^-e'
+  533  pip list --outdated | cut -d' '
+  534  pip list --outdated > outdated_packages
+  535  cat outdated_packages 
+  536  clear
+  537  cat outdated_packages | cut -d' ' -f1
+  538  cat outdated_packages | cut -d' ' -f2
+  539  cat outdated_packages 
+  540  cat outdated_packages | awk '{print $1}
+'
+  541  cat outdated_packages | awk '{print $2}'
+  542  cat outdated_packages | awk '{print $3}'
+  543  cat outdated_packages | awk '{print $2}'
+  544  cat outdated_packages | awk '{print $2, $NF}'
+  545  touch upgrade_outdated_packages.sh
+  546  clear
+  547  ls -l
+  548  clear
+  549  ./up
+  550  ls -l
+  551  cd trview/
+  552  ls -l
+  553  cat set_up_environment.sh 
+  554  rm set_up_environment.sh 
+  555  cd ..
+  556  ls -l
+  557  chmod u+x upgrade_outdated_packages.sh 
+  558  ls -l
+  559  ls -l
+  560  clear
+  561  ls -l
+  562  ./upgrade_outdated_packages.sh 
+  563  pip list installed | grep pyOpen
+  564  clear
+  565  ls -l
+  566  cd ..
+  567  ls -l
+  568  deactivate 
+  569  rm -rf venv/
+  570  python3.11 -m venv venv
+  571  source ../venv/bin/activate
+  572  cd flask_app/
+  573  source ../venv/bin/activate
+  574  pip install -U pip
+  575  pip install wheel
+  576  ls -l
+  577  cd trview/
+  578  ls -l
+  579  cd ..
+  580  ls -l
+  581  cd ..
+  582  ls -l
+  583  cat requirements.txt 
+  584  cat requirements.txt  | cut -d '=' -f1
+  585  cat requirements.txt  | cut -d '=' -f1 | wc -l
+  586  cat requirements.txt  | wc -l
+  587  cat requirements.txt  | cut -d '=' -f1 | xargs -n1 pip install
+  588  clear
+  589  ls -l
+  590  ls -l
+  591  clear
+  592  ls -l
+  593  cd flask_app/
+  594  cd ..
+  595  du -sh .
+  596  cd venv/
+  597  du -sh .
+  598  ls -l
+  599  cd ..
+  600  ls -l
+  601  cd flask_app/
+  602  ls -l
+  603  source set_up_environment.sh 
+  604  flask populate-database --help
+  605  ./run.py
+  606  ls -l
+  607  python run.py
+  608  du -sh .
+  609  ls -l
+  610  python run.py
+  611  git status
+  612  ls -al
+  613  rm outdated_packages.txt 
+  614  ls -l
+  615  git status
+  616  history > history.backup
+  617  git add upgrade_outdated_packages.sh 
+  618  ls -l
+  619  cd trview/
+  620  ls -l
+  621  cd ..
+  622  ls -l
+  623  cd ..
+  624  ls -l
+  625  rm requirements_new_test.txt 
+  626  pip freeze > requirements_new_test.txt
+  627  ls -l
+  628  git status
+  629  history > history.backup

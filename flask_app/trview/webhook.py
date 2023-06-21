@@ -45,7 +45,7 @@ def database():
 
 @bp.route("/api/delete", methods=["POST"])
 def delete():
-    row_to_delete = db.session.query(Webhooks).first()
+    row_to_delete = db.session.query(Webhooks).first() 
     db.session.delete(row_to_delete)
     db.session.commit()
     emit("update_table", broadcast=True, namespace="/")
@@ -121,7 +121,6 @@ def signals():
 @bp.route("/api/data/<table>", methods=["POST", "GET"])
 # @login_required
 def data(table):
-
     """
     Get the data from the database and return it as a json object.
     Args:

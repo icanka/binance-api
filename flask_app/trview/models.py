@@ -22,6 +22,7 @@ def populate_models(model_class, num_records=10):
         num_records (int, optional): Number of records to insert. Defaults to 10.
     """
     click.echo(f"Populating {model_class.__name__} table with {num_records} records.")
+    # Generate fake data with the model's generate_webhook_data method.
     data = model_class.generate_webhook_data(num_records)
     for fake_data in data:
         db.session.add(fake_data)

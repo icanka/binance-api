@@ -45,7 +45,7 @@ def database():
 
 @bp.route("/api/delete", methods=["POST"])
 def delete():
-    row_to_delete = db.session.query(Webhooks).first() 
+    row_to_delete = db.session.query(Webhooks).first()
     db.session.delete(row_to_delete)
     db.session.commit()
     emit("update_table", broadcast=True, namespace="/")
@@ -84,14 +84,18 @@ def pages(page):
     print("PAGE:")
     if request.method == "POST":
         href_value = request.form["href"]
+        print("POST REUQEST")
 
-    elif request.method == "GET":  # 'GET' is deprecated
+    #elif request.method == "GET":  # 'GET' is deprecated
         # User refreshed the page.
-        href_value = page
+        #print("GET REQUEST")
+        #href_value = page
+        
     # Check if the request is an AJAX request
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         # If it is return only the partial content.
         return render_template(f"{href_value}.html")
+    
     else:
         return render_template(
             "webhook/base.html",
@@ -99,23 +103,24 @@ def pages(page):
         )
 
 
-@bp.route("/pages/signals", methods=["GET"])
-@login_required
-def signals():
-    """Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
-    Returns:
-        str: The rendered page.
-    """
-    # Check if the request is an AJAX request
-    # signal_data = db.session.query(Webhooks).all()
-    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
-        # If it is return only the partial content.
-        return render_template("webhook/pages/signals.html")
-    else:
-        return render_template(
-            "webhook/base.html",
-            content=render_template("webhook/pages/signals.html"),
-        )
+# @bp.route("/pages/signals", methods=["GET"])
+# @login_required
+# def signals():
+#     """Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
+#     Returns:
+#         str: The rendered page.
+#     """
+#     # Check if the request is an AJAX request
+#     # signal_data = db.session.query(Webhooks).all()
+#     print("SIGNALS")
+#     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+#         # If it is return only the partial content.
+#         return render_template("webhook/pages/signals.html")
+#     else:
+#         return render_template(
+#             "webhook/base.html",
+#             content=render_template("webhook/pages/signals.html"),
+#         )
 
 
 @bp.route("/api/data/<table>", methods=["POST", "GET"])
@@ -123,6 +128,7 @@ def signals():
 def data(table):
     """
     Get the data from the database and return it as a json object.
+    Only searches the columns that are configured as searchable.
     Args:
         table (str): The table model to get the data from.
 
@@ -182,7 +188,7 @@ def data(table):
 @bp.route("/api/export", methods=["GET"])
 # @login_required
 def export():
-    """
+    """ Datatables export function.
     Export the data from the database as a csv file.
     Args:
         table (str): The table model to get the data from.
@@ -283,8 +289,9 @@ def drsi_with_filters():
 
 @bp.route("/register", methods=("GET", "POST"))
 def register():  # TODO review this function
-    """Render the register page and register the user if the form is submitted."""
-    # someone is trying to register
+    """Render the register page and register the user if the form is submitted.
+    Some basic sanity checks are done here but it is expected to be dealt with in front-end.
+    """
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -375,8 +382,9 @@ def loginv2():
 
 @bp.route("/validate_user", methods=["POST"])
 def validate_user():
-    """This method is for for validating user
+    """This method is for validating user
     used primarily in javascript for interactive user validating.
+    Returned responses's text is used in javascript to inform user about the state of the validation.
 
     Returns:
         Response: The response object indicating the state of the validation.

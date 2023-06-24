@@ -31,24 +31,20 @@ def websocket():
     return "ws://localhost:5000/webhook"
 
 
-@bp.route("/database")
-def database():
-    """Render the database page.
-
-    Returns:
-        str: The rendered page.
-    """
-
-    result = db.session.query(Users).all()
+@bp.route("/database/<table>", methods=["GET"])
+def database(table):
+    """Get all Users"""
+    result = db.session.query(table).all()
     return result
 
 
 @bp.route("/api/delete", methods=["POST"])
 def delete():
+    """Delete the first row from the database and emit an event to the client to update the table."""
     row_to_delete = db.session.query(Webhooks).first()
     db.session.delete(row_to_delete)
     db.session.commit()
-    emit("update_table", broadcast=True, namespace="/")
+    emit("update_table", broadcast=True, namespace="/webhook_signal")
     return make_response(jsonify({"message": "Deleted"}), 200)
 
 
@@ -75,27 +71,29 @@ def index():
 @bp.route("/pages/<page>", methods=["POST", "GET"])
 @login_required
 def pages(page):
-    """Render the pages and return the partial content if it is an AJAX request.
+    """
+    Render the pages and return the partial content if it is an AJAX request.
     Args:
         page (str): The page to be rendered.
     Returns:
         str: The rendered page.
     """
-    print("PAGE:")
+    print("/pages endpoint")
     if request.method == "POST":
         href_value = request.form["href"]
         print("POST REUQEST")
 
-    #elif request.method == "GET":  # 'GET' is deprecated
-        # User refreshed the page.
-        #print("GET REQUEST")
-        #href_value = page
-        
+    elif request.method == "GET":  # 'GET' is deprecated
+        # User refreshed the page or navigated to the page.
+        print("GET REQUEST")
+        href_value = page
+
     # Check if the request is an AJAX request
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         # If it is return only the partial content.
+        print("AJAX REQUEST, RETURNING PARTIAL CONTENT")
         return render_template(f"{href_value}.html")
-    
+
     else:
         return render_template(
             "webhook/base.html",
@@ -106,7 +104,8 @@ def pages(page):
 # @bp.route("/pages/signals", methods=["GET"])
 # @login_required
 # def signals():
-#     """Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
+#     """
+#     Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
 #     Returns:
 #         str: The rendered page.
 #     """
@@ -154,6 +153,7 @@ def data(table):
     query = table.query
     search = request.args.get("search[value]", type=str)
     print(f"search: {search}")
+    print(f"request.args: {request.args}")
     start = request.args.get("start", type=int)
     length = request.args.get("length", type=int)
     start_time = time.time()
@@ -188,7 +188,7 @@ def data(table):
 @bp.route("/api/export", methods=["GET"])
 # @login_required
 def export():
-    """ Datatables export function.
+    """Datatables export function.
     Export the data from the database as a csv file.
     Args:
         table (str): The table model to get the data from.

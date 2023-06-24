@@ -1,4 +1,4 @@
-const APPLICATION_NAME = "Trview"; // Find some cool name for the application
+const APPLICATION_NAME = "Trview"; // TODO: Find some cool name for the application
 const currentPath = document.location.pathname;
 const $currentLink = $('a[href="' + currentPath + '"]');
 $currentLink.addClass("active");
@@ -13,8 +13,8 @@ parentLink.parent().addClass("menu-is-opening menu-open");
 //console.log(document.location.pathname);
 
 $(".nav-sidebar").on("expanded.lte.treeview", (event) => {
-//  console.log("The treeview was expanded");
-//  console.log(event.target);
+  //  console.log("The treeview was expanded");
+  //  console.log(event.target);
   $(event.target).find("a").addClass("nav-active");
 });
 
@@ -23,8 +23,8 @@ $(".nav-sidebar").on("collapsed.lte.treeview", (event) => {
 });
 
 $(window).on("load.lte.treeview", (event) => {
-//  console.log("The treeview initialized.");
-//  console.log(event.target);
+  //  console.log("The treeview initialized.");
+  //  console.log(event.target);
 });
 
 const CURRENTLY_ACTIVE_PAGE_MENU_ITEM =
@@ -177,6 +177,32 @@ namespaceSockets.forEach((socket) => {
     _socket.on("connect", function () {
       console.log(socket + " connected");
     });
+    _socket.on("disconnect", () => {
+      console.log(socket + " disconnected");
+    });
+    _socket.on("disconnect", (reason) => {
+      console.log(_socket + ": connection closed: reason: " + reason);
+      if (reason === "io server disconnect") {
+        // the disconnection was initiated by the server, you need to reconnect manually
+        console.log(_socket + ": io server disconnect");
+      }
+    });
+    _socket.on("connect_error", (error) => {
+      console.log(_socket + ": connect_error: " + error);
+    });
+    _socket.io.on("reconnect_attempt", () => {
+      console.log(_socket + ": reconnect_attempt");
+    });
+    _socket.io.on("reconnect", () => {
+      console.log(_socket + ": reconnected");
+    });
+    _socket.on("update_table", function (data) {
+      console.log("received update_table event");
+      $("#signals_table").DataTable().ajax.reload();
+      console.log("table #signals_table reloaded: " + data);
+    });
+  } else {
+    console.log("Namespace socket already defined: ", socket);
   }
 });
 
@@ -226,9 +252,23 @@ if (typeof rootSocket === "undefined") {
   });
 
   rootSocket.io.on("reconnect", () => {
-    console.log("rootSocket reconnect");
+    console.log("rootSocket reconnected");
     console.log("rootSocket id: " + rootSocket.id);
   });
 } else {
   console.log("rootSocket already defined");
+}
+
+
+
+function getHiddenColumns() {
+  var hiddenColumns = [];
+  datatable.columns().every(function () {
+    var columnIndex = this.index();
+    var visible = this.visible();
+    if (!visible) {
+      hiddenColumns.push(columnIndex);
+    }
+  });
+  return hiddenColumns;
 }

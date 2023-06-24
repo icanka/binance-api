@@ -1,21 +1,27 @@
+var datatable = null;
+var hiddenColumns = null;
+var col = null;
+
+const columns = [
+  { data: "created", searchable: false },
+  { data: "ticker", searchable: true },
+  { data: "strategy_action", searchable: true },
+  { data: "market_position", searchable: false },
+  { data: "price", searchable: false },
+  { data: "contracts", searchable: false },
+  { data: "position_size", searchable: false },
+  { data: "market_position_size", searchable: false },
+  { data: "order_id", searchable: false },
+  { data: "strategy_name", searchable: true },
+]
+
+console.log("signals.js");
 $(function () {
-  $("#signals_table").DataTable({
+  datatable = $("#signals_table").DataTable({
     ajax: "/webhook/api/data/webhooks",
     processing: true,
     serverSide: true,
-    columns: [
-      //{ data: "id" },
-      { data: "created", searchable: false },
-      { data: "ticker" },
-      { data: "strategy_action" },
-      { data: "market_position", searchable: false },
-      { data: "price", searchable: false },
-      { data: "contracts", searchable: false },
-      { data: "position_size", searchable: false },
-      { data: "market_position_size", searchable: false },
-      { data: "order_id", searchable: false },
-      { data: "strategy_name"},
-    ],
+    columns: columns,
     responsive: true,
     lengthChange: true,
     lengthMenu: [
@@ -29,7 +35,7 @@ $(function () {
     autoWidth: false,
     searching: true,
     deferRender: true,
-    searchDelay: 2000,
+    searchDelay: 5000,
     paging: true,
     buttons: [
       { extend: "copy", exportOptions: { columns: [":visible"] } },
@@ -73,4 +79,78 @@ $(function () {
       "colvis",
     ],
   });
+
+//  datatable.on("search.dt", function () {
+//    console.log("search.dt");
+//    hiddenColumnsIndexes = getHiddenColumns();
+//    console.log(hiddenColumns);
+//    console.log(datatable.settings()[0].aoData);
+//  });
+
+  datatable.on("column-visibility.dt", function (e, settings, column, state) {
+    // If the column is hidden, set the column's searchable property to false.
+    if (state == false) {
+      console.log("column is not visible");
+      aoColumn = settings.aoColumns.at(column);
+      aoColumn.bSearchable = false;
+    }
+    // If the column is visible set the column's searchable property to its' original value.
+    else if (state == true) {
+      console.log("column is visible");
+      aoColumn = settings.aoColumns.at(column);
+      aoColumn.bSearchable = columns[column].searchable;
+    }
+    console.log("invalidating rows")
+    datatable.rows().invalidate();
+  });
 });
+
+
+// Hack to only search through visible columns.
+// Developed on 1.10.18 DataTables version.
+function searchOnlyVisibleColumns(dt) {
+  var updateSearchableProperties = function (dt) {
+    // These columns are never searchable (customize to your needs)
+    //var notSearchableColumns = [
+    //    "order", "active", "visible", "required", "edit"
+    //];
+
+
+    var hiddenColumnsIndexes = getHiddenColumns();
+
+    //var visibleColumnsIndexes = [];
+    // Get indexes of all visible columns
+    //dt.columns(":visible").every(function(colIdx) {
+    //    visibleColumnsIndexes.push(colIdx);
+    //});
+
+    // Modify <a href="//legacy.datatables.net/ref#bSearchable">bSearchable</a> property in DataTable.settings.aoColumns[]
+    var settings = dt.settings()[0];
+    settings.aoColumns.forEach(function (aoColumn) {
+      var notSearchable = hiddenColumns.indexOf(aoColumn.idx) != -1;
+
+      if (notSearchable) {
+        console.log(aoColumn.data + " is not searchable")
+        aoColumn.bSearchable = false;
+      }
+    });
+
+    // Invalidate all rows
+    // This will cause to regenerate _aFilterData and _sFilterRow in DataTable.settings.aoData[]
+    // _sFilterRow is used when searching the table
+    dt.rows().invalidate();
+
+    // (Optional) simulate search input change to re-filter rows using new columns settings
+    //settings.oPreviousSearch.sSearch = "";
+    //var $table = $(dt.containers()[0]);
+    //var $input = $table.find('input[type=search]');
+    //$input.keyup();
+  };
+
+  // Run on column visibility change
+  dt.on('column-visibility.dt', function (e, settings, column, state) {
+    updateSearchableProperties(dt);
+  });
+  // First run
+  updateSearchableProperties(dt);
+}

@@ -4,6 +4,7 @@ flask populate-database --tables Users,Webhooks --num-records 5000
 flask init-db --create --fresh
 """
 
+import os
 import sqlite3
 import importlib
 import inspect
@@ -43,8 +44,10 @@ def init_db(create=False, fresh=False):
     """Clear existing data and create new tables. Create the database if it does not exist."""
     try:
         if fresh and database_exists(db.engine.url):
-            click.echo("Dropping all tables.")
-            db.drop_all()
+            click.echo(f"Deleting database")
+            os.remove(db.engine.url.database)
+            # db.drop_all()
+            # db.session.commit()
         if create and not database_exists(db.engine.url):
             click.echo(f"Creating database: {db.engine.url}")
             create_database(db.engine.url)

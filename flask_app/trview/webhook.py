@@ -18,9 +18,9 @@ from flask import (
     Response,
     jsonify,
 )
+from flask_socketio import emit
 from .models import db, Users, Webhooks
 from .db import get_db, _db, get_class
-from flask_socketio import emit
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
 

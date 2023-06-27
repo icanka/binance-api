@@ -2,7 +2,6 @@ const APPLICATION_NAME = "Trview"; // TODO: Find some cool name for the applicat
 const currentPath = document.location.pathname;
 const $currentLink = $('a[href="' + currentPath + '"]');
 $currentLink.addClass("active");
-
 const parentLink = $currentLink
   .parent()
   .parent()
@@ -10,6 +9,26 @@ const parentLink = $currentLink
   .filter('[href="#"]');
 parentLink.addClass("active");
 parentLink.parent().addClass("menu-is-opening menu-open");
+
+
+// Signals page related variables
+let datatable = null;
+let hiddenColumns = null;
+let col = null;
+const columns = [
+  { data: "created", searchable: false },
+  { data: "ticker", searchable: true },
+  { data: "strategy_action", searchable: true },
+  { data: "market_position", searchable: false },
+  { data: "price", searchable: false },
+  { data: "contracts", searchable: false },
+  { data: "position_size", searchable: false },
+  { data: "market_position_size", searchable: false },
+  { data: "order_id", searchable: false },
+  { data: "strategy_name", searchable: true },
+]
+// end
+
 //console.log(document.location.pathname);
 
 $(".nav-sidebar").on("expanded.lte.treeview", (event) => {

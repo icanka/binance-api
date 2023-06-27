@@ -1,19 +1,4 @@
-var datatable = null;
-var hiddenColumns = null;
-var col = null;
 
-const columns = [
-  { data: "created", searchable: false },
-  { data: "ticker", searchable: true },
-  { data: "strategy_action", searchable: true },
-  { data: "market_position", searchable: false },
-  { data: "price", searchable: false },
-  { data: "contracts", searchable: false },
-  { data: "position_size", searchable: false },
-  { data: "market_position_size", searchable: false },
-  { data: "order_id", searchable: false },
-  { data: "strategy_name", searchable: true },
-]
 
 console.log("signals.js");
 $(function () {
@@ -21,7 +6,7 @@ $(function () {
     ajax: "/webhook/api/data/webhooks",
     processing: true,
     serverSide: true,
-    columns: columns,
+    columns: _columns,
     responsive: true,
     lengthChange: true,
     lengthMenu: [
@@ -109,13 +94,11 @@ $(function () {
 // Hack to only search through visible columns.
 // Developed on 1.10.18 DataTables version.
 function searchOnlyVisibleColumns(dt) {
-  var updateSearchableProperties = function (dt) {
+  let updateSearchableProperties = function (dt) {
     // These columns are never searchable (customize to your needs)
     //var notSearchableColumns = [
     //    "order", "active", "visible", "required", "edit"
     //];
-
-
     var hiddenColumnsIndexes = getHiddenColumns();
 
     //var visibleColumnsIndexes = [];
@@ -125,9 +108,9 @@ function searchOnlyVisibleColumns(dt) {
     //});
 
     // Modify <a href="//legacy.datatables.net/ref#bSearchable">bSearchable</a> property in DataTable.settings.aoColumns[]
-    var settings = dt.settings()[0];
+    let settings = dt.settings()[0];
     settings.aoColumns.forEach(function (aoColumn) {
-      var notSearchable = hiddenColumns.indexOf(aoColumn.idx) != -1;
+      let notSearchable = hiddenColumns.indexOf(aoColumn.idx) != -1;
 
       if (notSearchable) {
         console.log(aoColumn.data + " is not searchable")

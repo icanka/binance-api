@@ -148,6 +148,9 @@ def data(table):
         return searchable_columns
 
     print(searchable_columns())
+    
+    col_index = request.args.get("order[0][column]", type=int)
+    col_name = request.args.get(f"columns[{col_index}][data]", type=str)
 
     table = get_class(table.capitalize())
     query = table.query

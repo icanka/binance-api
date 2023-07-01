@@ -1,7 +1,11 @@
-[submodule "archlinux/arch-boxes"]
+[submodule "arch-boxes"]
 	path = archlinux/arch-boxes
 	url = https://gitlab.archlinux.org/archlinux/arch-boxes.git
 
-[submodule "trview/AdminLTE"]
-	path = trview/AdminLTE
+[submodule "AdminLTE"]
+	path = flask_app/trview/AdminLTE
 	url = https://github.com/ColorlibHQ/AdminLTE.git
+
+[submodule "FA5PRO"]
+	path = flask_app/trview/static/FA5PRO
+	url = https://github.com/icanka/fa5pro.git

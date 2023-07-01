@@ -9,3 +9,7 @@
 [submodule "FA5PRO"]
 	path = flask_app/trview/static/FA5PRO
 	url = https://github.com/icanka/fa5pro.git
+
+[submodule "fontawesome-pro"]
+	path = flask_app/trview/static/fontawesome-pro
+	url =  https://github.com/icanka/fontawesome-pro.git

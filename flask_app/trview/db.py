@@ -60,7 +60,7 @@ def init_db(create=False, fresh=False):
 
 def _db(function_name, *args, model="trview.models", **kwargs):
     """
-    Call a function on a model. Do not use method from the model class directly from blueprints.
+    Call a function on a model. Do not use methods from the model class directly from blueprints.
     This method is used to call a function on a model class for encapsulation.
     """
     model_classes = [

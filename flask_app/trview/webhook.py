@@ -22,30 +22,8 @@ from flask_socketio import emit
 from .models import db, Users, Webhooks
 from .db import get_db, _db, get_class
 
-bp = Blueprint("webhook", __name__, url_prefix="/webhook", static_folder="AdminLTE")
-
-
-@bp.route("/api/websocket")
-def websocket():
-    """Return the websocket URL."""
-    return "ws://localhost:5000/webhook"
-
-
-@bp.route("/database/<table>", methods=["GET"])
-def database(table):
-    """Get all Users"""
-    result = db.session.query(table).all()
-    return result
-
-
-@bp.route("/api/delete", methods=["POST"])
-def delete():
-    """Delete the first row from the database and emit an event to the client to update the table."""
-    row_to_delete = db.session.query(Webhooks).first()
-    db.session.delete(row_to_delete)
-    db.session.commit()
-    emit("update_table", broadcast=True, namespace="/webhook_signal")
-    return make_response(jsonify({"message": "Deleted"}), 200)
+bp = Blueprint("webhook", __name__, url_prefix="/webhook",
+               static_folder="AdminLTE")
 
 
 def login_required(view):
@@ -101,25 +79,33 @@ def pages(page):
         )
 
 
-# @bp.route("/pages/signals", methods=["GET"])
-# @login_required
-# def signals():
-#     """
-#     Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
-#     Returns:
-#         str: The rendered page.
-#     """
-#     # Check if the request is an AJAX request
-#     # signal_data = db.session.query(Webhooks).all()
-#     print("SIGNALS")
-#     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
-#         # If it is return only the partial content.
-#         return render_template("webhook/pages/signals.html")
-#     else:
-#         return render_template(
-#             "webhook/base.html",
-#             content=render_template("webhook/pages/signals.html"),
-#         )
+@bp.route("/pages/database", methods=["POST", "GET"])
+@login_required
+def database():
+    """
+    Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
+    Returns:
+        str: The rendered page.
+    """
+    # Check if the request is an AJAX request
+    # signal_data = db.session.query(Webhooks).all()
+    table_name = 'Webhooks'
+    tables = db.metadata.tables.keys()
+    print(f"DATABASE ENDPOINT, TABLES: {tables}")
+    print("SIGNALS")
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        # If it is return only the partial content.
+        table_name = request.args.get('table')
+        table = get_class(table_name.capitalize())
+        columns = table.__table__.columns.keys()
+        return render_template("webhook/pages/signals.html", table_name=table_name, columns=columns, tables=tables)
+    else:
+        table = get_class(table_name.capitalize())
+        columns = table.__table__.columns.keys()
+        return render_template(
+            "webhook/base.html",
+            content=render_template("webhook/pages/signals.html", table_name=table_name, columns=columns, tables=tables),
+        )
 
 
 @bp.route("/api/data/<table>", methods=["POST", "GET"])
@@ -147,8 +133,20 @@ def data(table):
         ]
         return searchable_columns
 
-    print(searchable_columns())
-    
+    def orderable_columns():
+        columns = 0
+        for key in request.args.keys():
+            if "columns" in key and "data" in key:
+                columns += 1
+        orderable_columns = [
+            request.args.get(f"columns[{i}][data]", type=str)
+            for i in range(columns)
+            if request.args.get(f"columns[{i}][orderable]", type=str) == "true"
+        ]
+        return orderable_columns
+
+    # print(orderable_columns())
+
     col_index = request.args.get("order[0][column]", type=int)
     col_name = request.args.get(f"columns[{col_index}][data]", type=str)
 
@@ -222,71 +220,8 @@ def export():
 
     # return the csv file
     response = Response(csv, mimetype="text/csv")
-    response.headers.set("Content-Disposition", "attachment", filename=f"{table}.csv")
-    return response
-
-
-# TODO: refactor this function according to the new database structure.
-@bp.route("/drsi_with_filters", methods=["POST"])
-def drsi_with_filters():
-    """
-    Save the posted json to database
-
-    This endpoint is intended for tradingview. Expected example json with key:value format;
-
-    {
-    "strategy_name" : "drsi_with_filters",
-    "action": "buy",
-    "alert_message": "",
-    "contracts": "0.019893",
-    "market_position": "long",
-    "market_position_size": "0.009942",
-    "order_id": "long",
-    "position_size": "0.009942",
-    "price": "23027.08",
-    "ticker": "BTCBUSD"
-    }
-    """
-    db = get_db()
-    rd = json.loads(request.data)
-    # create an empty response object
-    response = make_response()
-    # insert the json to sqlite database
-    try:
-        db.execute(
-            """
-            INSERT INTO webhooks (
-                strategy_name,
-                ticker,
-                strategy_action,
-                market_position,
-                price,
-                position_size,
-                market_position_size,
-                contracts,
-                order_id
-            ) VALUES (?,?,?,?,?,?,?,?,?)""",
-            (
-                rd["strategy_name"],
-                rd["ticker"],
-                rd["action"],
-                rd["market_position"],
-                rd["price"],
-                rd["position_size"],
-                rd["market_position_size"],
-                rd["contracts"],
-                rd["order_id"],
-            ),
-        )
-        # data is only data if you're committed enough.
-        db.commit()
-
-    # ooopps
-    except db.Error:
-        # create some generick error response.
-        response = make_response("<h1>Database Error</h1>")
-
-    response.status_code = 200
+    response.headers.set("Content-Disposition",
+                         "attachment", filename=f"{table}.csv")
     return response
 
 

@@ -14,18 +14,18 @@ parentLink.parent().addClass("menu-is-opening menu-open");
 let datatable = null;
 let hiddenColumns = null;
 let col = null;
-const columns = [
-  { data: "created", searchable: false, orderable: false },
-  { data: "ticker", searchable: true },
-  { data: "strategy_action", searchable: true, orderable: false },
-  { data: "market_position", searchable: false },
-  { data: "price", searchable: false },
-  { data: "contracts", searchable: false },
-  { data: "position_size", searchable: false },
-  { data: "market_position_size", searchable: false },
-  { data: "order_id", searchable: false },
-  { data: "strategy_name", searchable: true, orderable: false },
-];
+// const columns = [
+//   { data: "ticker", searchable: true, orderable: true },
+//   { data: "created", searchable: false, orderable: false },
+//   { data: "strategy_action", searchable: true, orderable: false },
+//   { data: "market_position", searchable: false, orderable: true },
+//   { data: "price", searchable: false, orderable: true },
+//   { data: "contracts", searchable: false, orderable: true },
+//   { data: "position_size", searchable: false, orderable: true },
+//   { data: "market_position_size", searchable: false, orderable: true },
+//   { data: "order_id", searchable: false, orderable: false },
+//   { data: "strategy_name", searchable: true, orderable: false },
+// ];
 // end
 
 $(".nav-sidebar").on("expanded.lte.treeview", (event) => {
@@ -235,7 +235,28 @@ if (typeof rootSocket === "undefined") {
 }
 
 // Signals related functions
-function initSignalsTable() {
+
+// function getTableColumns(tableName) {
+//   // Send AJAX request to Flask server
+//   let columns = null;
+//   // Send AJAX request to Flask server, and return promise
+//   fetch("/api/database/" + tableName)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // Construct the columns variable
+//       columns = data.map((columnName) => ({
+//         data: columnName,
+//         searchable: true,
+//         orderable: true,
+//       }));
+//       return columns;
+//       console.log(columns);
+//     });
+// }
+
+function initSignalsTable(columns) {
+  console.log("initSignalsTable");
+   // access the columns variable in the promise
   datatable = $("#signals_table").DataTable({
     ajax: "/webhook/api/data/webhooks",
     processing: true,
@@ -254,7 +275,7 @@ function initSignalsTable() {
     autoWidth: false,
     searching: true,
     deferRender: true,
-    searchDelay: 5000,
+    searchDelay: 2000,
     paging: true,
     buttons: [
       { extend: "copy", exportOptions: { columns: [":visible"] } },
@@ -383,4 +404,13 @@ function searchOnlyVisibleColumns(dt) {
   updateSearchableProperties(dt);
 }
 
+
+const selectElement = document.getElementById('inputStatus');
+
+// Event listener for the 'change' event
+selectElement.addEventListener('change', (event) => {
+  const selectedTable = event.target.value;
+  // Handle the selected table here
+  console.log('Selected table:', selectedTable);
+});
 // END - Signals related functions

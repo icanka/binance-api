@@ -33,13 +33,24 @@
     <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card">
+            <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title"> {{ table_name }} DataTable</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                {% include "webhook/table2.html" %}
+                <div class="form-group col-sm-12 col-md-4">
+                  <label for="inputStatus">Table</label>
+                  <select id="inputStatus" class="form-control custom-select">
+                    <option selected disabled>Select Table</option>
+                    {% for table in tables %}
+                      <option value="{{ table }}">{{ table }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                {% with table_name=table_name %}
+                  {% include "webhook/table2.html" %}
+                {% endwith %}
               </div>
               <!-- /.card-body -->
             </div>

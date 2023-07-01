@@ -13,6 +13,8 @@ import os
 from flask import Flask
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+
+from . import api
 from . import db
 from . import webhook
 
@@ -50,6 +52,7 @@ def create_app(test_config=None):
     # register the database commands
 
     app.register_blueprint(webhook.bp)
+    app.register_blueprint(api.bp)
     db.init_app(app)
     limiter = Limiter(
         get_remote_address,

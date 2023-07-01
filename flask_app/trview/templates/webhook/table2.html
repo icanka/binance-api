@@ -1,35 +1,21 @@
 <table id="signals_table" class="table table-bordered table-striped">
+  {{ table_name|safe }} -- {{ columns|safe }}
     <thead>
     <tr>
-      <th>Created</th>
-      <th>Ticker</th>
-      <th>Strategy Action</th>
-      <th>Market Position</th>
-      <th>Signal Price</th>
-      <th>Contracts</th>
-      <th>Position Size</th>
-      <th>Market Position Size</th>
-      <th>Order Id</th>
-      <th>Strategy Name</th>
+      {% for column in columns %}
+        <th>{{ column }}</th>
+      {% endfor %}
     </tr>
     </thead>
     <tbody>
     </tbody>
     <tfoot>
     <tr>
-      <th>Created</th>
-      <th>Ticker</th>
-      <th>Strategy Action</th>
-      <th>Market Position</th>
-      <th>Signal Price</th>
-      <th>Contracts</th>
-      <th>Position Size</th>
-      <th>Market Position Size</th>
-      <th>Order Id</th>
-      <th>Strategy Name</th>
+      {% for column in columns %}
+        <th>{{ column }}</th>
+      {% endfor %}
     </tr>
     </tfoot>
   </table>
-
 
   

@@ -18,34 +18,55 @@ import asyncio
 
 db = SQLAlchemy()
 
+
 async def commit_with_progress():
-    await asyncio.gather(
-    asyncio.to_thread(db.session.commit),
-    asyncio.sleep(10))
+    """Commit the database session and wait for 10 seconds.
+    """
+    try:
+        await asyncio.gather(
+            asyncio.to_thread(db.session.commit),
+            asyncio.sleep(10))
+    except (IntegrityError, DataError, OperationalError) as exception:
+        click.echo("\rError inserting data into the database.")
+        click.echo(f"Error: {exception.args[0]}")
+        click.echo("Rolling back transaction.")
+        # Rollback the transaction or it will be stuck in a bad state.
+        db.session.rollback()
+
 
 async def progress_spinner(task):
-    # List of spinner characters
+    """Progress spinner for the commit task.
+
+    Args:
+        task (asyncio.Task): The task to monitor.
+    """
     spinner = Spinner('Committing transaction ')
     while not task.done():
         spinner.next()
         await asyncio.sleep(0.1)
     spinner.finish()
 
+
 async def main():
+    """Main function for the async tasks.
+    """
+
     # Create the task and start the progress spinner concurrently
     task = asyncio.create_task(commit_with_progress())
     spinner_task = asyncio.create_task(progress_spinner(task))
-    print("async sleep 3 secs")
     await asyncio.sleep(3)
     # Wait for the commit task to complete
-    #await task
+    # await task # Don't need to wait for the commit task to complete
 
     # Cancel the progress spinner task after the commit task is done
-    #spinner_task.cancel()
+    # No need to cancel the spinner task since it will be done when the commit task is done
+    # spinner_task.cancel()
     try:
+        # Spinner task will be finished when the commit task is done
         await spinner_task
     except asyncio.CancelledError:
         pass
+
 
 def populate_models(model_class, num_records=10):
     """Populate the database with fake data.
@@ -56,23 +77,11 @@ def populate_models(model_class, num_records=10):
     click.echo(
         f"Populating {model_class.__name__} table with {num_records} records.")
     # Generate fake data with the model's generate_webhook_data method.
-    bar = Bar(f"Generating", max=num_records, suffix='%(percent)d%%')
     data = model_class.generate_webhook_data(num_records)
     for fake_data in data:
-        bar.next()
         db.session.add(fake_data)
-    bar.finish()
-    try:
-        asyncio.run(main())
-        #db.session.commit()
-    except (IntegrityError, DataError, OperationalError) as exception:
-        click.echo("Error inserting data into the database.")
-        click.echo(f"Error: {exception.args[0]}")
-        click.echo("Rolling back transaction.")
-        # Rollback the transaction or it will be stuck in a bad state.
-        db.session.rollback()
-    finally:
-        bar.finish()
+    asyncio.run(main())
+    # db.session.commit()
 
 
 class Users(db.Model):
@@ -81,7 +90,7 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True,
                    index=False, unique=True, nullable=False)
     username = db.Column(db.String(64), index=True,
-                         unique=False, nullable=False)
+                         unique=True, nullable=False)
     name = db.Column(db.String(64), index=True, unique=False, nullable=False)
     password = db.Column(db.String(512), nullable=False)
 
@@ -135,6 +144,7 @@ class Users(db.Model):
         faker = Faker()
         data = []
         # Create a fixed user named 'dev' for development purposes.
+        pbar = Bar(f"Generating", max=num_records, suffix='%(percent)d%%')
         dev_user = Users(
             username="dev@dev.com",
             name=faker.name(),
@@ -142,12 +152,14 @@ class Users(db.Model):
         )
         data.append(dev_user)
         for _ in range(num_records):
+            pbar.next()
             user = Users(
                 username=faker.email(),
                 name=faker.name(),
                 password=generate_password_hash("1234-asd"),
             )
             data.append(user)
+        pbar.finish()
         return data
 
 

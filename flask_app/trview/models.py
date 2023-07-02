@@ -1,6 +1,6 @@
 """
 Models for the trview application.
-Contains the database models and helper functions. 
+Contains the database models and helper functions.
 Model specific operations should be implemented in the models.py file.
 """
 
@@ -21,30 +21,27 @@ db = SQLAlchemy()
 async def commit_with_progress():
     await asyncio.gather(
     asyncio.to_thread(db.session.commit),
-    asyncio.sleep(1))
-    
+    asyncio.sleep(10))
+
 async def progress_spinner(task):
     # List of spinner characters
-    spinner = Spinner('Commiting transaction')
+    spinner = Spinner('Committing transaction ')
     while not task.done():
         spinner.next()
         await asyncio.sleep(0.1)
     spinner.finish()
-    print('\rDone!')
-    
+
 async def main():
     # Create the task and start the progress spinner concurrently
-    click.echo("RUnning main")
     task = asyncio.create_task(commit_with_progress())
     spinner_task = asyncio.create_task(progress_spinner(task))
-
+    print("async sleep 3 secs")
+    await asyncio.sleep(3)
     # Wait for the commit task to complete
-    click.echo("Waiting for task")
-    await task
-    click.echo("Task done")
+    #await task
 
     # Cancel the progress spinner task after the commit task is done
-    spinner_task.cancel()
+    #spinner_task.cancel()
     try:
         await spinner_task
     except asyncio.CancelledError:

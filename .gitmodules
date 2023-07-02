@@ -1,15 +1,16 @@
 [submodule "arch-boxes"]
 	path = archlinux/arch-boxes
-	url = https://gitlab.archlinux.org/archlinux/arch-boxes.git
+	branch = raflman
+	url = git@github.com:icanka/arch-boxes.git
 
 [submodule "AdminLTE"]
 	path = flask_app/trview/AdminLTE
-	url = https://github.com/ColorlibHQ/AdminLTE.git
+	url = git@github.com:ColorlibHQ/AdminLTE.git
 
 [submodule "FA5PRO"]
 	path = flask_app/trview/static/FA5PRO
-	url = https://github.com/icanka/fa5pro.git
+	url = git@github.com:icanka/fa5pro.git
 
 [submodule "fontawesome-pro"]
 	path = flask_app/trview/static/fontawesome-pro
-	url =  https://github.com/icanka/fontawesome-pro.git
+	url = git@github.com:icanka/fontawesome-pro.git

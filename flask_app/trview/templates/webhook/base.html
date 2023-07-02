@@ -28,6 +28,8 @@
         <script src="{{ url_for('webhook.static', filename='dist/js/adminlte.min.js') }}"></script>
         <!-- socket.io -->
         <script src="{{ url_for('static', filename='scripts/3rdparty/socket.io.min.js') }}"></script>
+        <!-- Page specific script -->
+        <script src="{{ url_for('static', filename='scripts/base.js')}}"></script>
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -45,8 +47,6 @@
         <!-- ./wrapper -->
         {% block include_js %}
         {% endblock -%}
-        <!-- Page specific script -->
-        <script src="{{ url_for('static', filename='scripts/base.js')}}"></script>
         {% block page_script %}{% endblock %}
     </body>
 </html>

@@ -1,17 +1,25 @@
 console.log("signals.js");
 let tableName = "webhooks";
-// Send AJAX request to Flask server, and return promise
-fetch("/api/database/" + tableName)
-  .then((response) => response.json())
-  .then((data) => {
-    // Construct the columns variable
-    const columns = data.map((columnName) => ({
-      data: columnName,
-      searchable: true,
-      orderable: true,
-    }));
-    $(function () {
-      initSignalsTable(columns);
-    });
-    console.log(columns);
-  });
+// Send AJAX request to Flask server, and return promise, this is an async operation
+fetchTableColumnsAndInitialize(tableName);
+
+const selectElement = document.getElementById("inputStatus");
+
+// Event listener for the 'change' event
+selectElement.addEventListener("change", (event) => {
+  const selectedTable = event.target.value;
+  // Handle the selected table here
+  console.log("Reinitializing table with new table:", selectedTable);
+  datatable.destroy(); // Destroy the previous table
+  // Reinitialize the table
+  let tbody = datatable.table().body();
+  tbody = $(tbody);
+  console.log("Emptying tbody");
+  tbody.empty();
+  signalsTableInitialized = false;
+  console.log("Emptying finished");
+  if(!signalsTableInitialized) {
+    console.log("Signals table not initialized yet, initializing now");
+    fetchTableColumnsAndInitialize(selectedTable);
+  }
+});

@@ -12,6 +12,7 @@ parentLink.parent().addClass("menu-is-opening menu-open");
 
 // Signals page related variables
 let datatable = null;
+let signalsTableInitialized = false;
 let hiddenColumns = null;
 let col = null;
 // const columns = [
@@ -254,13 +255,13 @@ if (typeof rootSocket === "undefined") {
 //     });
 // }
 
-function initSignalsTable(columns) {
-  console.log("initSignalsTable");
-   // access the columns variable in the promise
+function initSignalsTable(columns, tableName) {
+  // access the columns variable in the promise
   datatable = $("#signals_table").DataTable({
-    ajax: "/webhook/api/data/webhooks",
+    ajax: "/webhook/api/data/" + tableName,
     processing: true,
     serverSide: true,
+    destroy: true,
     columns: columns,
     responsive: true,
     lengthChange: true,
@@ -345,6 +346,54 @@ function initSignalsTable(columns) {
   });
 }
 
+function replaceTableHeader(columns) {
+  let signalsTable = $("#signals_table");
+  signalsTable.find("thead, tfoot").remove();
+
+  const thead = $("<thead>");
+  const tfoot = $("<tfoot>");
+  const tr = $("<tr>");
+
+  columns.forEach((column) => {
+    const th = $("<th>", {
+      text: column.data,
+    });
+    tr.append(th);
+  });
+
+  thead.append(tr);
+  tfoot.append(tr.clone());
+  console.log("Appending: " + thead);
+  signalsTable.append(thead);
+  signalsTable.append(tfoot);
+}
+
+function fetchTableColumnsAndInitialize(tableName) {
+  fetch("/api/database/" + tableName)
+    .then((response) => response.json())
+    .then((data) => {
+      const columns = data.map((columnName) => ({
+        data: columnName,
+        searchable: true,
+        orderable: true,
+      }));
+
+      console.log(columns)
+      replaceTableHeader(columns);
+
+      $(function () {
+        console.log("Initializing signals table");
+        if(!signalsTableInitialized){
+          initSignalsTable(columns, tableName);
+          signalsTableInitialized = true;
+        }
+      });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
 function getHiddenColumns() {
   let hiddenColumns = [];
   datatable.columns().every(function () {
@@ -404,13 +453,12 @@ function searchOnlyVisibleColumns(dt) {
   updateSearchableProperties(dt);
 }
 
+// const selectElement = document.getElementById('inputStatus');
 
-const selectElement = document.getElementById('inputStatus');
-
-// Event listener for the 'change' event
-selectElement.addEventListener('change', (event) => {
-  const selectedTable = event.target.value;
-  // Handle the selected table here
-  console.log('Selected table:', selectedTable);
-});
-// END - Signals related functions
+// // Event listener for the 'change' event
+// selectElement.addEventListener('change', (event) => {
+//   const selectedTable = event.target.value;
+//   // Handle the selected table here
+//   console.log('Selected table:', selectedTable);
+// });
+// // END - Signals related functions

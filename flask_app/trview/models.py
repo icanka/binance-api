@@ -11,9 +11,44 @@ from sqlalchemy.exc import OperationalError, DataError, IntegrityError
 from sqlalchemy import Index
 from sqlalchemy.orm import deferred
 from faker import Faker
+from progress.bar import Bar
+from progress.spinner import Spinner
+from flask import current_app
+import asyncio
 
 db = SQLAlchemy()
 
+async def commit_with_progress():
+    await asyncio.gather(
+    asyncio.to_thread(db.session.commit),
+    asyncio.sleep(1))
+    
+async def progress_spinner(task):
+    # List of spinner characters
+    spinner = Spinner('Commiting transaction')
+    while not task.done():
+        spinner.next()
+        await asyncio.sleep(0.1)
+    spinner.finish()
+    print('\rDone!')
+    
+async def main():
+    # Create the task and start the progress spinner concurrently
+    click.echo("RUnning main")
+    task = asyncio.create_task(commit_with_progress())
+    spinner_task = asyncio.create_task(progress_spinner(task))
+
+    # Wait for the commit task to complete
+    click.echo("Waiting for task")
+    await task
+    click.echo("Task done")
+
+    # Cancel the progress spinner task after the commit task is done
+    spinner_task.cancel()
+    try:
+        await spinner_task
+    except asyncio.CancelledError:
+        pass
 
 def populate_models(model_class, num_records=10):
     """Populate the database with fake data.
@@ -21,28 +56,36 @@ def populate_models(model_class, num_records=10):
     Args:
         num_records (int, optional): Number of records to insert. Defaults to 10.
     """
-    click.echo(f"Populating {model_class.__name__} table with {num_records} records.")
+    click.echo(
+        f"Populating {model_class.__name__} table with {num_records} records.")
     # Generate fake data with the model's generate_webhook_data method.
+    bar = Bar(f"Generating", max=num_records, suffix='%(percent)d%%')
     data = model_class.generate_webhook_data(num_records)
     for fake_data in data:
+        bar.next()
         db.session.add(fake_data)
-    click.echo("Committing transaction.")
+    bar.finish()
     try:
-        db.session.commit()
-
+        asyncio.run(main())
+        #db.session.commit()
     except (IntegrityError, DataError, OperationalError) as exception:
         click.echo("Error inserting data into the database.")
         click.echo(f"Error: {exception.args[0]}")
         click.echo("Rolling back transaction.")
-        db.session.rollback()  # Rollback the transaction or it will be stuck in a bad state.
+        # Rollback the transaction or it will be stuck in a bad state.
+        db.session.rollback()
+    finally:
+        bar.finish()
 
 
 class Users(db.Model):
     """User model."""
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=False, unique=True, nullable=False)
-    username = db.Column(db.String(64), index=True, unique=True, nullable=False)
-    name = db.Column(db.String(64), index=True, unique=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True,
+                   index=False, unique=True, nullable=False)
+    username = db.Column(db.String(64), index=True,
+                         unique=False, nullable=False)
+    name = db.Column(db.String(64), index=True, unique=False, nullable=False)
     password = db.Column(db.String(512), nullable=False)
 
     def to_dict(self):
@@ -69,7 +112,8 @@ class Users(db.Model):
             password (str): password
         """
         salted_hash = generate_password_hash(password)
-        new_user = Users(username=username, name=username, password=salted_hash)
+        new_user = Users(username=username, name=username,
+                         password=salted_hash)
         db.session.add(new_user)
         try:
             db.session.commit()
@@ -77,7 +121,8 @@ class Users(db.Model):
             click.echo("Error inserting data into the database.")
             click.echo(f"Error: {exception.args[0]}")
             click.echo("Rolling back transaction.")
-            db.session.rollback()  # Rollback the transaction or it will be stuck in a bad state.
+            # Rollback the transaction or it will be stuck in a bad state.
+            db.session.rollback()
             return exception.args[0]
 
     @staticmethod
@@ -106,14 +151,14 @@ class Users(db.Model):
                 password=generate_password_hash("1234-asd"),
             )
             data.append(user)
-
         return data
 
 
 class Webhooks(db.Model):
     """Webhook model."""
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=False, unique=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True,
+                   index=False, unique=True, nullable=False)
     created = db.Column(
         db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp(), index=True
     )
@@ -165,8 +210,10 @@ class Webhooks(db.Model):
                 strategy_name="drsi_with_filters",
                 ticker=faker.random_element(elements=("BTCBUSD", "ETHBUSD")),
                 strategy_action=faker.random_element(elements=("BUY", "SELL")),
-                market_position=faker.random_element(elements=("LONG", "SHORT")),
-                price=faker.pyfloat(min_value=1000, max_value=10000, right_digits=2),
+                market_position=faker.random_element(
+                    elements=("LONG", "SHORT")),
+                price=faker.pyfloat(
+                    min_value=1000, max_value=10000, right_digits=2),
                 position_size=faker.random_number(digits=4),
                 market_position_size=faker.pyfloat(
                     min_value=1000, max_value=10000, right_digits=2
@@ -179,5 +226,6 @@ class Webhooks(db.Model):
             data.append(webhook)
 
         return data
+
 
 Index('idx_webhooks_id', Webhooks.id, unique=True)

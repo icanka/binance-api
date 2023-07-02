@@ -59,7 +59,11 @@ def _database(table_name):
 @bp.route("/delete", methods=["POST"])
 def delete():
     """Delete the first row from the database and emit an event to the client to update the table."""
-    row_to_delete = db.session.query(Webhooks).first()
+    table_name = request.args.get("table_name")
+    clazz = get_class(table_name.capitalize())
+    print(clazz)
+    print(type(clazz))
+    row_to_delete = db.session.query(clazz).first()
     db.session.delete(row_to_delete)
     db.session.commit()
     emit("update_table", broadcast=True, namespace="/webhook_signal")

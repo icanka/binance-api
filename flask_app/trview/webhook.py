@@ -153,7 +153,7 @@ def data(table):
     table = get_class(table.capitalize())
     query = table.query
     order = []
-    
+
     for i in count():
         col_index = request.args.get(f"order[{i}][column]", type=int)
         print(f"col_index: {col_index}")
@@ -167,7 +167,7 @@ def data(table):
         order.append(col)
     if order:
         query = query.order_by(*order)
-        
+
     search = request.args.get("search[value]", type=str)
     print(f"search: {search}")
     pprint(f"request.args: {request.args}")

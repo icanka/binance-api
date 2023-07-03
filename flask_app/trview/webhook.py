@@ -2,7 +2,6 @@
 
 import functools
 from itertools import count
-import json
 import hashlib
 import time
 from pprint import pprint
@@ -20,8 +19,7 @@ from flask import (
     Response,
     jsonify,
 )
-from flask_socketio import emit
-from .models import db, Users, Webhooks
+from .models import db, Users
 from .db import get_db, _db, get_class
 
 bp = Blueprint("webhook", __name__, url_prefix="/webhook",
@@ -85,7 +83,8 @@ def pages(page):
 @login_required
 def database():
     """
-    Render the signals page and return the partial content if it is an AJAX request or the full page if it is not.
+    Render the signals page and return the partial content if it is an 
+    AJAX request or the full page if it is not.
     Returns:
         str: The rendered page.
     """
@@ -100,14 +99,16 @@ def database():
         table_name = request.args.get('table')
         table = get_class(table_name.capitalize())
         columns = table.__table__.columns.keys()
-        return render_template("webhook/pages/signals.html", table_name=table_name, columns=columns, tables=tables)
+        return render_template("webhook/pages/signals.html", table_name=table_name,
+                               columns=columns, tables=tables)
     else:
         table = get_class(table_name.capitalize())
         columns = table.__table__.columns.keys()
         return render_template(
             "webhook/base.html",
             content=render_template(
-                "webhook/pages/signals.html", table_name=table_name, columns=columns, tables=tables),
+                "webhook/pages/signals.html", table_name=table_name,
+                columns=columns, tables=tables),
         )
 
 

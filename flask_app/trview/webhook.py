@@ -7,6 +7,7 @@ import time
 from pprint import pprint
 from werkzeug.security import check_password_hash
 from flask import (
+    current_app,
     Blueprint,
     flash,
     g,
@@ -19,6 +20,7 @@ from flask import (
     Response,
     jsonify,
 )
+
 from .models import db, Users
 from .db import get_db, _db, get_class
 
@@ -124,82 +126,37 @@ def data(table):
     Returns:
         dict: The data from the database.
     """
-
-    def searchable_columns():
-        columns = 0
-        for key in request.args.keys():
-            if "columns" in key and "data" in key:
-                columns += 1
-        searchable_columns = [
-            request.args.get(f"columns[{i}][data]", type=str)
-            for i in range(columns)
-            if request.args.get(f"columns[{i}][searchable]", type=str) == "true"
-        ]
-        return searchable_columns
-
-    def orderable_columns():
-        columns = 0
-        for key in request.args.keys():
-            if "columns" in key and "data" in key:
-                columns += 1
-        orderable_columns = [
-            request.args.get(f"columns[{i}][data]", type=str)
-            for i in range(columns)
-            if request.args.get(f"columns[{i}][orderable]", type=str) == "true"
-        ]
-        return orderable_columns
+    start_time = time.time()
 
     table = get_class(table.capitalize())
     query = table.query
-    order = []
+    order = get_order_columns(table)
 
-    for i in count():
-        col_index = request.args.get(f"order[{i}][column]", type=int)
-        print(f"col_index: {col_index}")
-        print(f"i: {i}")
-        if col_index is None:
-            break
-        col_name = request.args.get(f"columns[{col_index}][data]", type=str)
-        if col_name in orderable_columns():
-            descending = request.args.get(f"order[{i}][dir]", type=str) == "desc"
-            col = getattr(table, col_name)
-            col = col.desc() if descending else col.asc()
-            order.append(col)
     if order:
         query = query.order_by(*order)
 
     search = request.args.get("search[value]", type=str)
-    print(f"search: {search}")
     pprint(f"request.args: {request.args}")
-    start = request.args.get("start", type=int)
-    length = request.args.get("length", type=int)
-    start_time = time.time()
     try:
-        if search:
-            or_clauses = [
-                table.__table__.columns[column].like(f"{search}%")
-                for column in searchable_columns()
-            ]
-            query = query.filter(db.or_(*or_clauses))
-
-        total_filtered = query.count()
+        total_filtered, query = apply_search_filter(query, search, table)
+        start, length = get_pagination_parameters()
         query = query.offset(start).limit(length)
 
     except AttributeError:
         return jsonify({"error": "Not Found."}), 404
 
+    response_data = {
+        "data": [table_data.to_dict() for table_data in query],
+        "recordsFiltered": total_filtered,
+        "recordsTotal": table.query.count(),
+        # This is the draw counter that DataTables is expecting to be returned from the server.
+        "draw": request.args.get("draw", type=int),
+    }
+
     end_time = time.time()
     elapsed_time = end_time - start_time
     print(f"Elapsed time: {elapsed_time}")
-    return jsonify(
-        {
-            "data": [table_data.to_dict() for table_data in query],
-            "recordsFiltered": total_filtered,
-            "recordsTotal": table.query.count(),
-            # This is the draw counter that DataTables is expecting to be returned from the server.
-            "draw": request.args.get("draw", type=int),
-        }
-    )
+    return jsonify(response_data)
 
 
 @bp.route("/api/export", methods=["GET"])
@@ -286,7 +243,7 @@ def login():
 
         if error is None:
             session.clear()
-            salt = app.config["SECRET_KEY"]
+            salt = current_app.config["SECRET_KEY"]
             # Concatenate the user id with the salt
             data_with_salt = user["id"] + salt
             # Hash the data with md5
@@ -338,30 +295,22 @@ def loginv2():
 def validate_user():
     """This method is for validating user
     used primarily in javascript for interactive user validating.
-    Returned responses's text is used in javascript to inform user about the state of the validation.
+    Returned responses's text is used in javascript to inform user about 
+    the state of the validation.
 
     Returns:
         Response: The response object indicating the state of the validation.
     """
 
-    # rd = json.loads(request.data)
-    rd = request.get_json()
+    response_data = request.get_json()
     response = make_response()
-    username = rd["email"]
-    password = rd["password"]
-    # db = get_db()
-    error = None
+    username = response_data["email"]
+    password = response_data["password"]
     user = db.session.query(Users).filter_by(username=username).first()
     if user is not None:
         print(check_password_hash(user.password, password))
     else:
         print("User is None")
-
-    # return response
-    # user = db.execute("SELECT * from user WHERE username = ?", (username,)).fetchone()
-    # print(rd)
-    # past= check_password_hash(user["password"], password)
-    # print(f"user: {past}")
 
     if user is not None and check_password_hash(user.password, password):
         session.clear()
@@ -369,7 +318,6 @@ def validate_user():
         response.status_code = 200
         response.data = "Login Successful"
         return response
-        # return render_template(url_for("index"))
     else:
         # return a message with unauthorized access code.
         response = make_response("Incorrect credentials", 401)
@@ -395,3 +343,92 @@ def logout():
     """
     session.clear()
     return redirect(url_for("index"))
+
+
+def get_order_columns(table) -> list:
+    """Get the columns to order by from the request.
+
+    Args:
+        table (_type_): The table to order by.
+
+    Returns:
+        list: List of columns to order by.
+    """
+    
+    order_columns = []
+    for i in count():
+        col_index = request.args.get(f"order[{i}][column]", type=int)
+        if col_index is None:
+            break
+        col_name = request.args.get(f"columns[{col_index}][data]", type=str)
+        if is_column_orderable(col_name):
+            descending = request.args.get(
+                f"order[{i}][dir]", type=str) == "desc"
+            col = getattr(table, col_name)
+            col = col.desc() if descending else col.asc()
+            order_columns.append(col)
+    return order_columns
+
+
+def apply_search_filter(query, search, table) -> tuple:
+    """Apply the search filter to the query."""
+    if search:
+        or_clauses = [
+            table.__table__.columns[column].like(f"{search}%")
+            for column in searchable_columns()
+        ]
+        query = query.filter(db.or_(*or_clauses))
+
+    total_filtered = query.count()
+    return total_filtered, query
+
+
+def searchable_columns() -> list:
+    """Get the columns that are searchable by from the request."""
+    columns = get_table_columns()
+    searchable_cols = [
+        request.args.get(f"columns[{i}][data]", type=str)
+        for i in range(columns)
+        if request.args.get(f"columns[{i}][searchable]", type=str) == "true"
+    ]
+    return searchable_cols
+
+
+def orderable_columns() -> list:
+    """Get the columns that are orderable by from the request."""
+    columns = get_table_columns()
+    for key in request.args.keys():
+        if "columns" in key and "data" in key:
+            columns += 1
+    orderable_cols = [
+        request.args.get(f"columns[{i}][data]", type=str)
+        for i in range(columns)
+        if request.args.get(f"columns[{i}][orderable]", type=str) == "true"
+    ]
+    return orderable_cols
+
+
+def get_table_columns() -> int:
+    """Get the number of columns in the table from the request."""
+    columns = 0
+    for key in request.args.keys():
+        if "columns" in key and "data" in key:
+            columns += 1
+    return columns
+
+
+def get_pagination_parameters() -> tuple:
+    """Get the pagination parameters from the request."""
+    start = request.args.get("start", type=int)
+    length = request.args.get("length", type=int)
+    return start, length
+
+
+def is_column_orderable(column_name) -> bool:
+    """Check if the column is orderable."""
+    return column_name in searchable_columns()
+
+
+def is_column_searchable(column_name) -> bool:
+    """Check if the column is searchable."""
+    return column_name in searchable_columns()

@@ -1,9 +1,11 @@
 """Webhook views"""
 
 import functools
+from itertools import count
 import json
 import hashlib
 import time
+from pprint import pprint
 from werkzeug.security import check_password_hash
 from flask import (
     Blueprint,
@@ -104,7 +106,8 @@ def database():
         columns = table.__table__.columns.keys()
         return render_template(
             "webhook/base.html",
-            content=render_template("webhook/pages/signals.html", table_name=table_name, columns=columns, tables=tables),
+            content=render_template(
+                "webhook/pages/signals.html", table_name=table_name, columns=columns, tables=tables),
         )
 
 
@@ -144,17 +147,30 @@ def data(table):
             if request.args.get(f"columns[{i}][orderable]", type=str) == "true"
         ]
         return orderable_columns
-
+    # print(searchable_columns())
     # print(orderable_columns())
-
-    col_index = request.args.get("order[0][column]", type=int)
-    col_name = request.args.get(f"columns[{col_index}][data]", type=str)
 
     table = get_class(table.capitalize())
     query = table.query
+    order = []
+    
+    for i in count():
+        col_index = request.args.get(f"order[{i}][column]", type=int)
+        print(f"col_index: {col_index}")
+        print(f"i: {i}")
+        if col_index is None:
+            break
+        col_name = request.args.get(f"columns[{col_index}][data]", type=str)
+        descending = request.args.get(f"order[{i}][dir]", type=str) == "desc"
+        col = getattr(table, col_name)
+        col = col.desc() if descending else col.asc()
+        order.append(col)
+    if order:
+        query = query.order_by(*order)
+        
     search = request.args.get("search[value]", type=str)
     print(f"search: {search}")
-    print(f"request.args: {request.args}")
+    pprint(f"request.args: {request.args}")
     start = request.args.get("start", type=int)
     length = request.args.get("length", type=int)
     start_time = time.time()

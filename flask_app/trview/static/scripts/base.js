@@ -12,6 +12,7 @@ parentLink.parent().addClass("menu-is-opening menu-open");
 
 // Signals page related variables
 let datatable = null;
+let cols = null;
 let signalsTableInitialized = false;
 let hiddenColumns = null;
 let col = null;
@@ -144,6 +145,8 @@ window.addEventListener("popstate", function (event) {
 let title = $(CURRENTLY_ACTIVE_PAGE_MENU_ITEM).text().trim();
 if (title !== "") document.title = `${title} - ${APPLICATION_NAME}`;
 
+// ----------- SOCKET IO ----------------
+
 const namespaceSockets = ["webhook_signal"];
 
 namespaceSockets.forEach((socket) => {
@@ -235,27 +238,28 @@ if (typeof rootSocket === "undefined") {
   console.log("rootSocket already defined");
 }
 
-// Signals related functions
+// --------------- DATATABLES ----------------
 
-// function getTableColumns(tableName) {
-//   // Send AJAX request to Flask server
-//   let columns = null;
-//   // Send AJAX request to Flask server, and return promise
-//   fetch("/api/database/" + tableName)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // Construct the columns variable
-//       columns = data.map((columnName) => ({
-//         data: columnName,
-//         searchable: true,
-//         orderable: true,
-//       }));
-//       return columns;
-//       console.log(columns);
-//     });
-// }
+function columnVisibilityHandler(e, settings, column, state) {
+  // If the column is hidden, set the column's searchable property to false.
+  console.log(cols);
+  if (state == false) {
+    console.log("column is not visible");
+    aoColumn = settings.aoColumns.at(column);
+    aoColumn.bSearchable = false;
+  }
+  // If the column is visible set the column's searchable property to its' original value.
+  else if (state == true) {
+    console.log("column is visible");
+    aoColumn = settings.aoColumns.at(column);
+    aoColumn.bSearchable = cols[column].searchable;
+  }
+  console.log("invalidating rows");
+  datatable.rows().invalidate();
+}
 
 function initSignalsTable(columns, tableName) {
+  cols = columns;
   // access the columns variable in the promise
   datatable = $("#signals_table").DataTable({
     ajax: "/webhook/api/data/" + tableName,
@@ -321,29 +325,7 @@ function initSignalsTable(columns, tableName) {
     ],
   });
 
-  //  datatable.on("search.dt", function () {
-  //    console.log("search.dt");
-  //    hiddenColumnsIndexes = getHiddenColumns();
-  //    console.log(hiddenColumns);
-  //    console.log(datatable.settings()[0].aoData);
-  //  });
-
-  datatable.on("column-visibility.dt", function (e, settings, column, state) {
-    // If the column is hidden, set the column's searchable property to false.
-    if (state == false) {
-      console.log("column is not visible");
-      aoColumn = settings.aoColumns.at(column);
-      aoColumn.bSearchable = false;
-    }
-    // If the column is visible set the column's searchable property to its' original value.
-    else if (state == true) {
-      console.log("column is visible");
-      aoColumn = settings.aoColumns.at(column);
-      aoColumn.bSearchable = columns[column].searchable;
-    }
-    console.log("invalidating rows");
-    datatable.rows().invalidate();
-  });
+  datatable.on("column-visibility.dt", columnVisibilityHandler);
 }
 
 function replaceTableHeader(columns) {
@@ -378,12 +360,12 @@ function fetchTableColumnsAndInitialize(tableName) {
         orderable: true,
       }));
 
-      console.log(columns)
+      console.log(columns);
       replaceTableHeader(columns);
 
       $(function () {
         console.log("Initializing signals table");
-        if(!signalsTableInitialized){
+        if (!signalsTableInitialized) {
           initSignalsTable(columns, tableName);
           signalsTableInitialized = true;
         }
@@ -406,6 +388,7 @@ function getHiddenColumns() {
   return hiddenColumns;
 }
 
+// ----- NOT USED -----
 // Hack to only search through visible columns.
 // Developed on 1.10.18 DataTables version.
 function searchOnlyVisibleColumns(dt) {
@@ -453,12 +436,21 @@ function searchOnlyVisibleColumns(dt) {
   updateSearchableProperties(dt);
 }
 
-// const selectElement = document.getElementById('inputStatus');
-
-// // Event listener for the 'change' event
-// selectElement.addEventListener('change', (event) => {
-//   const selectedTable = event.target.value;
-//   // Handle the selected table here
-//   console.log('Selected table:', selectedTable);
-// });
-// // END - Signals related functions
+// ----- NOT USED -----
+function getTableColumns(tableName) {
+  // Send AJAX request to Flask server
+  let columns = null;
+  // Send AJAX request to Flask server, and return promise
+  fetch("/api/database/" + tableName)
+    .then((response) => response.json())
+    .then((data) => {
+      // Construct the columns variable
+      columns = data.map((columnName) => ({
+        data: columnName,
+        searchable: true,
+        orderable: true,
+      }));
+      return columns;
+      console.log(columns);
+    });
+}

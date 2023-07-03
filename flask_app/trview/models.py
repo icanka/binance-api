@@ -3,7 +3,7 @@ Models for the trview application.
 Contains the database models and helper functions.
 Model specific operations should be implemented in the models.py file.
 """
-
+import asyncio
 import click
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
@@ -13,8 +13,6 @@ from sqlalchemy.orm import deferred
 from faker import Faker
 from progress.bar import Bar
 from progress.spinner import Spinner
-from flask import current_app
-import asyncio
 
 db = SQLAlchemy()
 

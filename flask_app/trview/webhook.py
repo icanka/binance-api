@@ -148,8 +148,6 @@ def data(table):
             if request.args.get(f"columns[{i}][orderable]", type=str) == "true"
         ]
         return orderable_columns
-    # print(searchable_columns())
-    # print(orderable_columns())
 
     table = get_class(table.capitalize())
     query = table.query
@@ -162,10 +160,11 @@ def data(table):
         if col_index is None:
             break
         col_name = request.args.get(f"columns[{col_index}][data]", type=str)
-        descending = request.args.get(f"order[{i}][dir]", type=str) == "desc"
-        col = getattr(table, col_name)
-        col = col.desc() if descending else col.asc()
-        order.append(col)
+        if col_name in orderable_columns():
+            descending = request.args.get(f"order[{i}][dir]", type=str) == "desc"
+            col = getattr(table, col_name)
+            col = col.desc() if descending else col.asc()
+            order.append(col)
     if order:
         query = query.order_by(*order)
 

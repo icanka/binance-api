@@ -9,10 +9,14 @@ if (selectElementValue === "Select Table") {
   tableName = selectElementValue;
 }
 // Send AJAX request to Flask server, and return promise, this is an async operation
+if (datatable) {
+datatable.destroy(); // Destroy the previous table
+datatable.off("column-visibility.dt", columnVisibilityHandler);
+signalsTableInitialized = false;
+}
 fetchTableColumnsAndInitialize(tableName);
 
-const selectElement = document.getElementById("inputStatus");
-
+selectElement = document.getElementById("inputStatus");
 // Event listener for the 'change' event
 selectElement.addEventListener("change", (event) => {
   const selectedTable = event.target.value;

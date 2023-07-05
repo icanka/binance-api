@@ -12,6 +12,7 @@ parentLink.parent().addClass("menu-is-opening menu-open");
 
 // Signals page related variables
 let datatable = null;
+let selectElement = null;
 let cols = null;
 let signalsTableInitialized = false;
 let hiddenColumns = null;

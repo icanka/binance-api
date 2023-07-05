@@ -112,7 +112,7 @@ function columnVisibilityHandler(e, settings, column, state) {
   }
   
   function fetchTableColumnsAndInitialize(tableName) {
-    fetch("/api/signals/" + tableName)
+    fetch("/api/database/" + tableName)
       .then((response) => response.json())
       .then((data) => {
         const columns = data.map((columnName) => ({

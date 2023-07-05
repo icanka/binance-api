@@ -49,8 +49,7 @@ def some_endpoint():
 
 @bp.route("/database/<table_name>", methods=["GET"])
 def _database(table_name):
-    """Get all Users"""
-    print("**************************************************************")
+    """Get column names from the database."""
     table = get_class(table_name.capitalize())
     column_names = table.__table__.columns.keys()
     return jsonify(column_names)

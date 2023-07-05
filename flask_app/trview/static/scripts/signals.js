@@ -5,15 +5,20 @@ console.log("selectElementValue: " + selectElementValue);
 // check if selectElementValue is something other than "Select a table"
 if (selectElementValue === "Select Table") {
   tableName = "webhooks";
-}else{
+} else {
   tableName = selectElementValue;
 }
-// Send AJAX request to Flask server, and return promise, this is an async operation
-if (datatable) {
-datatable.destroy(); // Destroy the previous table
-datatable.off("column-visibility.dt", columnVisibilityHandler);
-signalsTableInitialized = false;
+
+// When the page is loaded partially with ajax, the datatable is not initialized
+if (typeof datatable !== "undefined") {
+  console.log("datatable defined, destroying datatable");
+  datatable.destroy(); // Destroy the previous table
+  datatable.off("column-visibility.dt", columnVisibilityHandler);
+  console.log("setting signalsTableInitialized to false");
+  signalsTableInitialized = false;
 }
+
+console.log("Initializing datatable with table: " + tableName);
 fetchTableColumnsAndInitialize(tableName);
 
 selectElement = document.getElementById("inputStatus");

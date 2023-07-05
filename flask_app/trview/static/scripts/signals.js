@@ -5,6 +5,8 @@ console.log("selectElementValue: " + selectElementValue);
 // check if selectElementValue is something other than "Select a table"
 if (selectElementValue === "Select Table") {
   tableName = "webhooks";
+}else{
+  tableName = selectElementValue;
 }
 // Send AJAX request to Flask server, and return promise, this is an async operation
 fetchTableColumnsAndInitialize(tableName);

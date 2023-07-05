@@ -1,5 +1,11 @@
 console.log("signals.js");
-let tableName = "webhooks";
+selectElementValue = document.getElementById("inputStatus").value;
+console.log("selectElementValue: " + selectElementValue);
+
+// check if selectElementValue is something other than "Select a table"
+if (selectElementValue === "Select Table") {
+  tableName = "webhooks";
+}
 // Send AJAX request to Flask server, and return promise, this is an async operation
 fetchTableColumnsAndInitialize(tableName);
 
@@ -23,7 +29,7 @@ selectElement.addEventListener("change", (event) => {
   tbody.empty();
   signalsTableInitialized = false;
   console.log("Emptying finished");
-  if(!signalsTableInitialized) {
+  if (!signalsTableInitialized) {
     console.log("Signals table not initialized yet, initializing now");
     fetchTableColumnsAndInitialize(selectedTable);
   }

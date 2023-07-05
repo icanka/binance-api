@@ -29,7 +29,7 @@
         <!-- socket.io -->
         <script src="{{ url_for('static', filename='scripts/3rdparty/socket.io.min.js') }}"></script>
         <!-- Page specific script -->
-        <script src="{{ url_for('static', filename='scripts/base.js')}}"></script>
+        <script src="{{ url_for('static', filename='scripts/functions.js')}}"></script>
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -47,6 +47,8 @@
         <!-- ./wrapper -->
         {% block include_js %}
         {% endblock -%}
+        <!-- Base script -->
+        <script src="{{ url_for('static', filename='scripts/base.js')}}"></script>
         {% block page_script %}{% endblock %}
     </body>
 </html>

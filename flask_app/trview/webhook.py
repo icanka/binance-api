@@ -81,7 +81,7 @@ def pages(page):
         )
 
 
-@bp.route("/pages/database", methods=["POST", "GET"])
+@bp.route("/pages/signals", methods=["POST", "GET"])
 @login_required
 def database():
     """
@@ -92,12 +92,14 @@ def database():
     """
     # Check if the request is an AJAX request
     # signal_data = db.session.query(Webhooks).all()
-    table_name = 'Webhooks'
+    print(request.args.get('table'))
+    table_name = 'Webhooks' # Default table
     tables = db.metadata.tables.keys()
     print(f"DATABASE ENDPOINT, TABLES: {tables}")
     print("SIGNALS")
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
         # If it is return only the partial content.
+        pprint(f"request.args: {request.args}")
         table_name = request.args.get('table')
         table = get_class(table_name.capitalize())
         columns = table.__table__.columns.keys()

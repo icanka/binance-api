@@ -10,14 +10,6 @@ const parentLink = $currentLink
 parentLink.addClass("active");
 parentLink.parent().addClass("menu-is-opening menu-open");
 
-// Signals page related variables
-let datatable = null;
-let selectElement = null;
-let cols = null;
-let signalsTableInitialized = false;
-let hiddenColumns = null;
-let col = null;
-
 $(".nav-sidebar").on("expanded.lte.treeview", (event) => {
   $(event.target).find("a").addClass("nav-active");
 });
@@ -26,7 +18,7 @@ $(".nav-sidebar").on("collapsed.lte.treeview", (event) => {
   $(event.target).find("a").removeClass("nav-active");
 });
 
-$(window).on("load.lte.treeview", (event) => {});
+$(window).on("load.lte.treeview", (event) => { });
 
 const CURRENTLY_ACTIVE_PAGE_MENU_ITEM =
   '.main-sidebar .nav-item > a.nav-link.active:not([href="#"])';
@@ -59,6 +51,7 @@ $(SELECTOR_SIDEBAR_MENU_ITEM).on("click", function (event) {
   let stateObj = { flag: "dynamic" };
   history.pushState(stateObj, null, url);
 
+  console.log("Loading content");
   $.ajax({
     url: hrefValue,
     type: "POST",
@@ -75,6 +68,7 @@ $(SELECTOR_SIDEBAR_MENU_ITEM).on("click", function (event) {
       );
     },
   });
+  console.log("Content loaded");
 });
 
 // Listen for popstate events (i.e. back/forward buttons)

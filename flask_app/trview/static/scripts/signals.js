@@ -10,7 +10,7 @@ if (selectElementValue === "Select Table") {
 }
 
 // When the page is loaded partially with ajax, the datatable is not initialized
-if (typeof datatable !== "undefined") {
+if (typeof datatable !== "undefined" && datatable !== null) {
   console.log("datatable defined, destroying datatable");
   datatable.destroy(); // Destroy the previous table
   datatable.off("column-visibility.dt", columnVisibilityHandler);

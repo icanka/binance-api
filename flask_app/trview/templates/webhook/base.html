@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>
-            {% block title %}
-                {% if title %}{{ title }}{% endif %}
-            {% endblock %}
-        - Trview</title>
-        <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"/>
-        <!-- Font Awesome PRO Icons instead of default AdminLTE included free font-awesome -->
-        <link rel="stylesheet"
-              href="{{ url_for('static', filename='fontawesome-pro/css/all.min.css') }}"/>
-        <!-- Theme style -->
-        <link rel="stylesheet"
-              href="{{ url_for('webhook.static', filename='dist/css/adminlte.min.css') }}"/>
-        {% block include_css %}{% endblock %}
-        
-        <!-- REQUIRED SCRIPTS -->
-        <!-- jQuery -->
-        <script src="{{ url_for('webhook.static', filename='plugins/jquery/jquery.min.js') }}"></script>
-        <!-- Bootstrap 4 -->
-        <script src="{{ url_for('webhook.static', filename='plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <!-- AdminLTE App -->
-        <script src="{{ url_for('webhook.static', filename='dist/js/adminlte.min.js') }}"></script>
-        <!-- socket.io -->
-        <script src="{{ url_for('static', filename='scripts/3rdparty/socket.io.min.js') }}"></script>
-        <!-- Page specific script -->
-        <script src="{{ url_for('static', filename='scripts/functions.js')}}"></script>
-    </head>
-    <body class="hold-transition sidebar-mini">
-        <div class="wrapper">
-            {% include "webhook/navbar.html" %}
-            {% include "webhook/sidebar.html" %}
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                {% block content %}
-                    {% if content %}{{ content|safe }}{% endif %}
-                {% endblock %}
-            </div>
-            {% include "webhook/control_sidebar.html" %}
-            {% include "webhook/footer.html" %}
-        </div>
-        <!-- ./wrapper -->
-        {% block include_js %}
-        {% endblock -%}
-        <!-- Base script -->
-        <script src="{{ url_for('static', filename='scripts/base.js')}}"></script>
-        {% block page_script %}{% endblock %}
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% block title %}
+        {% if title %}{{ title }}{% endif %}
+      {% endblock %}- Trview
+    </title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome PRO Icons instead of default AdminLTE included free font-awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'fontawesome-pro/css/all.min.css') }}" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ url_for('webhook.static', filename = 'dist/css/adminlte.min.css') }}" />
+    {% block include_css %}
+    {% endblock %}
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="{{ url_for('webhook.static', filename = 'plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ url_for('webhook.static', filename = 'plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ url_for('webhook.static', filename = 'dist/js/adminlte.min.js') }}"></script>
+    <!-- socket.io -->
+    <script src="{{ url_for('static', filename = 'scripts/3rdparty/socket.io.min.js') }}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ url_for('webhook.static', filename = 'plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <!-- Page specific script -->
+    <script src="{{ url_for('static', filename = 'scripts/functions.js') }}"></script>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      {% include 'webhook/navbar.html' %}
+      {% include 'webhook/sidebar.html' %}
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        {% block content %}
+          {% if content %}{{ content|safe }}{% endif %}
+        {% endblock %}
+      </div>
+      {% include 'webhook/control_sidebar.html' %}
+      {% include 'webhook/footer.html' %}
+    </div>
+    <!-- ./wrapper -->
+    {% block include_js %}
+
+    {% endblock -%}
+    <!-- Base script -->
+    <script src="{{ url_for('static', filename = 'scripts/base.js') }}"></script>
+    {% block page_script %}
+    {% endblock %}
+  </body>
 </html>

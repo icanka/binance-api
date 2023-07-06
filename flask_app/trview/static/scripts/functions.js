@@ -1,5 +1,12 @@
 
 // --------------- DATATABLES ----------------
+// Signals page related variables
+let datatable = null;
+let selectElement = null;
+let cols = null;
+let signalsTableInitialized = false;
+let hiddenColumns = null;
+let col = null;
 
 function columnVisibilityHandler(e, settings, column, state) {
     // If the column is hidden, set the column's searchable property to false.
@@ -212,7 +219,6 @@ function columnVisibilityHandler(e, settings, column, state) {
           orderable: true,
         }));
         return columns;
-        console.log(columns);
       });
   }
   

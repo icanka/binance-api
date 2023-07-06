@@ -8,4 +8,4 @@ if __name__ == "__main__":
     app = create_app()
     _socketio.init_app(app)
     # print app configuration
-    _socketio.run(app)
+    _socketio.run(app, host="0.0.0.0")

@@ -45,7 +45,7 @@ async def progress_spinner(task):
     spinner.finish()
 
 
-async def main():
+async def commit_session():
     """Main function for the async tasks.
     """
 
@@ -78,7 +78,7 @@ def populate_models(model_class, num_records=10):
     data = model_class.generate_webhook_data(num_records)
     for fake_data in data:
         db.session.add(fake_data)
-    asyncio.run(main())
+    asyncio.run(commit_session())
     # db.session.commit()
 
 
@@ -236,3 +236,22 @@ class Webhooks(db.Model):
 
 
 Index('idx_webhooks_id', Webhooks.id, unique=True)
+
+
+class Symbol24HVolume(db.Model):
+    """ 24H volume for a symbol."""
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=False, unique=True, nullable=False)
+    created = db.Column(db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp(), index=True)
+    symbol = db.Column(db.TEXT, nullable=False, index=True)
+    volume = db.Column(db.Float, nullable=False, index=False)
+
+    def to_dict(self):
+        """Convert the model to a dictionary."""
+        data = {
+            "id": self.id,
+            "created": self.created,
+            "symbol": self.symbol,
+            "volume": self.volume,
+        }
+        return data
+    

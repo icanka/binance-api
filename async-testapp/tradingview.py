@@ -1,26 +1,44 @@
 import asyncio
 import datetime
 import json
+import random
 import aiofiles
 import requests as requests_sync
 import requests_async as requests
+from binance import AsyncClient
+from binance.exceptions import BinanceAPIException
 from pprint import pprint
 
 
 def get_symbols(screener_country):
     headers = {"User-Agent": "Mozilla/5.0"}
     url = "https://scanner.tradingview.com/{}/scan".format(screener_country)
-    symbol_lists = requests_sync.post(url, headers=headers, verify=False).json()
+    symbol_lists = requests_sync.post(
+        url, headers=headers, timeout=10).json()
     data = symbol_lists["data"]
     for pair in data:
         data = pair["s"].split(":")
-        dict = {"symbol": data[1], "market": data[0]}
-        yield dict
+        _dict = {"symbol": data[1], "market": data[0]}
+        yield _dict
+
+
+async def get_ticker_price(symbol):
+    client = await AsyncClient.create()
+    try:
+        res = await client.get_ticker(symbol=symbol)
+    except BinanceAPIException:
+        pprint(f"Error getting ticker for {symbol}")
+        await client.close_connection()
+        pprint(f"Connection closed for {symbol}")
+        raise
+    finally:
+        await client.close_connection()
+    return res['lastPrice']
 
 
 async def get_signal(screener_country, market_symbol, symbol, candle):
     headers = {"User-Agent": "Mozilla/5.0"}
-    url = "https://scanner.tradingview.com/{}/scan".format(screener_country)
+    url = f"https://scanner.tradingview.com/{screener_country}/scan"
 
     payload = {
         "symbols": {
@@ -110,26 +128,38 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
             "Pivot.M.Demark.R1|{}".format(candle),
         ],
     }
-    
-    resp = await requests.post(
-        url, headers=headers, data=json.dumps(payload), verify=False
-    )
+
+    try:
+        resp = await requests.post(
+            url, headers=headers, data=json.dumps(payload), timeout=100, verify=False
+        )
+    except requests.exceptions.ConnectionError:
+        print("Connection error, retrying in 60 seconds")
+        await asyncio.sleep(60)
+        return
+
     resp = resp.json()
     try:
         signal = oscillator = resp["data"][0]["d"][1]
     # signal to fload
         signal = float(signal)
-    except (TypeError, IndexError) as e:
-        if e == TypeError:
+    except (TypeError, IndexError) as exception:
+        if exception == TypeError:
             signal = 0.0
-        else: return
+        else:
+            return
     # timestamp
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     if signal > 0.6:
+
         async with aiofiles.open(f"{market_symbol}-{symbol}.txt", mode="a") as f:
-            await f.write(f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal}\n")
-        pprint(f"{symbol} : {signal}")
-    # return signal
+            try:
+                price = await get_ticker_price(symbol)
+            except BinanceAPIException:
+                price = 0.0
+            await f.write(f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price}\n")
+        pprint(
+            f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price}\n")
 
 
 async def process_item(semaphore, item):
@@ -145,12 +175,13 @@ async def main():
     tasks = [
         process_item(semaphore, item)
         for item in get_symbols("crypto")
-        if item["market"] == "BINANCE"
+        if item["market"] == "BINANCE" and
+        (item["symbol"].endswith("USDT") or item["symbol"].endswith("BUSD"))
     ]
     # create tasks
-    #pprint(tasks) # list of coroutines
+    # pprint(tasks) # list of coroutines
 
-    await asyncio.gather(*tasks) # this wr
+    await asyncio.gather(*tasks)  # this wr
 
 
 if __name__ == "__main__":

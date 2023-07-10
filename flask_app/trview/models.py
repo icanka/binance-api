@@ -267,4 +267,18 @@ class Trview_recommend(db.Model):
     recommend_ma = db.Column(db.Float, nullable=False, index=False)
     recommend_other = db.Column(db.Float, nullable=False, index=False)
     price = db.Column(db.Float, nullable=False, index=False)
-    
+
+    def to_dict(self):
+        """Convert the model to a dictionary."""
+        data = {
+            "id": self.id,
+            "created": self.created,
+            "market": self.market,
+            "candle_interval": self.candle_interval,
+            "symbol": self.symbol,
+            "recommend_all": self.recommend_all,
+            "recommend_ma": self.recommend_ma,
+            "recommend_other": self.recommend_other,
+            "price": self.price,
+        }
+        return data

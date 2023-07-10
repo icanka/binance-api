@@ -158,7 +158,6 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
             return
     # timestamp
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    #pprint(f"{timestamp} : {market_symbol} : {symbol} : {candle} : {recommend_all}")
     if recommend_all > 0.6 or recommend_all < -0.6:
         res = await get_ticker(symbol)
         vol = await calc_volume(res)
@@ -174,10 +173,10 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
         dict_["recommend_ma"] = float(recommend_ma)
         dict_["recommend_other"] = float(recommend_other)
         await symbol_vol_calc(dict_)
-        async with aiofiles.open(f"{market_symbol}-{symbol}.txt", mode="a") as f:
-            await f.write(
-                f"{timestamp} : {market_symbol} : {symbol} : {candle} : {recommend_all} : {price}\n"
-            )
+        #async with aiofiles.open(f"{market_symbol}-{symbol}.txt", mode="a") as f:
+        #    await f.write(
+        #        f"{timestamp} : {market_symbol} : {symbol} : {candle} : {recommend_all} : {price}\n"
+        #    )
         #pprint(
         #    f"{timestamp} : {market_symbol} : {symbol} : {candle} : {recommend_all} : {price} : {vol}\n"
         #)
@@ -211,7 +210,7 @@ def get_by_volume(limit=300):
     # First 300 item
     res = session.query(Symbol24_h_volume).order_by(Symbol24_h_volume.volume.desc()).limit(limit)
     for item in res:
-        yield item.to_dict() 
+        yield item.to_dict()
 
 async def process_item(semaphore, item):
     while True:

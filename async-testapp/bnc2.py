@@ -67,6 +67,7 @@ async def symbol_vol_calc(symbol):
         # Commit the changes to the database
     session.commit()
     pprint(f"Volume for {symbol} is {vol.volume}")
+    await asyncio.sleep(1)
 
 
 async def process_item(semaphore, symbol):

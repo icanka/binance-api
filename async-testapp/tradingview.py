@@ -14,8 +14,7 @@ from pprint import pprint
 def get_symbols(screener_country):
     headers = {"User-Agent": "Mozilla/5.0"}
     url = "https://scanner.tradingview.com/{}/scan".format(screener_country)
-    symbol_lists = requests_sync.post(
-        url, headers=headers, timeout=10).json()
+    symbol_lists = requests_sync.post(url, headers=headers, timeout=10).json()
     data = symbol_lists["data"]
     for pair in data:
         data = pair["s"].split(":")
@@ -26,6 +25,7 @@ def get_symbols(screener_country):
 async def get_ticker_price(symbol):
     client = await AsyncClient.create()
     try:
+        pprint("req+")
         res = await client.get_ticker(symbol=symbol)
     except BinanceAPIException:
         pprint(f"Error getting ticker for {symbol}")
@@ -34,7 +34,7 @@ async def get_ticker_price(symbol):
         raise
     finally:
         await client.close_connection()
-    return res['lastPrice']
+    return res["lastPrice"]
 
 
 async def get_signal(screener_country, market_symbol, symbol, candle):
@@ -142,7 +142,7 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
     resp = resp.json()
     try:
         signal = oscillator = resp["data"][0]["d"][1]
-    # signal to fload
+        # signal to fload
         signal = float(signal)
     except (TypeError, IndexError) as exception:
         if exception == TypeError:
@@ -151,17 +151,22 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
             return
     # timestamp
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    if signal > 0.5:
+    if signal > 0.6:
         res = await get_ticker(symbol)
         vol = await calc_volume(res)
-        price = res['lastPrice']
+        price = res["lastPrice"]
         if vol < 1000000:  # 24h volume less than 1M
             return
 
         async with aiofiles.open(f"{market_symbol}-{symbol}.txt", mode="a") as f:
-            await f.write(f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price}\n")
+            await f.write(
+                f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price}\n"
+            )
         pprint(
-            f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price} : {vol}\n")
+            f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price} : {vol}\n"
+        )
+    else:
+        pprint(f"{market_symbol} - {signal}")
 
 
 async def process_item(semaphore, item):
@@ -177,8 +182,8 @@ async def main():
     tasks = [
         process_item(semaphore, item)
         for item in get_symbols("crypto")
-        if item["market"] == "BINANCE" and
-        (item["symbol"].endswith("USDT") or item["symbol"].endswith("BUSD"))
+        if item["market"] == "BINANCE"
+        and (item["symbol"].endswith("USDT") or item["symbol"].endswith("BUSD"))
     ]
     # create tasks
     # pprint(tasks) # list of coroutines

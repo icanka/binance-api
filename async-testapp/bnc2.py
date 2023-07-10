@@ -35,6 +35,7 @@ async def calc_volume(response):
 async def get_ticker(symbol):
     client = await AsyncClient.create()
     try:
+        pprint("req+")
         res = await client.get_ticker(symbol=symbol)
     except BinanceAPIException:
         pprint(f"Error getting ticker for {symbol}")

@@ -35,7 +35,6 @@ async def calc_volume(response):
 async def get_ticker(symbol):
     client = await AsyncClient.create()
     try:
-        pprint("req+")
         res = await client.get_ticker(symbol=symbol)
     except BinanceAPIException:
         pprint(f"Error getting ticker for {symbol}")
@@ -54,9 +53,8 @@ async def symbol_vol_calc(symbol):
     if vol == 0:
         return
     vol = Symbol24_h_volume(symbol=symbol, volume=vol)
-    database = 'sqlite://///home/izzetcan/Documents/git-repos/binance-api/flask_app/instance/trading.development.sqlite'
     # Create an in-memory SQLite database engine
-    engine = create_engine(database, echo=False)
+    engine = create_engine(DevelopmentConfig.DATABASE, echo=False)
     # Create a session factory
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -72,9 +70,9 @@ async def symbol_vol_calc(symbol):
 
 
 async def process_item(semaphore, symbol):
-    while True:
-        async with semaphore:
-            await symbol_vol_calc(symbol)
+    #while True:
+    async with semaphore:
+        await symbol_vol_calc(symbol)
 
 
 async def main():

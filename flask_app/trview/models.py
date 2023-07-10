@@ -262,7 +262,7 @@ class Trview_recommend(db.Model):
     created = db.Column(db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp(), index=True)
     market = db.Column(db.TEXT, nullable=False, index=True)
     candle_interval = db.Column(db.Integer, nullable=False, index=True)
-    symbol = db.Column(db.TEXT, nullable=False, index=True, unique=True)
+    symbol = db.Column(db.TEXT, nullable=False, index=True)
     recommend_all = db.Column(db.Float, nullable=False, index=False)
     recommend_ma = db.Column(db.Float, nullable=False, index=False)
     recommend_other = db.Column(db.Float, nullable=False, index=False)

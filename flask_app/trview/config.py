@@ -16,7 +16,8 @@ class Config:
     # general configuration options
     SECRET_KEY = "trview"
     APPLICATION_NAME = "Trview"
-    DATABASE = f"sqlite:////{os.path.join(os.getcwd(), 'instance', 'trading.sqlite')}"
+    BASEPATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    DATABASE = f"sqlite:////{os.path.join(BASEPATH, 'instance', 'trading.sqlite')}"
     LOG_LEVEL = "INFO"
 
 
@@ -29,7 +30,7 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     """Development configuration."""
 
-    DATABASE = f"sqlite:////{os.path.join(os.getcwd(), 'instance', 'trading.development.sqlite')}"
+    DATABASE = f"sqlite:////{os.path.join(Config.BASEPATH, 'instance', 'trading.development.sqlite')}"
     SECRET_KEY = "development"
 
 

@@ -214,14 +214,14 @@ async def main():
     semaphore = asyncio.Semaphore(2)  # limit to <x> concurrent tasks
     # filter only binance symbols
     items = list(get_by_volume(limit=100))
-    tasks = [
-        process_item(semaphore, item)
-        for item in items
+    while True:
+        tasks = [
+            process_item(semaphore, item)
+            for item in items
         # if item["market"] == "BINANCE"
         # and (item["symbol"].endswith("USDT") or item["symbol"].endswith("BUSD"))
-    ]
-    # create tasks
-    while True:
+        ]
+        # create tasks
         await asyncio.gather(*tasks)  # this wr
 
 

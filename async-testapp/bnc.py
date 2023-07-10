@@ -1,4 +1,5 @@
 import asyncio
+import datetime
 import aiofiles
 import aiohttp
 from binance import AsyncClient, BinanceSocketManager
@@ -45,19 +46,29 @@ async def mini_ticker_socket(client):
 
 
 async def get_ticker_price(client, symbol):
+    # Calculate the timestamp for now - 24 hours
+    current_time = datetime.datetime.now()
+    past_time = current_time - datetime.timedelta(hours=24)
+    timestamp = int(past_time.timestamp() * 1000)
     async with aiofiles.open(f"{symbol}-TICKER.txt", mode="w") as f:
         while True:
             await asyncio.sleep(0.5)
             res = await client.get_ticker(symbol=symbol)
             res2 = await client.get_symbol_ticker(symbol=symbol)
-            pprint(res2)
+            klines = await client.get_historical_klines(symbol, AsyncClient.KLINE_INTERVAL_1DAY, "2 day ago UTC", "1 day ago UTC")
+            all_tickers = await client.get_all_tickers()
+            pprint(all_tickers)
+            pprint(type(all_tickers))
+            #pprint(klines)
+            #pprint(res2)
             #print(type(res))
-            print(res['lastPrice'])
+            #print(res['lastPrice'])
             #pprint(res['volume'])
             # conver price and volume to float
             price = float(res['lastPrice'])
             volume = float(res['volume'])
-            pprint(price*volume)
+            #pprint(f"volume: {volume}")
+            #pprint(price*volume)
             #await client.close_connection()
             await write_to_file(f, str(res))
 

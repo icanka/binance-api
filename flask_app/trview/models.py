@@ -238,11 +238,11 @@ class Webhooks(db.Model):
 Index('idx_webhooks_id', Webhooks.id, unique=True)
 
 
-class Symbol24HVolume(db.Model):
+class Symbol24_h_volume(db.Model):
     """ 24H volume for a symbol."""
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=False, unique=True, nullable=False)
     created = db.Column(db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp(), index=True)
-    symbol = db.Column(db.TEXT, nullable=False, index=True)
+    symbol = db.Column(db.TEXT, nullable=False, index=True, unique=True)
     volume = db.Column(db.Float, nullable=False, index=False)
 
     def to_dict(self):
@@ -254,4 +254,17 @@ class Symbol24HVolume(db.Model):
             "volume": self.volume,
         }
         return data
+
+
+class Trview_recommend(db.Model):
+    """Recommendation model."""
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, index=False, unique=True, nullable=False)
+    created = db.Column(db.TIMESTAMP, nullable=False, server_default=db.func.current_timestamp(), index=True)
+    market = db.Column(db.TEXT, nullable=False, index=True)
+    candle_interval = db.Column(db.Integer, nullable=False, index=True)
+    symbol = db.Column(db.TEXT, nullable=False, index=True, unique=True)
+    recommend_all = db.Column(db.Float, nullable=False, index=False)
+    recommend_ma = db.Column(db.Float, nullable=False, index=False)
+    recommend_other = db.Column(db.Float, nullable=False, index=False)
+    price = db.Column(db.Float, nullable=False, index=False)
     

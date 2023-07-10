@@ -5,6 +5,7 @@ import random
 import aiofiles
 import requests as requests_sync
 import requests_async as requests
+from bnc2 import get_ticker, calc_volume
 from binance import AsyncClient
 from binance.exceptions import BinanceAPIException
 from pprint import pprint
@@ -150,16 +151,17 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
             return
     # timestamp
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    if signal > 0.6:
+    if signal > 0.5:
+        res = await get_ticker(symbol)
+        vol = await calc_volume(res)
+        price = res['lastPrice']
+        if vol < 1000000:  # 24h volume less than 1M
+            return
 
         async with aiofiles.open(f"{market_symbol}-{symbol}.txt", mode="a") as f:
-            try:
-                price = await get_ticker_price(symbol)
-            except BinanceAPIException:
-                price = 0.0
             await f.write(f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price}\n")
         pprint(
-            f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price}\n")
+            f"{timestamp} : {market_symbol} : {symbol} : {candle} : {signal} : {price} : {vol}\n")
 
 
 async def process_item(semaphore, item):

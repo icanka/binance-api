@@ -26,21 +26,6 @@ def get_symbols(screener_country):
         yield _dict
 
 
-async def get_ticker_price(symbol):
-    client = await AsyncClient.create()
-    try:
-        pprint("req+")
-        res = await client.get_ticker(symbol=symbol)
-    except BinanceAPIException:
-        pprint(f"Error getting ticker for {symbol}")
-        await client.close_connection()
-        pprint(f"Connection closed for {symbol}")
-        raise
-    finally:
-        await client.close_connection()
-    return res["lastPrice"]
-
-
 async def get_signal(screener_country, market_symbol, symbol, candle):
     headers = {"User-Agent": "Mozilla/5.0"}
     url = f"https://scanner.tradingview.com/{screener_country}/scan"
@@ -162,7 +147,7 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
         res = await get_ticker(symbol)
         vol = await calc_volume(res)
         price = res["lastPrice"]
-        #if vol < 5000000:  # 24h volume less than 1M
+        # if vol < 5000000:  # 24h volume less than 1M
         #    return
         dict_ = {}
         dict_["market"] = market_symbol
@@ -173,13 +158,13 @@ async def get_signal(screener_country, market_symbol, symbol, candle):
         dict_["recommend_ma"] = float(recommend_ma)
         dict_["recommend_other"] = float(recommend_other)
         await symbol_vol_calc(dict_)
-        #async with aiofiles.open(f"{market_symbol}-{symbol}.txt", mode="a") as f:
+        # async with aiofiles.open(f"{market_symbol}-{symbol}.txt", mode="a") as f:
         #    await f.write(
         #        f"{timestamp} : {market_symbol} : {symbol} : {candle} : {recommend_all} : {price}\n"
         #    )
-        #pprint(
+        # pprint(
         #    f"{timestamp} : {market_symbol} : {symbol} : {candle} : {recommend_all} : {price} : {vol}\n"
-        #)
+        # )
 
 
 async def symbol_vol_calc(data):
@@ -202,44 +187,43 @@ async def symbol_vol_calc(data):
     # Commit the changes to the database
     session.commit()
 
+
 def get_by_volume(limit=300):
     engine = create_engine(DevelopmentConfig.DATABASE, echo=False)
     # Create a session factory
     Session = sessionmaker(bind=engine)
     session = Session()
     # First 300 item
-    res = session.query(Symbol24_h_volume).order_by(Symbol24_h_volume.volume.desc()).limit(limit)
+    res = (
+        session.query(Symbol24_h_volume)
+        .order_by(Symbol24_h_volume.volume.desc())
+        .limit(limit)
+    )
     for item in res:
         yield item.to_dict()
 
+
 async def process_item(semaphore, item):
-    while True:
-        async with semaphore:
-            pprint(item["symbol"])
-            await get_signal("crypto", "BINANCE", item["symbol"], "30")
+    async with semaphore:
+        pprint(item["symbol"])
+        await get_signal("crypto", "BINANCE", item["symbol"], "30")
+
 
 async def main():
     tasks = []
-    semaphore = asyncio.Semaphore(5)  # limit to <x> concurrent tasks
+    semaphore = asyncio.Semaphore(2)  # limit to <x> concurrent tasks
     # filter only binance symbols
+    items = list(get_by_volume(limit=100))
     tasks = [
         process_item(semaphore, item)
-        for item in get_by_volume(limit=100)
-        #if item["market"] == "BINANCE"
-        #and (item["symbol"].endswith("USDT") or item["symbol"].endswith("BUSD"))
-    ]
-    test = [
-        item["symbol"]
-        for item in get_by_volume(limit=100)
-        #if item["market"] == "BINANCE"
-        #and (item["symbol"].endswith("USDT") or item["symbol"].endswith("BUSD"))
+        for item in items
+        # if item["market"] == "BINANCE"
+        # and (item["symbol"].endswith("USDT") or item["symbol"].endswith("BUSD"))
     ]
     # create tasks
-    # pprint(tasks) # list of coroutines
-    pprint(test)
-    pprint(len(tasks))
+    while True:
+        await asyncio.gather(*tasks)  # this wr
 
-    await asyncio.gather(*tasks)  # this wr
 
 if __name__ == "__main__":
     asyncio.run(main())

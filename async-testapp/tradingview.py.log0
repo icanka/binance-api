@@ -1,0 +1,100 @@
+'OPUSDT'
+'APEUSDT'
+'MKRUSDT'
+'EURUSDT'
+'STORJUSDT'
+'MAVUSDT'
+'MTLUSDT'
+'OMUSDT'
+'INJUSDT'
+'BCHBUSD'
+'APTUSDT'
+'AAVEUSDT'
+'XECUSDT'
+'XRPBUSD'
+'COCOSUSDT'
+'SUIUSDT'
+'PONDUSDT'
+'EOSUSDT'
+'CFXUSDT'
+'WAVESBUSD'
+'LINKUSDT'
+'ONTUSDT'
+'DOTUSDT'
+'IndexError'
+'LINAUSDT'
+'GALAUSDT'
+'OCEANUSDT'
+'ATOMUSDT'
+'ETCUSDT'
+'XVGBUSD'
+'MATICBUSD'
+'CRVUSDT'
+'SNXUSDT'
+'BELUSDT'
+'KAVAUSDT'
+'ADABUSD'
+'CHESSUSDT'
+'RNDRUSDT'
+'ARPAUSDT'
+'GRTUSDT'
+'MASKUSDT'
+'EDUUSDT'
+'RDNTUSDT'
+'NEARUSDT'
+'AVAXBUSD'
+'FTTBUSD'
+'DOGEBUSD'
+'UNIUSDT'
+'XMRUSDT'
+'SANDUSDT'
+'IDUSDT'
+'CAKEUSDT'
+'STXUSDT'
+'MAGICUSDT'
+'DYDXUSDT'
+'FETUSDT'
+'FLOWUSDT'
+'TROYBUSD'
+'NEBLUSDT'
+'AGIXUSDT'
+'ALGOUSDT'
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/requests/models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/async-testapp/tradingview.py", line 229, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/async-testapp/tradingview.py", line 225, in main
+    await asyncio.gather(*tasks)  # this wr
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/async-testapp/tradingview.py", line 209, in process_item
+    await get_signal("crypto", "BINANCE", item["symbol"], "30")
+  File "/home/ec2-user/binance-api/async-testapp/tradingview.py", line 131, in get_signal
+    resp = resp.json()
+           ^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/requests/models.py", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

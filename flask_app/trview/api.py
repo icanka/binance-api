@@ -5,11 +5,8 @@ import json
 import time
 from flask import (
     Blueprint,
-    redirect,
-    render_template,
     request,
     session,
-    url_for,
     make_response,
     Response,
     jsonify,
@@ -34,12 +31,12 @@ def database(table):
     return result
 
 
-@bp.route('/test')
+@bp.route("/test")
 def some_endpoint():
     # Extract the value of 'var1' from the query string
-    var1 = request.args.get('var1')
+    var1 = request.args.get("var1")
     # Do something with var1
-    return 'Received var1 value: {}'.format(var1)
+    return "Received var1 value: {}".format(var1)
 
 
 @bp.route("/database/<table_name>", methods=["GET"])
@@ -63,6 +60,7 @@ def delete():
     db.session.commit()
     emit("update_table", broadcast=True, namespace="/webhook_signal")
     return make_response(jsonify({"message": "Deleted"}), 200)
+
 
 # TODO: refactor this function according to the new database structure.
 

@@ -4,6 +4,7 @@ venv/
 .vscode
 **/test.sh
 **/nohup.out
+**/.log
 **/__pycache__/
 time
 os

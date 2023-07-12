@@ -22,6 +22,7 @@ from flask import (
 from flask_socketio import emit
 from .models import db, Users, Webhooks
 from .db import get_db, _db, get_class
+from pprint import pprint
 
 bp = Blueprint("api", __name__, url_prefix="/api")
 
@@ -78,6 +79,22 @@ def drsi_with_filters():
 
     This endpoint is intended for tradingview. Expected example json with key:value format;
 
+
+    {
+    "strategy_name" : "drsi_with_filters",
+    "alert_message":"{{strategy.order.alert_message}}",
+    "action": "{{strategy.order.action}}",
+    "contracts": "{{strategy.order.contracts}}", 
+    "market_position": "{{strategy.market_position}}",
+    "market_position_size": "{{strategy.market_position_size}}",
+    "order_id": "{{strategy.order.id}}",
+    "price": "{{strategy.order.price}}",
+    "ticker": "{{ticker}}",
+    "firetime" : "{{timenow}}",
+    "interval" : "{{interval}}"
+    }
+
+
     {
     "strategy_name" : "drsi_with_filters",
     "action": "buy",
@@ -91,44 +108,50 @@ def drsi_with_filters():
     "ticker": "BTCBUSD"
     }
     """
-    db = get_db()
     rd = json.loads(request.data)
+    # print the current time
+    curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    pprint("--------------------------------------------------------------------------------------")
+    pprint(f"----------------------------{curtime}-----------------------------")
+    pprint(rd)
+    pprint(type(rd))
+    pprint("--------------------------------------------------------------------------------------")
     # create an empty response object
     response = make_response()
     # insert the json to sqlite database
-    try:
-        db.execute(
-            """
-            INSERT INTO webhooks (
-                strategy_name,
-                ticker,
-                strategy_action,
-                market_position,
-                price,
-                position_size,
-                market_position_size,
-                contracts,
-                order_id
-            ) VALUES (?,?,?,?,?,?,?,?,?)""",
-            (
-                rd["strategy_name"],
-                rd["ticker"],
-                rd["action"],
-                rd["market_position"],
-                rd["price"],
-                rd["position_size"],
-                rd["market_position_size"],
-                rd["contracts"],
-                rd["order_id"],
-            ),
-        )
-        # data is only data if you're committed enough.
-        db.commit()
+    # try:
+    #     db.execute(
+    #         """
+    #         INSERT INTO webhooks (
+    #             strategy_name,
+    #             ticker,
+    #             strategy_action,
+    #             market_position,
+    #             price,
+    #             position_size,
+    #             market_position_size,
+    #             contracts,
+    #             order_id
+    #         ) VALUES (?,?,?,?,?,?,?,?,?)""",
+    #         (
+    #             rd["strategy_name"],
+    #             rd["ticker"],
+    #             rd["action"],
+    #             rd["market_position"],
+    #             rd["price"],
+    #             rd["position_size"],
+    #             rd["market_position_size"],
+    #             rd["contracts"],
+    #             rd["order_id"],
+    #         ),
+    #     )
+    #     # data is only data if you're committed enough.
+    #     db.commit()
 
-    # ooopps
-    except db.Error:
-        # create some generick error response.
-        response = make_response("<h1>Database Error</h1>")
+    # # ooopps
+    # except db.Error:
+    #     # create some generick error response.
+    #     response = make_response("<h1>Database Error</h1>")
 
     response.status_code = 200
     return response

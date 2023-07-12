@@ -1,15 +1,10 @@
 """ api for trview
 """
 
-import functools
 import json
-import hashlib
 import time
-from werkzeug.security import check_password_hash
 from flask import (
     Blueprint,
-    flash,
-    g,
     redirect,
     render_template,
     request,
@@ -20,8 +15,8 @@ from flask import (
     jsonify,
 )
 from flask_socketio import emit
-from .models import db, Users, Webhooks
-from .db import get_db, _db, get_class
+from .models import db,  Webhooks
+from .db import get_class
 from pprint import pprint
 
 bp = Blueprint("api", __name__, url_prefix="/api")
@@ -58,7 +53,8 @@ def _database(table_name):
 
 @bp.route("/delete", methods=["POST"])
 def delete():
-    """Delete the first row from the database and emit an event to the client to update the table."""
+    """Delete the first row from the database and emit an event to the c
+    lient to update the table."""
     table_name = request.args.get("table_name")
     clazz = get_class(table_name.capitalize())
     print(clazz)
@@ -77,8 +73,8 @@ def drsi_with_filters():
     """
     Save the posted json to database
 
-    This endpoint is intended for tradingview. Expected example json with key:value format;
-
+    This endpoint is intended for tradingview.
+    Expected example json with key:value format;
 
     {
     "strategy_name" : "drsi_with_filters",
@@ -108,15 +104,14 @@ def drsi_with_filters():
     "ticker": "BTCBUSD"
     }
     """
-    rd = request.data
-    #rd = json.loads(request.data)
-    # print the current time
+    rd = json.loads(request.data)
     curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    pprint("--------------------------------------------------------------------------------------")
-    pprint(f"----------------------------{curtime}-----------------------------")
+    pprint("-----------------------------------------------------------------")
+    pprint(f"-----------------------  {curtime}  ----------------------------")
     pprint(rd)
-    pprint(type(rd))
-    pprint("--------------------------------------------------------------------------------------")
+    pprint(request.content_type)
+    pprint(request.headers)
+    pprint("-----------------------------------------------------------------")
     # create an empty response object
     response = make_response()
     # insert the json to sqlite database

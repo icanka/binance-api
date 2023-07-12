@@ -101,8 +101,8 @@ def drsi_with_filters():
     "ticker": "BTCBUSD"
     }
     """
+    pprint("drsi_with_filter endpint")
     rd = json.loads(request.data)
-    curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     pprint("-----------------------------------------------------------------")
     pprint(f"--------------------------{curtime}-----------------------------")

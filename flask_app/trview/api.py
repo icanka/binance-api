@@ -105,9 +105,17 @@ def drsi_with_filters():
     }
     """
     rd = json.loads(request.data)
+<<<<<<< Updated upstream
     curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     pprint("-----------------------------------------------------------------")
     pprint(f"-----------------------  {curtime}  ----------------------------")
+=======
+    # print the current time
+    curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    pprint("--------------------------------------------------------------------------------------")
+    pprint(f"----------------------------{curtime}-----------------------------")
+    pprint(request.headers)
+>>>>>>> Stashed changes
     pprint(rd)
     pprint(request.content_type)
     pprint(request.headers)

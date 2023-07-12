@@ -84,7 +84,7 @@ def drsi_with_filters():
     "strategy_name" : "drsi_with_filters",
     "alert_message":"{{strategy.order.alert_message}}",
     "action": "{{strategy.order.action}}",
-    "contracts": "{{strategy.order.contracts}}", 
+    "contracts": "{{strategy.order.contracts}}",
     "market_position": "{{strategy.market_position}}",
     "market_position_size": "{{strategy.market_position_size}}",
     "order_id": "{{strategy.order.id}}",
@@ -108,7 +108,8 @@ def drsi_with_filters():
     "ticker": "BTCBUSD"
     }
     """
-    rd = json.loads(request.data)
+    rd = request.data
+    #rd = json.loads(request.data)
     # print the current time
     curtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     pprint("--------------------------------------------------------------------------------------")
